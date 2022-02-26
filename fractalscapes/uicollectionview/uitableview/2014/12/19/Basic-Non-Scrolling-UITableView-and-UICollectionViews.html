@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Basic Non-Scrolling UITableView and UICollectionViews | Taun Parshall Chapman</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="Basic Non-Scrolling UITableView and UICollectionViews" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is from a talk I gave at the Philly CocoaHeads meeting. The slideshow for the talk is here. The talk had 3 parts, implementing a basic replacement for UITableView and UICollectionView, using Smalltalk style MVC for views and using IBDesignable for MVC style view re-use. This is just part 1 of 3." />
+<meta property="og:description" content="This is from a talk I gave at the Philly CocoaHeads meeting. The slideshow for the talk is here. The talk had 3 parts, implementing a basic replacement for UITableView and UICollectionView, using Smalltalk style MVC for views and using IBDesignable for MVC style view re-use. This is just part 1 of 3." />
+<link rel="canonical" href="/fractalscapes/uicollectionview/uitableview/2014/12/19/Basic-Non-Scrolling-UITableView-and-UICollectionViews.html" />
+<meta property="og:url" content="/fractalscapes/uicollectionview/uitableview/2014/12/19/Basic-Non-Scrolling-UITableView-and-UICollectionViews.html" />
+<meta property="og:site_name" content="Taun Parshall Chapman" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-12-19T23:49:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Basic Non-Scrolling UITableView and UICollectionViews" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2014-12-19T23:49:00-05:00","datePublished":"2014-12-19T23:49:00-05:00","description":"This is from a talk I gave at the Philly CocoaHeads meeting. The slideshow for the talk is here. The talk had 3 parts, implementing a basic replacement for UITableView and UICollectionView, using Smalltalk style MVC for views and using IBDesignable for MVC style view re-use. This is just part 1 of 3.","headline":"Basic Non-Scrolling UITableView and UICollectionViews","mainEntityOfPage":{"@type":"WebPage","@id":"/fractalscapes/uicollectionview/uitableview/2014/12/19/Basic-Non-Scrolling-UITableView-and-UICollectionViews.html"},"url":"/fractalscapes/uicollectionview/uitableview/2014/12/19/Basic-Non-Scrolling-UITableView-and-UICollectionViews.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Taun Parshall Chapman" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Taun Parshall Chapman</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Basic Non-Scrolling UITableView and UICollectionViews</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2014-12-19T23:49:00-05:00" itemprop="datePublished">Dec 19, 2014
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>This is from a talk I gave at the <a href="http://phillycocoa.org/2014/12/17/phillycocoa-meeting-notes-december-2014/">Philly CocoaHeads meeting</a>. The <a href="http://www.moedae.com/blog/cocoaheads-talk-materials/CocoaHeads%20IB_Designable%20and%20MVC.pdf">slideshow</a> for the talk is <a href="http://www.moedae.com/blog/cocoaheads-talk-materials/CocoaHeads%20IB_Designable%20and%20MVC.pdf">here</a>. The talk had 3 parts, implementing a basic replacement for UITableView and UICollectionView, using Smalltalk style MVC for views and using IBDesignable for MVC style view re-use. This is just part 1 of 3.</p>
+
+<h1 id="why-not-uicollectionview">Why not UICollectionView?</h1>
+
+<p><img src="/assets/images/blog/fractal-editor-bush-mini.png" alt="Basic Collection Embedded in Table" /></p>
+
+<p>For the rest of this discussion, I am just going to use UICollectionView but all the points relate to UITableView as well.</p>
+
+<p>UICollectionView is great for presenting infinite lists of objects in a very efficient manner but to do this, it has many moving parts. There is the dataSource which makes it easy to cache and batch fetch objects before feeding them to the collection. There is the delegate which allows changing the view appearance and business logic on a per cell basis. Each collectionViewCell design has a reuseIdentifier so the cell views can be instantiated once and reused on an as needed basis during scrolling. And to top it all off, the UICollectionView is a subclass of UIScrollView so there is no separating the scroll functionality from the collection presentation.</p>
+
+<p>What if all you want is to present a few homogeneous object views in either a flow or table layout. What if you don’t need or want the scrolling or caching? What if you want a flow layout of objects embedded in something like a table layout? In all of these cases, the implementation of the standard UICollectionView gets in the way. Trying to disable scrolling behavior you didn’t want is just a waste of valuable time. I had all of these issues in a few of my projects but always avoided starting from scratch because it seemed that would be more work than using the existing tools. Once I gave up on UICollectionView and started from scratch, it turned out to be much easier than expected with less code and much better suited to my needs.</p>
+
+<h2 id="rolling-your-own-basic-collectionview">Rolling Your Own Basic CollectionView</h2>
+
+<p>At its most basic, a tableView or collectionView is just a way of laying out object views. Organizing views vertically is a table. Laying out views horizontally then have them wrap when they reach a maximum width is similar to the standard collectionView flow layout. Achieving this layout behavior with auto layout is trivial. Note, I am not including other behaviors of TableViews such as the add, delete, and reorder accessory views.</p>
+
+<h3 id="tableview-layout">TableView Layout</h3>
+
+<p><img src="/assets/images/blog/VerticalCollectionTableLayoutSample2.png" alt="Vertical Table View Layout" /></p>
+
+<p>Why do we use static tableviews? This is not just a rhetorical question. If you need a static table view with 4 cells, why not just use a ViewController and layout 4 views? You have to create 4 tableViewCells anyhow and you don’t need all of the tableView mechanisms. On the other hand, if you want to layout a variable but small number of object views in a vertical row layout and embed the whole thing in a scrollView, all you need is something like the following code.</p>
+
+<p>TABLEVIEW LAYOUT CODE</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@implementation NSLayoutConstraint (MDBAddons)
+
++(NSArray*) constraintsForFlowing:(NSArray *)views inContainingView:(UIView *)container forOrientation:(UILayoutConstraintAxis)axis withSpacing:(CGFloat)spacing {
+
+    NSMutableArray* constraints = [NSMutableArray new];
+
+    if (views.count &gt; 0) {
+        
+        NSInteger viewIndex;
+
+        UIView* firstView = [views firstObject];
+        UIView* lastView = [views lastObject];
+        
+        NSLayoutAttribute firstEdgeAttribute;
+        NSLayoutAttribute lastEdgeAttribute;
+
+        if (axis == UILayoutConstraintAxisVertical) {
+            firstEdgeAttribute = NSLayoutAttributeTop;
+            lastEdgeAttribute = NSLayoutAttributeBottom;
+        } else {
+            firstEdgeAttribute = NSLayoutAttributeLeft;
+            lastEdgeAttribute = NSLayoutAttributeRight;
+        }
+        
+        [constraints addObject: [NSLayoutConstraint constraintWithItem: container
+                                                             attribute: firstEdgeAttribute
+                                                             relatedBy: NSLayoutRelationEqual
+                                                                toItem: firstView
+                                                             attribute: firstEdgeAttribute
+                                                            multiplier: 1.0
+                                                              constant: 0.0]];
+                
+        for (viewIndex = 1; viewIndex &lt; views.count ; viewIndex++) {
+            //
+            UIView* prevView = views[viewIndex-1];
+            UIView* view = views[viewIndex];
+            
+            [constraints addObject: [NSLayoutConstraint constraintWithItem: view
+                                                                 attribute: firstEdgeAttribute
+                                                                 relatedBy: NSLayoutRelationEqual
+                                                                    toItem: prevView
+                                                                 attribute: lastEdgeAttribute
+                                                                multiplier: 1.0
+                                                                  constant: spacing]];
+            
+        }
+        
+        [constraints addObject: [NSLayoutConstraint constraintWithItem: lastView
+                                                             attribute: lastEdgeAttribute
+                                                             relatedBy: NSLayoutRelationEqual
+                                                                toItem: container
+                                                             attribute: lastEdgeAttribute
+                                                            multiplier: 1.0
+                                                              constant: 0.0]];
+        
+    }
+    
+    return constraints;
+}
+
+@end
+</code></pre></div></div>
+
+<p>The above code takes an array of subviews and creates NSLayoutConstraints which will result in a table like layout. The assumption is the object container view passes the array of it’s subviews to the above method during the updateContraints call of the object container. That’s all there is to a basic table layout of views.</p>
+
+<h2 id="uicollectionview-flow-layout">UICollectionView Flow Layout</h2>
+
+<p><img src="/assets/images/blog/FlowLayoutSample1.png" alt="CollectionView Layout" /></p>
+
+<p>Implementing a basic UICollectionView style flow layout is a little more complicated but not much. With a flow layout, we assume object views are going to be laid out left to right and top to bottom. We also decided to have a fixed width which is dictated by the basicCollectionView container. If we know the fixed width, then we simply need to find out how many object views will fit in a row, then calculate the constraints for each object view and the total height of the basicCollectionView. There are two ways to define the NSLayoutConstraints for the object views. They can be defined relative to each other or in absolute terms with respect to the container boundaries. Absolute constraints end up having a number of benefits. First and foremost, when a view is added or removed from the collection, it is easy to just update the absolute constraint constants rather than redoing the constraints. If you just change auto layout constraint constants, you get the views animating into place for free.</p>
+
+<p>The following code excerpt calculates the auto layout constraint constants for a view of a given collection index.</p>
+
+<p>COLLECTIONVIEW CONSTANT CALC</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-(void) calcHConstraint: (NSLayoutConstraint*)hConstraint vConstraint: (NSLayoutConstraint*) vConstraint forIndex: (NSUInteger) index {
+    
+    NSUInteger itemsPerLine = self.itemsPerLine;
+    
+    NSUInteger widthMargin = _justify ? (self.bounds.size.width - 2.0*self.outlineMargin - (itemsPerLine * _tileWidth)) / (itemsPerLine-1) : _tileMargin;
+
+    NSUInteger lineNumber = floorf((float)index/(float)itemsPerLine);
+    
+    NSInteger hOffset = self.outlineMargin + (_tileWidth + widthMargin) * (index - lineNumber*itemsPerLine);
+    
+    NSInteger vOffset = (lineNumber==0 &amp;&amp; _showOutline) ? self.outlineMargin : lineNumber*(_tileWidth+_tileMargin);
+
+#pragma message "TODO: fix constraint limits to ? hardware?"
+    if (vOffset &lt; 0) {
+        NSAssert(YES, @"Constraint out of range");
+    }
+    hOffset = hOffset &lt; 0 ? 0 : hOffset;
+    vOffset = vOffset &lt; 0 ? 0 : vOffset;
+    hOffset = hOffset &gt; 1024 ? 1024 : hOffset;
+    vOffset = vOffset &gt; 1024 ? 1024 : vOffset;
+    
+    hConstraint.constant = hOffset;
+    vConstraint.constant = vOffset;
+}
+</code></pre></div></div>
+
+<p>During the collection container’s layoutSubviews, all of the object views are laid out and given default absolute layout constraints. The same for whenever a view is added. Then during updateConstraints, the object views are iterated and the above method is called to update the constraint constants. If an object view is added, moved or removed, setNeedsConstraintsUpdate is called to flag the need to revise the constraint constants.</p>
+
+<p>The above sample code was used to implement a basic collection view embedded in a table style view with drag and drag re-ordering, deleting and adding. The full implementation requires protocols for the object views, and drag and drop. Both of which I will outline at the end of this series since they use the Smalltalk style MVC and IBDesignable.</p>
+
+<p>Below is an image of the current FractalScape implementation and <a href="https://vimeo.com/115025604">here is a video</a> showing how it works.</p>
+
+<p><img src="/assets/images/blog/fractal-editor-bush.png" alt="Basic Collection Embedded in Table" /></p>
+
+  </div><a class="u-url" href="/fractalscapes/uicollectionview/uitableview/2014/12/19/Basic-Non-Scrolling-UITableView-and-UICollectionViews.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Taun Parshall Chapman</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Taun Parshall Chapman</li><li><a class="u-email" href="mailto:website@charcoalia.net">website@charcoalia.net</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/taun"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">taun</span></a></li><li><a href="https://www.twitter.com/taunc"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">taunc</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Strategist, Philomath, Problem Solver, Proven Innovator, Empathizer, Coach, Mentor</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

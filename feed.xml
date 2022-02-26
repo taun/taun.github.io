@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-02-25T21:58:13-05:00</updated><id>/feed.xml</id><title type="html">Taun Parshall Chapman’s Home</title><subtitle>Strategist, Philomath, Problem Solver, Proven Innovator, Empathizer, Coach, Mentor</subtitle><entry><title type="html">Just released ‘Eyein’ update</title><link href="/fractalscapes/update/2016/12/21/just-released-eyeino-update.html" rel="alternate" type="text/html" title="Just released ‘Eyein’ update" /><published>2016-12-21T17:49:00-05:00</published><updated>2016-12-21T17:49:00-05:00</updated><id>/fractalscapes/update/2016/12/21/just-released-eyeino-update</id><content type="html" xml:base="/fractalscapes/update/2016/12/21/just-released-eyeino-update.html"><![CDATA[<p>Some changes big and small to FractalScapes, your interactive fractal art design buddy.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-02-26T12:55:56-05:00</updated><id>/feed.xml</id><title type="html">Taun Parshall Chapman</title><subtitle>Strategist, Philomath, Problem Solver, Proven Innovator, Empathizer, Coach, Mentor</subtitle><entry><title type="html">A Theory</title><link href="/2018/09/06/a-theory.html" rel="alternate" type="text/html" title="A Theory" /><published>2018-09-06T18:49:00-04:00</published><updated>2018-09-06T18:49:00-04:00</updated><id>/2018/09/06/a-theory</id><content type="html" xml:base="/2018/09/06/a-theory.html"><![CDATA[<p>I believe most programmers familiar with open source software would agree the documentation is usually lacking. Some attribute it to a lack of writing ability, laziness, lack of priority, and various other negative reasons. I suggest it is actually for a good reason.</p>
+
+<p>The source is the documentation. Most additional documentation is redundant and misleading.</p>
+
+<p>Whenever creating a complicated program, the author runs into conceptual road blocks. A time where you think the code should do one thing but it does something else. Scientific theory would suggest we conduct experiments to try and discover the true behavioral rules. With open source we don’t need to do that. The rules of the universe are at our fingertips. We can read the rules directly and know not only the true behavior but if there are comments, we even know the intent. Documentation may point you in the right direction but the code is the master.</p>
+
+<p>Documentation is a substitute for the source when one doesn’t have access to the source. Unfortunately, when dealing with closed source software such as some of the Apple frameworks, all we have is the documentation. This means there is no alternative to experimentation when the code behavior does not match expectations. Sometimes this might be due to an undocumented bug. Sometimes it is due to a conceptual misunderstanding on the part of the programmer. For example, I have been wrestling with a Cocoa Autolayout problem. If I had access to the source, it would be trivial to determine whether it was a bug or misunderstanding and resolve cleanly. Instead I created a workaround. The documentation is excellent but wrong in some way. Most likely due to a bug.</p>
+
+<p>The source is (almost) never wrong.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[I believe most programmers familiar with open source software would agree the documentation is usually lacking. Some attribute it to a lack of writing ability, laziness, lack of priority, and various other negative reasons. I suggest it is actually for a good reason.]]></summary></entry><entry><title type="html">Just released ‘Eyein’ update</title><link href="/fractalscapes/update/2016/12/21/just-released-eyeino-update.html" rel="alternate" type="text/html" title="Just released ‘Eyein’ update" /><published>2016-12-21T17:49:00-05:00</published><updated>2016-12-21T17:49:00-05:00</updated><id>/fractalscapes/update/2016/12/21/just-released-eyeino-update</id><content type="html" xml:base="/fractalscapes/update/2016/12/21/just-released-eyeino-update.html"><![CDATA[<p>Some changes big and small to FractalScapes, your interactive fractal art design buddy.</p>
 
 <h2 id="enhancements">Enhancements</h2>
 <p><strong>Undo!</strong></p>
@@ -38,7 +46,7 @@
   </tbody>
 </table>
 
-<p><img src="/assets/growing_tree.gif" alt="A growing Fractal" /></p>
+<p><img src="/assets/images/blog/growing_tree.gif" alt="A growing Fractal" /></p>
 
 <h2 id="additional-changes">Additional Changes</h2>
 <ul>
@@ -52,7 +60,7 @@
 <h2 id="background">Background</h2>
 <p>I had been working on minor updates to FractalScapes and Daisy both of which use the same style of UICollectionView for presenting the fractal plants &amp; real plants to the user. Since both FractalScapes and Daisy deal with plants, the collectionViewCell was designed to look like a typical plant information stick a plant buyer finds stuck in the pot of a new plant. These sticks usually have the name, a description and technical information for the plant. Something like the image of plant markers …</p>
 
-<p><img src="/assets/garden_vegetable_cards.jpg" alt="Plant Markers" /></p>
+<p><img src="/assets/images/blog/garden_vegetable_cards.jpg" alt="Plant Markers" /></p>
 
 <p>A new feature was to have the UICollectionViewCells arranged so they would be centered for all screen sizes &amp; orientations. In addition, it would be nice if the cells auto-resized themselves within a certain range to maximize the use of the screen space. The existing version just changed the collectionViewLayout insets rather than resizing the cells. This left lots of intra-cell space on a 7 Plus. Implementing resizing cells on rotation didn’t seem like a lot to ask of the amazing collectionView with its all singing all dancing UICollectionViewLayout class. I figured it might take an hour to implement by invalidating the layout in the UIViewController call to viewWillTransitionToSize:withTransitionCoordinator: and implementing the size delegate. Similar to what I had already done for the edge insets.</p>
 
@@ -145,12 +153,213 @@ UICollectionViewFlowLayout* layout = (UICollectionViewFlowLayout*)collectionView
   </thead>
   <tbody>
     <tr>
-      <td><img src="/assets/collection-view-portrait-before.png" alt="Portrait" /></td>
-      <td><img src="/assets/collection-view-portrait-after.png" alt="Portrait" /></td>
+      <td><img src="/assets/images/blog/collection-view-portrait-before.png" alt="Portrait" /></td>
+      <td><img src="/assets/images/blog/collection-view-portrait-after.png" alt="Portrait" /></td>
     </tr>
     <tr>
-      <td><img src="/assets/collection-view-landscape-before.png" alt="Landscape" /></td>
-      <td><img src="/assets/collection-view-landscape-after.png" alt="Landscape" /></td>
+      <td><img src="/assets/images/blog/collection-view-landscape-before.png" alt="Landscape" /></td>
+      <td><img src="/assets/images/blog/collection-view-landscape-after.png" alt="Landscape" /></td>
     </tr>
   </tbody>
-</table>]]></content><author><name></name></author><category term="fractalscapes" /><category term="uicollectionview" /><summary type="html"><![CDATA[This post is about how by changing my approach to a problem from trial and error to a more scientific method, I was able to do in 30 minutes what I hadn’t been able to do in 3 days.]]></summary></entry></feed>
+</table>]]></content><author><name></name></author><category term="fractalscapes" /><category term="uicollectionview" /><summary type="html"><![CDATA[This post is about how by changing my approach to a problem from trial and error to a more scientific method, I was able to do in 30 minutes what I hadn’t been able to do in 3 days.]]></summary></entry><entry><title type="html">Fractalscapes, Exciting New Features</title><link href="/fractalscapes/2015/01/30/fractalscape-exciting-new-features.html" rel="alternate" type="text/html" title="Fractalscapes, Exciting New Features" /><published>2015-01-30T17:49:00-05:00</published><updated>2015-01-30T17:49:00-05:00</updated><id>/fractalscapes/2015/01/30/fractalscape-exciting-new-features</id><content type="html" xml:base="/fractalscapes/2015/01/30/fractalscape-exciting-new-features.html"><![CDATA[<p>I am really excited about the new features I have added to FractalScape. My soon to be released Interactive Fractal editor.</p>
+
+<p><img src="/assets/images/blog/GrowingTree_DemoSmall.gif" alt="Playback" /></p>
+
+<p>Development on FractalScape has really been progressing well lately. It is becoming more responsive and more fun to use every day. In the past month, the rendering performance (ability to display the fractal image) has improved by a factor of 10. Ten times faster rendering! This means, the display is much more responsive when using touch gestures to change angles, widths and lengths. In addition, more of the rendering work is done in the background keeping the user interface responsive while playing.</p>
+
+<h1 id="new-features">New Features</h1>
+
+<p>Thanks to the new way of rendering the fractals, I was able to add some really useful new features this week.</p>
+
+<ul>
+  <li>Playback with pause and manual frame by frame.</li>
+  <li>Autoexpand</li>
+  <li>Autosizing Canvas with scrolling/panning</li>
+  <li>Origin and orientation icon</li>
+  <li>PDF Vector Exports!</li>
+</ul>
+
+<p><img src="/assets/images/blog/penrose-recording-highlights.png" alt="New Features" /></p>
+
+<p><strong>Playback</strong> - The playback feature is really useful. When playing with the fractal rules, it is sometimes difficult to understand how they are being applied. You think it should do one thing but something else happens. With Playback, you simply press the play button and you get a frame by frame playback of how the final fractal was derived. Basically the fractal “grows” right before your eyes. You can pause the growth any time by tapping the progress slider on the right then manually “scroll” through the growth of the fractal, looking and potential problems areas or just admiring the growth. I love it but I’m biased.</p>
+
+<p><strong>AutoExpand</strong> - There are two main categories of fractals in FractalScape, geometric designs and plants. The needs for zooming and scaling are different for each. It is really cool to watch the plants start out small then grow larger and larger with more and more detail. On the other hand, the geometric designs may start out small and stay small in which case you want to see them zoomed in to all their glory. A new button called “AutoExpand” has been added to accommodate these two separate needs. Turn auto expand on to always see the geometric designs at maximum size and resolution. Turn it off to watch the plants grow from a seedling.</p>
+
+<p><strong>Origin Icon</strong> - This is another feature which helps you understand how the rules are being applied. A round circle with an arrow is placed at the first point of the fractal and it points in the default direction of the fractal. If the first rule of your fractal is just a line, it would start at the circle and go in the direction of the arrow. Without the origin icon, it is next to impossible to know where the fractal starts other than by using the other new feature, “Playback”.</p>
+
+<p><strong>PDF Vector Exports</strong> - With PDF vector exports, you can have infinite zooms on the fractal. The fractal drawing code is exported rather than a pixelated bitmap. You can then import the PDF into a vector drawing program or just use Preview to print or create new bitmap images at whatever resolution you wish. You can even modify the fractal vectors in a vector editing program. Using FractalScape as a starting point for a tree or bush then edit the vector in a different program where you can combine different elements to create a scene.</p>
+
+<p><strong>The future</strong> - A lot of thought has been put into how to ensure FractalScape is successful. Successful means, you enjoy using it and I make enough money to keep developing it. One thought is to offer the app for free but use in-app-purchases for extra features such as the PDF export. This would allow you to try out the app, make cool fractals and decide later if you want the ability to export the fractal with all it’s detail.</p>
+
+<p>An old tech <a href="https://vimeo.com/115025604">Demo Video</a></p>]]></content><author><name></name></author><category term="fractalscapes" /><summary type="html"><![CDATA[I am really excited about the new features I have added to FractalScape. My soon to be released Interactive Fractal editor.]]></summary></entry><entry><title type="html">Basic Non-Scrolling UITableView and UICollectionViews</title><link href="/fractalscapes/uicollectionview/uitableview/2014/12/19/Basic-Non-Scrolling-UITableView-and-UICollectionViews.html" rel="alternate" type="text/html" title="Basic Non-Scrolling UITableView and UICollectionViews" /><published>2014-12-19T23:49:00-05:00</published><updated>2014-12-19T23:49:00-05:00</updated><id>/fractalscapes/uicollectionview/uitableview/2014/12/19/Basic-Non-Scrolling-UITableView-and-UICollectionViews</id><content type="html" xml:base="/fractalscapes/uicollectionview/uitableview/2014/12/19/Basic-Non-Scrolling-UITableView-and-UICollectionViews.html"><![CDATA[<p>This is from a talk I gave at the <a href="http://phillycocoa.org/2014/12/17/phillycocoa-meeting-notes-december-2014/">Philly CocoaHeads meeting</a>. The <a href="http://www.moedae.com/blog/cocoaheads-talk-materials/CocoaHeads%20IB_Designable%20and%20MVC.pdf">slideshow</a> for the talk is <a href="http://www.moedae.com/blog/cocoaheads-talk-materials/CocoaHeads%20IB_Designable%20and%20MVC.pdf">here</a>. The talk had 3 parts, implementing a basic replacement for UITableView and UICollectionView, using Smalltalk style MVC for views and using IBDesignable for MVC style view re-use. This is just part 1 of 3.</p>
+
+<h1 id="why-not-uicollectionview">Why not UICollectionView?</h1>
+
+<p><img src="/assets/images/blog/fractal-editor-bush-mini.png" alt="Basic Collection Embedded in Table" /></p>
+
+<p>For the rest of this discussion, I am just going to use UICollectionView but all the points relate to UITableView as well.</p>
+
+<p>UICollectionView is great for presenting infinite lists of objects in a very efficient manner but to do this, it has many moving parts. There is the dataSource which makes it easy to cache and batch fetch objects before feeding them to the collection. There is the delegate which allows changing the view appearance and business logic on a per cell basis. Each collectionViewCell design has a reuseIdentifier so the cell views can be instantiated once and reused on an as needed basis during scrolling. And to top it all off, the UICollectionView is a subclass of UIScrollView so there is no separating the scroll functionality from the collection presentation.</p>
+
+<p>What if all you want is to present a few homogeneous object views in either a flow or table layout. What if you don’t need or want the scrolling or caching? What if you want a flow layout of objects embedded in something like a table layout? In all of these cases, the implementation of the standard UICollectionView gets in the way. Trying to disable scrolling behavior you didn’t want is just a waste of valuable time. I had all of these issues in a few of my projects but always avoided starting from scratch because it seemed that would be more work than using the existing tools. Once I gave up on UICollectionView and started from scratch, it turned out to be much easier than expected with less code and much better suited to my needs.</p>
+
+<h2 id="rolling-your-own-basic-collectionview">Rolling Your Own Basic CollectionView</h2>
+
+<p>At its most basic, a tableView or collectionView is just a way of laying out object views. Organizing views vertically is a table. Laying out views horizontally then have them wrap when they reach a maximum width is similar to the standard collectionView flow layout. Achieving this layout behavior with auto layout is trivial. Note, I am not including other behaviors of TableViews such as the add, delete, and reorder accessory views.</p>
+
+<h3 id="tableview-layout">TableView Layout</h3>
+
+<p><img src="/assets/images/blog/VerticalCollectionTableLayoutSample2.png" alt="Vertical Table View Layout" /></p>
+
+<p>Why do we use static tableviews? This is not just a rhetorical question. If you need a static table view with 4 cells, why not just use a ViewController and layout 4 views? You have to create 4 tableViewCells anyhow and you don’t need all of the tableView mechanisms. On the other hand, if you want to layout a variable but small number of object views in a vertical row layout and embed the whole thing in a scrollView, all you need is something like the following code.</p>
+
+<p>TABLEVIEW LAYOUT CODE</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@implementation NSLayoutConstraint (MDBAddons)
+
++(NSArray*) constraintsForFlowing:(NSArray *)views inContainingView:(UIView *)container forOrientation:(UILayoutConstraintAxis)axis withSpacing:(CGFloat)spacing {
+
+    NSMutableArray* constraints = [NSMutableArray new];
+
+    if (views.count &gt; 0) {
+        
+        NSInteger viewIndex;
+
+        UIView* firstView = [views firstObject];
+        UIView* lastView = [views lastObject];
+        
+        NSLayoutAttribute firstEdgeAttribute;
+        NSLayoutAttribute lastEdgeAttribute;
+
+        if (axis == UILayoutConstraintAxisVertical) {
+            firstEdgeAttribute = NSLayoutAttributeTop;
+            lastEdgeAttribute = NSLayoutAttributeBottom;
+        } else {
+            firstEdgeAttribute = NSLayoutAttributeLeft;
+            lastEdgeAttribute = NSLayoutAttributeRight;
+        }
+        
+        [constraints addObject: [NSLayoutConstraint constraintWithItem: container
+                                                             attribute: firstEdgeAttribute
+                                                             relatedBy: NSLayoutRelationEqual
+                                                                toItem: firstView
+                                                             attribute: firstEdgeAttribute
+                                                            multiplier: 1.0
+                                                              constant: 0.0]];
+                
+        for (viewIndex = 1; viewIndex &lt; views.count ; viewIndex++) {
+            //
+            UIView* prevView = views[viewIndex-1];
+            UIView* view = views[viewIndex];
+            
+            [constraints addObject: [NSLayoutConstraint constraintWithItem: view
+                                                                 attribute: firstEdgeAttribute
+                                                                 relatedBy: NSLayoutRelationEqual
+                                                                    toItem: prevView
+                                                                 attribute: lastEdgeAttribute
+                                                                multiplier: 1.0
+                                                                  constant: spacing]];
+            
+        }
+        
+        [constraints addObject: [NSLayoutConstraint constraintWithItem: lastView
+                                                             attribute: lastEdgeAttribute
+                                                             relatedBy: NSLayoutRelationEqual
+                                                                toItem: container
+                                                             attribute: lastEdgeAttribute
+                                                            multiplier: 1.0
+                                                              constant: 0.0]];
+        
+    }
+    
+    return constraints;
+}
+
+@end
+</code></pre></div></div>
+
+<p>The above code takes an array of subviews and creates NSLayoutConstraints which will result in a table like layout. The assumption is the object container view passes the array of it’s subviews to the above method during the updateContraints call of the object container. That’s all there is to a basic table layout of views.</p>
+
+<h2 id="uicollectionview-flow-layout">UICollectionView Flow Layout</h2>
+
+<p><img src="/assets/images/blog/FlowLayoutSample1.png" alt="CollectionView Layout" /></p>
+
+<p>Implementing a basic UICollectionView style flow layout is a little more complicated but not much. With a flow layout, we assume object views are going to be laid out left to right and top to bottom. We also decided to have a fixed width which is dictated by the basicCollectionView container. If we know the fixed width, then we simply need to find out how many object views will fit in a row, then calculate the constraints for each object view and the total height of the basicCollectionView. There are two ways to define the NSLayoutConstraints for the object views. They can be defined relative to each other or in absolute terms with respect to the container boundaries. Absolute constraints end up having a number of benefits. First and foremost, when a view is added or removed from the collection, it is easy to just update the absolute constraint constants rather than redoing the constraints. If you just change auto layout constraint constants, you get the views animating into place for free.</p>
+
+<p>The following code excerpt calculates the auto layout constraint constants for a view of a given collection index.</p>
+
+<p>COLLECTIONVIEW CONSTANT CALC</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-(void) calcHConstraint: (NSLayoutConstraint*)hConstraint vConstraint: (NSLayoutConstraint*) vConstraint forIndex: (NSUInteger) index {
+    
+    NSUInteger itemsPerLine = self.itemsPerLine;
+    
+    NSUInteger widthMargin = _justify ? (self.bounds.size.width - 2.0*self.outlineMargin - (itemsPerLine * _tileWidth)) / (itemsPerLine-1) : _tileMargin;
+
+    NSUInteger lineNumber = floorf((float)index/(float)itemsPerLine);
+    
+    NSInteger hOffset = self.outlineMargin + (_tileWidth + widthMargin) * (index - lineNumber*itemsPerLine);
+    
+    NSInteger vOffset = (lineNumber==0 &amp;&amp; _showOutline) ? self.outlineMargin : lineNumber*(_tileWidth+_tileMargin);
+
+#pragma message "TODO: fix constraint limits to ? hardware?"
+    if (vOffset &lt; 0) {
+        NSAssert(YES, @"Constraint out of range");
+    }
+    hOffset = hOffset &lt; 0 ? 0 : hOffset;
+    vOffset = vOffset &lt; 0 ? 0 : vOffset;
+    hOffset = hOffset &gt; 1024 ? 1024 : hOffset;
+    vOffset = vOffset &gt; 1024 ? 1024 : vOffset;
+    
+    hConstraint.constant = hOffset;
+    vConstraint.constant = vOffset;
+}
+</code></pre></div></div>
+
+<p>During the collection container’s layoutSubviews, all of the object views are laid out and given default absolute layout constraints. The same for whenever a view is added. Then during updateConstraints, the object views are iterated and the above method is called to update the constraint constants. If an object view is added, moved or removed, setNeedsConstraintsUpdate is called to flag the need to revise the constraint constants.</p>
+
+<p>The above sample code was used to implement a basic collection view embedded in a table style view with drag and drag re-ordering, deleting and adding. The full implementation requires protocols for the object views, and drag and drop. Both of which I will outline at the end of this series since they use the Smalltalk style MVC and IBDesignable.</p>
+
+<p>Below is an image of the current FractalScape implementation and <a href="https://vimeo.com/115025604">here is a video</a> showing how it works.</p>
+
+<p><img src="/assets/images/blog/fractal-editor-bush.png" alt="Basic Collection Embedded in Table" /></p>]]></content><author><name></name></author><category term="fractalscapes" /><category term="UICollectionView" /><category term="UITableView" /><summary type="html"><![CDATA[This is from a talk I gave at the Philly CocoaHeads meeting. The slideshow for the talk is here. The talk had 3 parts, implementing a basic replacement for UITableView and UICollectionView, using Smalltalk style MVC for views and using IBDesignable for MVC style view re-use. This is just part 1 of 3.]]></summary></entry><entry><title type="html">Fun with auto layout</title><link href="/autolayout/cocoa/fix/2012/12/08/Fun-with-auto-layout.html" rel="alternate" type="text/html" title="Fun with auto layout" /><published>2012-12-08T19:49:00-05:00</published><updated>2012-12-08T19:49:00-05:00</updated><id>/autolayout/cocoa/fix/2012/12/08/Fun-with-auto-layout</id><content type="html" xml:base="/autolayout/cocoa/fix/2012/12/08/Fun-with-auto-layout.html"><![CDATA[<p>In order to improve Aligyro on the iPhone 5, I switched the layout of the interface from “springs and struts” to “autolayout.” Springs and struts has been around on the Mac forever and is to tell the operating system how to layout your interface elements. You tell it to either anchor an element feature (strut) or let the feature expand as needed (spring). The new to Apple autolayout is much more flexible. The programmer can specify features which should be equal such as height or width of buttons. One can specify alignments. You can even use math to say one element should be half the width of another. All very wonderful when it works.</p>
+
+<p><img src="/assets/images/blog/the-training-circle.png" alt="The Training Circle" /></p>
+
+<p>The learn mode training circle in Aligyro is just a flat png dotted circle laid on top of the 3D scene. The circle is centered on scene and rotated on it’s center. To have a better preview of how the circle will look and to get the size correct, the circle is added in Interface Builder (IB) rather than in code. This means the layout needs to be done in IB. Initially this layout was done using struts and springs.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>The struts are the</td>
+      <td>–</td>
+      <td>bars outside the box locking the margin between the element and the edge of the view. The springs &lt;–&gt; tell the view it can expand to allow the margins to be constant as the containing view expands and contracts. This worked perfectly for the learn mode dotted circle. The circle stayed centered on the 3D scene and scaled with the scene.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Changing the layout for all of the various Aligyro pages from springs and struts to autolayout was easy for everything but the learn mode. The goal with the learn mode autolayout was exactly the same as with springs and struts. The have the dotted circle centered on the 3D scene and to have it scale with the scene. This seemed trivial. Two of the available autolayout constraints are “align center x” and “align center y.” Exactly what we want, a centered view. Since centering isn’t sufficient to fully define the learn mode view, I needed to add either a defined margin or width and height. I tried both.</p>
+
+<p>The problem was, no matter how I defined the autolayout constraints, the circle would not stay centered. It would start out centered but whenever the user clicked on the info button to bring up the preferences, the circle center would move. When they pressed play to go back to the 3D scene, the circle center would move again. Apparently, everytime the 3D view appeared or disappeared, the autolayout was being performed. Whenever the dotted circle view was rotated when the autolayout was performed, autolayout would move the view away from center.</p>
+
+<p>Given that the center of the view does not change for any rotation about the center, this was bizarre behavior. The view was being rotated with the following code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float zRotation = -DegreesToRadians(self.gyro3DView.rotation.z)+M_PI_2;
+
+[self.trainingView.layer setValue:[NSNumber numberWithFloat: zRotation] forKeyPath:@"transform.rotation"];
+</code></pre></div></div>
+
+<p>The layer anchor point was set to the center and the dotted circle always rotated about it’s center. The problem was it’s center moved every time the autolayout was rerun. Somehow it seems, “align center” does not really mean align center for rotated layers.</p>
+
+<p>I am sure there are many possible fixes. The one I chose was a 2 line workaround. Since the circle is only moved off center when the layout is run and when the circle layer rotation is non-zero and this only happens when leaving or entering the 3D view. I set the circle layer rotation to zero whenever the layout is happening. The next time the 3D scene is updated, the circle is rotated back to where it should be. The following code was added to my UIViewController for the 3D scene and dotted circle training view.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-(void)viewWillLayoutSubviews {
+
+[self.trainingView.layer setValue: @0.0 forKeyPath: @"transform.rotation"];
+
+}
+</code></pre></div></div>
+
+<p>The above overrides the standard UIViewController “viewWillLayoutSubviews” and sets the circle layer rotation to zero. Not pretty but it solved the problem.</p>
+
+<p>Someone had a similar problem reported at <a href="http://stackoverflow.com/questions/13044289/autolayout-rotating-wheel">stackoverflow.com</a></p>
+
+<p>And another version of the <a href="http://openradar.appspot.com/12258628">problem here</a>.</p>]]></content><author><name></name></author><category term="AutoLayout" /><category term="cocoa" /><category term="fix" /><summary type="html"><![CDATA[In order to improve Aligyro on the iPhone 5, I switched the layout of the interface from “springs and struts” to “autolayout.” Springs and struts has been around on the Mac forever and is to tell the operating system how to layout your interface elements. You tell it to either anchor an element feature (strut) or let the feature expand as needed (spring). The new to Apple autolayout is much more flexible. The programmer can specify features which should be equal such as height or width of buttons. One can specify alignments. You can even use math to say one element should be half the width of another. All very wonderful when it works.]]></summary></entry></feed>
