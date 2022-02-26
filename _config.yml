@@ -9,7 +9,7 @@ twitter_username: taunc
 github_username:  taun
 
 # Build settings
-theme: minima
+theme: jekyll-theme-time-machine
 plugins:
   - jekyll-feed
 
