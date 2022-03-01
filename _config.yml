@@ -10,6 +10,22 @@ url: "https://www.taun.org" # the base hostname & protocol for your site, e.g. h
 twitter: taunc
 repository:  taun
 
+author:
+  name     : "Taun Parshall Chapman"
+  avatar   : "/assets/images/TaunHeadShotSpaces.png"
+  bio      : "Strategist, Philomath, Problem Solver, Proven Innovator, Empathizer, Coach, Mentor"
+  location : "East Coast, USA"
+  links:
+      - label: "Twitter"
+        icon: "fab fa-fw fa-twitter-square"
+        url: "https://twitter.com/taunc"
+      - label: "GitHub"
+        icon: "fab fa-fw fa-github"
+        url: "https://github.com/taun"
+      - label: "Instagram"
+        icon: "fab fa-fw fa-instagram"
+        url: "https://instagram.com/taunpc"
+
 # Build settings
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 minimal_mistakes_skin: "air"
@@ -52,6 +68,7 @@ defaults:
       type: pages
     values:
       layout: single
+      author_profile: true
   # _portfolio
   - scope:
       path: ""
