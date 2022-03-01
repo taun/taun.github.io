@@ -1,9 +1,8 @@
 ---
-layout: page
 title: About
 permalink: /about/
+layout: single
 ---
-# Taun Parshall Chapman
 
 ## Personal Stuff
 
