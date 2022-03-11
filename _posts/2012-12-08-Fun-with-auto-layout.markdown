@@ -2,7 +2,7 @@
 permalink: /funw-with-autolayout
 title:  "Fun with auto layout"
 date:   2012-12-08 19:49:00 -0500
-tags: AutoLayout cocoa fix
+tags: autoLayout cocoa fix
 summary: Fun in the sense of `great difficulties and mysteries.`
 excerpt: Fun in the sense of `great difficulties and mysteries.`
 ---

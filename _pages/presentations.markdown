@@ -4,7 +4,7 @@ permalink: /talks/
 layout: single
 ---
 
-![CocoaHeads](/taun.github.io/assets/images/cocoahead_sm2.png)
+![CocoaHeads](/assets/images/cocoahead_sm2.png)
 ## [CocoaHeads](http://cocoaheads.org) 
 
 - [Bindings, the Best Code is the Code Not Written](https://youtu.be/T_i9oZ3cRO0)
