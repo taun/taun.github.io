@@ -3,6 +3,7 @@ title: "NMR Pulse Programmer Interface"
 header:
   image: /assets/images/nmr_fullsize_banner.png
   teaser: /assets/images/nmr_mini.png
+tags: moedae
 gallery:
   - url: /assets/images/nmr_fullsize.png
     image_path: /assets/images/nmr_fullsize.png

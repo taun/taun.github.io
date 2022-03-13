@@ -3,7 +3,7 @@ title: 2 Plane Balancer
 header:
   image: /assets/images/hp_signal_analyzer@2x.png
   teaser: /assets/images/hp_signal_analyzer.png
-
+tags: creo
 # gallery:
 #   - url: /assets/images/OSI_Challenger_4PMF.png
 #     image_path: /assets/images/OSI_Challenger_4PMF.png
