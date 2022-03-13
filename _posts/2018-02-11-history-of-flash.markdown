@@ -2,6 +2,7 @@
 title: "History of Flash"
 excerpt: "Many of the sites hosting this history of flash are gone. I have copied it here so it will not disappear."
 summary: "Many of the sites hosting this history of flash are gone. I have copied it here so it will not disappear."
+tags: autolayout apple tech_gems
 
 gallery:
   - url: /assets/images/blog/IntelliDraw-Box-Front.jpg
