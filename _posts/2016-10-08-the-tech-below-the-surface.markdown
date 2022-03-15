@@ -39,11 +39,11 @@ _
 
 ## UIDynamics & UIAnimation
 
-No iOS application would complete without some nice animations. FractalScapes core animation is of course the users fractal. But that isn't enough is it? Each MDObjectListTilesViewer has a UIDynamic & Animation which allows it to be slid to the left or right to expose and "Add" or "Delete" action. 
+No iOS application would be complete without some nice animations. FractalScapes core animation is of course the users fractal. But that isn't enough is it? Each MDObjectListTilesViewer has a UIDynamic & Animation which allows it to be slid to the left or right to expose an "Add" or "Delete" action. 
 
 There is a timer delayed dispatch action to change the alpha of the status indicator background in the top right of the canvas. Once there has been no user interaction for a set time, the background of the status indicator is faded out of view to give a cleaner view of the users fractal. Once the user re-commences editing, the background is faded back in to increase contrast for the labels.
 
-If the user has enable iCloud for FractalScapes, each library entry has a little cloud icon to show the iCloud state of the fractal. As the fractal is being downloaded from the cloud, the icon is red and slowly fills with blue from the top down to show the progress of the download. Once downloaded, the icon fill is transparent so it gets out of the way. Uploads/syncs turn the icon blue and it slowly goes clear from the bottom up. 
+If the user has *enable iCloud* for FractalScapes, each library entry has a little cloud icon to show the iCloud state of the fractal. As the fractal is being downloaded from the cloud, the icon is red and slowly fills with blue from the top down to show the progress of the download. Once downloaded, the icon fill is transparent so it gets out of the way. Uploads/syncs turn the icon blue and it slowly goes clear from the bottom up. 
 
 The fractal drawing canvas uses CoreMotion to add a parallax effect. As the user moves their device around, just like on the iPhone home screen, the fractal canvas moves as if it has depth under the screen. The tool bar also has parallax but at a slightly higher elevation to add to the depth effect. This can all be disabled in the settings.
 
@@ -60,20 +60,17 @@ When the user transitions back to the library, the editor tool bar is retracted 
 Part of the fun in creating a fractal is trying to figure out how it grows. I added the ability for the rendering engine to walk the tree of rendering operations from 0% to 100%. I then added timer dispatched rendering operations from 0% to 100% and now you have a great fractal Playback feature. The rendering percent is also tied to a slider control so the user has interactive control of the rendering percent allowing them to scrub up and down around a particularly interesting fractal rendering point. 
 
 Integrating ReplayKit allows the user to share their fractal playback as a video. They can easily show the fractal growth of a tree or fern. In the future, it would be nice to allow the user to also show videos of changing other fractal features such as angles.
-
-
-
 ## UIDocument CoreData & iCloud
 
 Initially, the fractals were all stored in a single CoreData database. This caused many usability issues before I finally realized the fractals were really just documents and needed to be treated as such. Changing to UIDocument with NSFilewrapper storage of the fractal definition and thumbnail made much more sense, was easier to implement, was much more robust and was a surprisingly easy transition from CoreData. I no longer had CoreData context and query code polluting the object manipulation code. This also made the multi-threading much easier.
 
-Again if the user has iCloud enabled for FractalScapes, all of the fractals will be stored in their iCloud account and seamlessly synchronized between all their iOS devices. The user can create and edit a fractal on their iPad then later show friends the same fractal on the iPhone and make minor edits. They could make major edits but due to screen size, it is much easier to edit fractals on an iPad.
+Again if the user has *iCloud enabled* for FractalScapes, all of the fractals will be stored in their iCloud account and seamlessly synchronized between all their iOS devices. The user can create and edit a fractal on their iPad then later show friends the same fractal on the iPhone and make minor edits. They could make major edits but due to screen size, it is much easier to edit fractals on an iPad.
 
 Thanks to using UIDocument, it will be easy to share fractal definitions with other platforms such as the Mac.
 
 ## CloudKit
 
-FractalScapes uses public container in it's CloudKit account to enable users to share fractals. Anyone with iCloud enabled can share their fractal to the public CloudKit store. FractalScapes has a Fractals CloudKit browser to enable users to find interesting fractals, download the fractal and start editing it. 
+FractalScapes uses a public container in it's CloudKit account to enable users to share fractals. Anyone with iCloud enabled can share their fractal to the public CloudKit store. FractalScapes has a Fractals CloudKit browser to enable users to find interesting fractals, download the fractal and start editing it. 
 
 In the future, I would like to add user ratings, rankings and sorting to the CloudKit implementation. Maybe even user comments.
 
