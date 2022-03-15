@@ -1,6 +1,8 @@
 main:
   - title: "Archive"
     url: /archive/
+  - title: "Portfolio"
+    url: /portfolio/
   - title: "Projects"
     url: /project/
   - title: "Talks"
