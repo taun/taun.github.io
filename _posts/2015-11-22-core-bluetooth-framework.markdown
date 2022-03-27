@@ -18,4 +18,4 @@ Whenever I am trying to better understand a framework or API, I find it helpful 
 
 I did this for the iOS CoreBluetooth framework and here is the [result](/assets/presentations/AppleCoreBluetooth.pdf). What I hope is a [nice view of all the CoreBluetooth classes](/assets/presentations/AppleCoreBluetooth.pdf) showing deprecated methods, subclass relationships and more.
 
-{% include gallery caption=“Apple CoreBluetooth API” %}
+{% include gallery caption=Apple CoreBluetooth API %}
