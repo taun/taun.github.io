@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: List
+permalink: /list/
+scripts: ["/js/list.js"]
+---
+<article class="prose">
+  <h1>All pages</h1>
+  <p><input id="q" type="search" placeholder="Filter by title or tag" aria-label="Filter"></p>
+  <p class="filters">
+    {% for t in ['person','organization','project','work','post','thing'] %}
+    <button type="button" class="chip type-{{ t }}" data-type="{{ t }}" aria-pressed="false">{{ t }}</button>
+    {% endfor %}
+  </p>
+  <ul class="cards" id="items">
+    {% for n in collections.graph %}
+    <li data-type="{{ n.type }}" data-text="{{ n.title | lower }} {{ n.tags | join(' ') }}">
+      <a href="{{ n.url }}"><span class="chip type-{{ n.type }}">{{ n.type }}</span> {{ n.title }}</a>
+      {% if n.dateLabel %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</article>

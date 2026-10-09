@@ -1,0 +1,12 @@
+---
+layout: base.njk
+title: Home
+bodyClass: home
+scripts: ["/js/graph.js"]
+---
+<section class="hero">
+  <h1>{{ site.title }}</h1>
+  <p>{{ site.tagline }}</p>
+  <p class="views"><a href="/graph/">Graph</a> · <a href="/timeline/">Timeline</a> · <a href="/list/">List</a></p>
+</section>
+{% include "graph-embed.njk" %}

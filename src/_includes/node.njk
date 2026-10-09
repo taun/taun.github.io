@@ -1,0 +1,43 @@
+---
+layout: base.njk
+---
+{% set slug = page.fileSlug %}
+{% set rec = slug | nodeInfo %}
+<article class="prose node">
+  {% if header and header.image %}<img class="banner" src="{{ header.image }}" alt="">{% endif %}
+  <p class="meta">
+    <span class="chip type-{{ type }}">{{ type }}</span>
+    {% if rec and rec.dateLabel %}<time datetime="{{ rec.date }}">{{ rec.dateLabel }}</time>{% else %}<span class="muted">undated</span>{% endif %}
+    {% for t in tags %}<span class="tag">#{{ t }}</span>{% endfor %}
+  </p>
+  <h1>{{ title }}</h1>
+  {{ content | safe }}
+
+  {% if gallery %}
+  <section class="gallery" aria-label="Gallery">
+    {% for g in gallery %}
+      <figure><a href="{{ g.url }}"><img src="{{ g.image_path or g.url }}" alt="{{ g.alt }}" loading="lazy"></a></figure>
+    {% endfor %}
+    {% if galleryCaption %}<p class="caption">{{ galleryCaption }}</p>{% endif %}
+  </section>
+  {% endif %}
+</article>
+
+{% set nb = slug | neighbors %}
+{% set st = slug | sharedTags %}
+{% if nb.length or st.length %}
+<aside class="connections prose">
+  {% if nb.length %}
+  <h2>Connected to</h2>
+  <ul class="cards">
+    {% for n in nb %}<li><a href="{{ n.url }}"><span class="chip type-{{ n.type }}">{{ n.type }}</span> {{ n.title }}</a>{% if n.dateLabel %} <span class="muted">{{ n.dateLabel }}</span>{% endif %}</li>{% endfor %}
+  </ul>
+  {% endif %}
+  {% if st.length %}
+  <h2>Same tags</h2>
+  <ul class="cards">
+    {% for n in st %}<li><a href="{{ n.url }}">{{ n.title }}</a></li>{% endfor %}
+  </ul>
+  {% endif %}
+</aside>
+{% endif %}
