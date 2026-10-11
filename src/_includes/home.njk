@@ -1,11 +1,16 @@
 ---
 layout: base.njk
-title: Blog
-permalink: /blog/
+bodyClass: home
 scripts: ["/js/list.js"]
 ---
+<section class="hero">
+  <h1>{{ site.title }}</h1>
+  <p>{{ site.tagline }}</p>
+</section>
+<section class="prose welcome">
+  {{ content | safe }}
+</section>
 <article class="prose">
-  <h1>Blog</h1>
   <p><input id="q" type="search" placeholder="Filter by title or tag" aria-label="Filter"></p>
   <p class="filters">
     {% for t in collections.graph | types %}
