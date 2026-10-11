@@ -1,14 +1,13 @@
 :root {
   --bg: #fbfbf9; --fg: #1d1f21; --muted: #666a70; --line: #d9dad6; --link: #1456a8;
-  --c-person: #c2410c; --c-organization: #1456a8; --c-project: #0f766e;
-  --c-work: #7c3aed; --c-post: #b45309; --c-thing: #4b5563;
   --max: 46rem;
+  /* type colors alternate even/odd by sorted position so hue-neighbors differ in intensity */
+  --l-even: .42; --c-even: .17; --l-odd: .62; --c-odd: .13;
 }
 @media (prefers-color-scheme: dark) {
   :root {
+    --l-even: .68; --c-even: .15; --l-odd: .86; --c-odd: .09;
     --bg: #15171a; --fg: #e6e7e8; --muted: #9a9fa6; --line: #2d3136; --link: #7db3f0;
-    --c-person: #fb923c; --c-organization: #7db3f0; --c-project: #2dd4bf;
-    --c-work: #a78bfa; --c-post: #fbbf24; --c-thing: #9ca3af;
   }
 }
 * { box-sizing: border-box; }
@@ -36,9 +35,8 @@ img { max-width: 100%; height: auto; }
 .chip { display: inline-block; padding: 0 .55em; border: 1px solid currentColor; border-radius: 999px; font-size: .78rem; line-height: 1.6; background: none; cursor: default; }
 button.chip { cursor: pointer; font-family: inherit; }
 button.chip[aria-pressed="true"] { background: color-mix(in srgb, currentColor 18%, transparent); }
-.type-person { color: var(--c-person); } .type-organization { color: var(--c-organization); }
-.type-project { color: var(--c-project); } .type-work { color: var(--c-work); }
-.type-post { color: var(--c-post); } .type-thing { color: var(--c-thing); }
+/* --h per type comes from the generated /css/types.css */
+[class*="type-"] { color: oklch(var(--tl, var(--l-even)) var(--tc, var(--c-even)) var(--h, 260)); }
 .cards { list-style: none; padding: 0; }
 .cards li { padding: .35rem 0; border-bottom: 1px solid var(--line); }
 .cards li[hidden] { display: none; }
@@ -67,6 +65,7 @@ input[type="search"] { width: 100%; padding: .5rem .7rem; font: inherit; color: 
 #graph .tag-edges line { stroke-dasharray: 3 4; stroke-opacity: .3; }
 #graph .node { cursor: pointer; outline: none; }
 #graph .node circle { fill: currentColor; stroke: var(--bg); stroke-width: 2; }
+#graph .node .glyph { fill: var(--bg); text-anchor: middle; dominant-baseline: central; font-size: 11px; pointer-events: none; }
 #graph .node text { fill: var(--fg); font-size: 12px; paint-order: stroke; stroke: var(--bg); stroke-width: 3px; }
 #graph .node:focus circle { stroke: var(--fg); }
 #graph.hl .node:not(.on) { opacity: .25; }

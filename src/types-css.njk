@@ -1,0 +1,8 @@
+---
+permalink: /css/types.css
+eleventyExcludeFromCollections: true
+---
+{#- Hue: equal spacing over the sorted types. Even/odd positions use different lightness/chroma. Glyph: inferred from the name. -#}
+{% set all = collections.graph | types %}{% for t in all %}.type-{{ t }} { --h: {{ loop.index0 | typeHue(all.length) }}; --tl: var(--l-{{ "even" if loop.index0 % 2 == 0 else "odd" }}); --tc: var(--c-{{ "even" if loop.index0 % 2 == 0 else "odd" }}); }
+.chip.type-{{ t }}::before { content: "{{ t | typeGlyph }}\FE0E\00A0"; }
+{% endfor %}

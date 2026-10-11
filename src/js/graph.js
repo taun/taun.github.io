@@ -43,11 +43,13 @@
     const r = 7 + Math.min(8, (degree.get(n.slug) || 0) * 2);
     n.r = r;
     const c = el('circle', { r });
+    const g = el('text', { class: 'glyph' });
+    g.textContent = n.glyph + '\uFE0E';
     const t = el('text', { x: r + 4, y: 4 });
     t.textContent = n.title.length > 26 ? n.title.slice(0, 25) + '…' : n.title;
     const title = el('title');
     title.textContent = `${n.title} (${n.type}${n.dateLabel ? ', ' + n.dateLabel : ''})`;
-    a.append(c, t, title);
+    a.append(c, g, t, title);
     gNode.append(a);
     n.el = a;
     a.addEventListener('mouseenter', () => highlight(n));

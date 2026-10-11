@@ -1,6 +1,7 @@
 import markdownIt from 'markdown-it';
 import markdownItAttrs from 'markdown-it-attrs';
 import { buildGraph } from './lib/graph.js';
+import { typeGlyph } from './lib/glyphs.js';
 
 export default function (eleventyConfig) {
   // Static files copied as-is
@@ -22,6 +23,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('nodeInfo', (slug) => graph?.list.find((n) => n.slug === slug));
   eleventyConfig.addFilter('neighbors', (slug) => graph?.neighborsOf(slug) ?? []);
   eleventyConfig.addFilter('sharedTags', (slug) => graph?.sharedTagNeighbors(slug) ?? []);
+  eleventyConfig.addFilter('types', (list) => [...new Set(list.map((n) => n.type))].sort());
+  // Equal hue spacing over the sorted types; neighbors on the wheel alternate light/dark (even/odd).
+  eleventyConfig.addFilter('typeHue', (i, n) => Math.round((25 + (360 * i) / n) % 360));
+  eleventyConfig.addFilter('typeGlyph', typeGlyph);
   eleventyConfig.addFilter('json', (v) => JSON.stringify(v).replace(/</g, '\\u003c'));
   eleventyConfig.addFilter('byYear', (list) => {
     const groups = new Map();

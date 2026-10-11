@@ -1,6 +1,6 @@
 <div class="graph-wrap">
   <div class="graph-controls" role="group" aria-label="Graph filters">
-    {% for t in ['person','organization','project','work','post','thing'] %}
+    {% for t in collections.graph | types %}
     <label class="chip type-{{ t }}"><input type="checkbox" data-type="{{ t }}" checked> {{ t }}</label>
     {% endfor %}
     <label class="chip"><input type="checkbox" id="show-tags"> shared tags</label>

@@ -8,7 +8,7 @@ scripts: ["/js/list.js"]
   <h1>All pages</h1>
   <p><input id="q" type="search" placeholder="Filter by title or tag" aria-label="Filter"></p>
   <p class="filters">
-    {% for t in ['person','organization','project','work','post','thing'] %}
+    {% for t in collections.graph | types %}
     <button type="button" class="chip type-{{ t }}" data-type="{{ t }}" aria-pressed="false">{{ t }}</button>
     {% endfor %}
   </p>
