@@ -11,6 +11,13 @@ layout: base.njk
     {% for t in tags %}<span class="tag">#{{ t }}</span>{% endfor %}
   </p>
   <h1>{{ title }}</h1>
+  {% if rec and (rec.media.video or rec.media.slides or rec.media.repo) %}
+  <p class="media-links">
+    {% if rec.media.video %}<a href="{{ rec.media.video }}">▶ Watch</a>{% endif %}
+    {% if rec.media.slides %}<a href="{{ rec.media.slides }}">▤ Slides</a>{% endif %}
+    {% if rec.media.repo %}<a href="{{ rec.media.repo }}">⌥ Source</a>{% endif %}
+  </p>
+  {% endif %}
   {{ content | safe }}
 
   {% if gallery %}

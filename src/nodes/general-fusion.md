@@ -1,6 +1,6 @@
 ---
 title: "General Fusion"
-type: organization
+type: company
 tags: []
 links: [michel]
 ---

@@ -72,3 +72,5 @@ input[type="search"] { width: 100%; padding: .5rem .7rem; font: inherit; color: 
 #graph.hl .edges line:not(.on) { opacity: .15; }
 #graph .hidden { display: none; }
 @media (max-width: 600px) { body { font-size: 16px; } #graph .node text { font-size: 11px; } }
+.media-links { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; font-weight: 600; }
+.media-links a { text-decoration: none; }

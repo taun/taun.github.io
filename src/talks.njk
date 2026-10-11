@@ -1,0 +1,26 @@
+---
+layout: base.njk
+title: Talks & Media
+permalink: /talks/
+---
+<article class="prose">
+  <h1>Talks &amp; Media</h1>
+  {% for g in collections.graph | talkGroups %}
+  <section class="group">
+    <h2>{% if g.url %}<a href="{{ g.url }}">{{ g.label }}</a>{% else %}{{ g.label }}{% endif %}</h2>
+    <ul class="cards">
+      {% for n in g.items %}
+      <li>
+        <a href="{{ n.url }}">{{ n.title }}</a>
+        {% if n.dateLabel %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
+        <span class="media-links">
+          {% if n.media.video %}<a href="{{ n.media.video }}">▶ Watch</a>{% endif %}
+          {% if n.media.slides %}<a href="{{ n.media.slides }}">▤ Slides</a>{% endif %}
+          {% if n.media.repo %}<a href="{{ n.media.repo }}">⌥ Source</a>{% endif %}
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</article>

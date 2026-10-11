@@ -66,6 +66,20 @@ export default function (eleventyConfig) {
       .sort(([a], [b]) => (a === null) - (b === null) || b - a)
       .map(([start, items]) => ({ label: start === null ? 'Undated' : `${start}–${start + 4}`, items: items.sort(newestFirst) }));
   });
+  // Talks grouped by the organization node they link to (e.g. CocoaHeads); newest first, unaffiliated under "Other".
+  eleventyConfig.addFilter('talkGroups', (list) => {
+    const groups = new Map();
+    for (const n of list.filter((x) => x.type === 'talk')) {
+      const org = (graph?.neighborsOf(n.slug) ?? []).find((m) => m.type === 'organization');
+      const label = org ? org.title : 'Other';
+      if (!groups.has(label)) groups.set(label, { label, url: org?.url, items: [] });
+      groups.get(label).items.push(n);
+    }
+    const newestFirst = (a, b) => (b.date || '').localeCompare(a.date || '') || a.title.localeCompare(b.title);
+    return [...groups.values()]
+      .sort((a, b) => (a.label === 'Other') - (b.label === 'Other') || a.label.localeCompare(b.label))
+      .map((g) => ({ ...g, items: g.items.sort(newestFirst) }));
+  });
   eleventyConfig.addFilter('year', (iso) => (iso ? String(iso).slice(0, 4) : ''));
 
   return {
