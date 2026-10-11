@@ -1,3 +1,4 @@
+import yaml from 'js-yaml';
 import markdownIt from 'markdown-it';
 import markdownItAttrs from 'markdown-it-attrs';
 import { buildGraph } from './lib/graph.js';
@@ -13,6 +14,21 @@ export default function (eleventyConfig) {
   // Markdown: allow raw HTML and {.class} attributes on images/blocks
   const md = markdownIt({ html: true, linkify: true }).use(markdownItAttrs);
   eleventyConfig.setLibrary('md', md);
+
+  // A bare year (`date: 2021`) is read by YAML as a number, which Eleventy rejects.
+  // Treat it as a year-precision date: 2021-01-01 with datePrecision: year (unless set explicitly).
+  eleventyConfig.setFrontMatterParsingOptions({
+    engines: {
+      yaml: (src) => {
+        const data = yaml.load(src) ?? {};
+        if (Number.isInteger(data.date) && data.date >= 1000 && data.date <= 9999) {
+          data.date = `${data.date}-01-01`;
+          data.datePrecision ??= 'year';
+        }
+        return data;
+      },
+    },
+  });
 
   // The graph: every node plus its resolved connections, computed once from front matter.
   let graph = null;
@@ -36,6 +52,19 @@ export default function (eleventyConfig) {
       groups.get(key).push(n);
     }
     return [...groups].map(([label, items]) => ({ label, items }));
+  });
+  // Newest first, grouped into 5-year spans aligned to multiples of 5 (2015–2019); undated last.
+  eleventyConfig.addFilter('byFiveYears', (list) => {
+    const groups = new Map();
+    for (const n of list) {
+      const start = n.date ? Math.floor(Number(n.date.slice(0, 4)) / 5) * 5 : null;
+      if (!groups.has(start)) groups.set(start, []);
+      groups.get(start).push(n);
+    }
+    const newestFirst = (a, b) => (b.date || '').localeCompare(a.date || '') || a.title.localeCompare(b.title);
+    return [...groups]
+      .sort(([a], [b]) => (a === null) - (b === null) || b - a)
+      .map(([start, items]) => ({ label: start === null ? 'Undated' : `${start}–${start + 4}`, items: items.sort(newestFirst) }));
   });
   eleventyConfig.addFilter('year', (iso) => (iso ? String(iso).slice(0, 4) : ''));
 

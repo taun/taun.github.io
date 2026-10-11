@@ -12,12 +12,19 @@ scripts: ["/js/list.js"]
     <button type="button" class="chip type-{{ t }}" data-type="{{ t }}" aria-pressed="false">{{ t }}</button>
     {% endfor %}
   </p>
-  <ul class="cards" id="items">
-    {% for n in collections.graph %}
-    <li data-type="{{ n.type }}" data-text="{{ n.title | lower }} {{ n.tags | join(' ') }}">
-      <a href="{{ n.url }}"><span class="chip type-{{ n.type }}">{{ n.type }}</span> {{ n.title }}</a>
-      {% if n.dateLabel %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
-    </li>
+  <div id="items">
+    {% for g in collections.graph | byFiveYears %}
+    <section class="group">
+      <h2>{{ g.label }}</h2>
+      <ul class="cards">
+        {% for n in g.items %}
+        <li data-type="{{ n.type }}" data-text="{{ n.title | lower }} {{ n.tags | join(' ') }}">
+          <a href="{{ n.url }}"><span class="chip type-{{ n.type }}">{{ n.type }}</span> {{ n.title }}</a>
+          {% if n.dateLabel %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
     {% endfor %}
-  </ul>
+  </div>
 </article>
