@@ -1,7 +1,7 @@
 ---
 title: "General Fusion"
 type: company
-tags: []
+tags: [startup]
 links: [michel]
 ---
 

@@ -4,7 +4,7 @@ type: company
 date: 1995-05-05
 tags: [connections]
 video: https://youtu.be/Xsh9-FdT-SQ
-links: [dan-gelbart, ken-spencer, michel, two-plane-balancer, creo-scitex]
+links: [dan-gelbart, ken-spencer, michel, creo-scitex]
 ---
 
 [History](https://www.company-histories.com/Creo-Inc-Company-History.html)

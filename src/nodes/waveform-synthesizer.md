@@ -3,8 +3,8 @@ title: "Digital waveform synthesizer for music"
 type: project
 date: 1980-01-01
 datePrecision: year
-tags: []
-links: []
+tags: [hardware, software, music]
+links: [nmr-pulse-programmer]
 galleryCaption: "Really old school!"
 header:
   image: /assets/images/ensoniq_mirage-1024x324.png

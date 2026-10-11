@@ -3,7 +3,7 @@ title: "CreoScitex"
 type: company
 date: 1995-05-05
 tags: []
-links: [creo, dan-gelbart, ken-spencer, michel, two-plane-balancer]
+links: [moedae-com, general-fusion]
 ---
 
 [Merger](https://www.nagasa.org/industrynews/424.html)

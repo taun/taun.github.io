@@ -3,7 +3,7 @@ title: "Bathroom Theremin!"
 type: project
 date: 1975-11-01
 tags: [fun]
-links: []
+links: [hp-67]
 header:
   image: /assets/images/timer_555_banner.png
   teaser: /assets/images/door_handle_small.jpg

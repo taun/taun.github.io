@@ -3,7 +3,7 @@ title: "2 Plane Balancer"
 type: project
 date: 1990-01-01
 datePrecision: year
-tags: [creo]
+tags: [creo, automation, hardware, software]
 links: [creo]
 header:
   image: /assets/images/hp_signal_analyzer@2x.png
