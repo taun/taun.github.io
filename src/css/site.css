@@ -82,3 +82,9 @@ input[type="search"] { width: 100%; padding: .5rem .7rem; font: inherit; color: 
 .video-play:hover span, .video-play:focus-visible span { transform: scale(1.1); }
 .ext { font-size: .85em; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Full-width home banner: height is capped so a wide image never takes over the screen. */
+.hero-banner { max-width: none; margin: 0; padding: 0; background-size: cover; background-position: center 60%; height: clamp(10rem, 24vw, 16rem); display: flex; align-items: flex-end; position: relative; }
+.hero-banner::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / .65), rgb(0 0 0 / .05) 70%); }
+.hero-banner .hero-inner { position: relative; width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 1rem 1rem; color: #fff; }
+.hero-banner h1, .hero-banner p { color: #fff; text-shadow: 0 1px 6px rgb(0 0 0 / .6); }
