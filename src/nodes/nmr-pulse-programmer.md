@@ -4,7 +4,7 @@ type: work
 date: 1991-01-01
 datePrecision: year
 tags: [moedae, automation, hardware, software]
-links: [creo, two-plane-balancer]
+links: [creo]
 galleryCaption: "Nuclear Magnetic Resonance"
 header:
   image: /assets/images/nmr_fullsize_banner.png

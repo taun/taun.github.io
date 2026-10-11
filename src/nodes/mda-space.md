@@ -1,6 +1,7 @@
 ---
 title: "MDA"
 type: company
+date: 1969
 datePrecision: year
 tags: [connections]
 links: [ken-spencer, dan-gelbart]

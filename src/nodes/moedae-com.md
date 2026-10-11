@@ -1,10 +1,10 @@
 ---
 title: "MOEDAE LLC"
 type: company
-date: 2002-01-01
+date: 1991-01-01
 datePrecision: year
 tags: [founder, automation]
-links: []
+links: [nmr-pulse-programmer]
 ---
 
 

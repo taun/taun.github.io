@@ -1,9 +1,9 @@
 ---
 title: "CreoScitex"
 type: company
-date: 1995-05-05
+date: 2000
 tags: []
-links: [moedae-com, general-fusion]
+links: [moedae-com, michel]
 ---
 
 [Merger](https://www.nagasa.org/industrynews/424.html)

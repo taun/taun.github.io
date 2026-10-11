@@ -4,7 +4,7 @@ type: project
 date: 1980-01-01
 datePrecision: year
 tags: [hardware, software, music]
-links: [nmr-pulse-programmer]
+links: [ubc]
 galleryCaption: "Really old school!"
 header:
   image: /assets/images/ensoniq_mirage-1024x324.png
