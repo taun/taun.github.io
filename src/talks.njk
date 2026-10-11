@@ -14,9 +14,9 @@ permalink: /talks/
         <a href="{{ n.url }}">{{ n.title }}</a>
         {% if n.dateLabel %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
         <span class="media-links">
-          {% if n.media.video %}<a href="{{ n.media.video }}">▶ Watch</a>{% endif %}
+          {% if n.media.archive %}<a href="{{ n.media.archive.url }}">⤓ Archive</a>{% endif %}
           {% if n.media.slides %}<a href="{{ n.media.slides }}">▤ Slides</a>{% endif %}
-          {% if n.media.repo %}<a href="{{ n.media.repo }}">⌥ Source</a>{% endif %}
+          {% if n.media.repo %}<a href="{{ n.media.repo }}" target="_blank" rel="noopener noreferrer">⌥ Source <span class="ext" aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></a>{% endif %}
         </span>
       </li>
       {% endfor %}

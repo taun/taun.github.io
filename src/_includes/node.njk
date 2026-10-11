@@ -11,12 +11,26 @@ layout: base.njk
     {% for t in tags %}<span class="tag">#{{ t }}</span>{% endfor %}
   </p>
   <h1>{{ title }}</h1>
-  {% if rec and (rec.media.video or rec.media.slides or rec.media.repo) %}
+  {% if rec %}{% set m = rec.media %}
+  {% if m.video or m.archive or m.slides or m.repo %}
   <p class="media-links">
-    {% if rec.media.video %}<a href="{{ rec.media.video }}">▶ Watch</a>{% endif %}
-    {% if rec.media.slides %}<a href="{{ rec.media.slides }}">▤ Slides</a>{% endif %}
-    {% if rec.media.repo %}<a href="{{ rec.media.repo }}">⌥ Source</a>{% endif %}
+    {% if m.video %}<a href="{{ m.video.url }}"{% if m.video.kind != 'file' %} target="_blank" rel="noopener noreferrer"{% endif %}>▶ Watch{% if m.video.kind == 'youtube' %} on YouTube{% endif %}{% if m.video.kind != 'file' %} <span class="ext" aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span>{% endif %}</a>{% endif %}
+    {% if m.archive %}<a href="{{ m.archive.url }}">⤓ Archived copy</a>{% endif %}
+    {% if m.slides %}<a href="{{ m.slides }}">▤ Slides</a>{% endif %}
+    {% if m.repo %}<a href="{{ m.repo }}" target="_blank" rel="noopener noreferrer">⌥ Source <span class="ext" aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></a>{% endif %}
   </p>
+  {% endif %}
+  {% if m.video.kind == 'youtube' %}
+  <div class="video" data-yt="{{ m.video.id }}">
+    <button type="button" class="video-play" aria-label="Play video: {{ title }}">
+      <img src="https://i.ytimg.com/vi/{{ m.video.id }}/hqdefault.jpg" alt="" loading="lazy"><span aria-hidden="true">▶</span>
+    </button>
+  </div>
+  {% elif m.video.kind == 'file' %}
+  <video class="video" controls preload="metadata" src="{{ m.video.url }}"></video>
+  {% elif m.archive.kind == 'file' %}
+  <video class="video" controls preload="metadata" src="{{ m.archive.url }}"></video>
+  {% endif %}
   {% endif %}
   {{ content | safe }}
 

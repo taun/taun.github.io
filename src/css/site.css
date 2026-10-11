@@ -74,3 +74,11 @@ input[type="search"] { width: 100%; padding: .5rem .7rem; font: inherit; color: 
 @media (max-width: 600px) { body { font-size: 16px; } #graph .node text { font-size: 11px; } }
 .media-links { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; font-weight: 600; }
 .media-links a { text-decoration: none; }
+.video { display: block; position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 1rem 0; background: #000; border-radius: 8px; overflow: hidden; }
+.video iframe, .video-play, .video-play img { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-play { padding: 0; background: none; cursor: pointer; color: #fff; }
+.video-play img { object-fit: cover; }
+.video-play span { position: absolute; inset: 0; display: grid; place-items: center; font-size: 3rem; text-shadow: 0 2px 12px #000; }
+.video-play:hover span, .video-play:focus-visible span { transform: scale(1.1); }
+.ext { font-size: .85em; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
