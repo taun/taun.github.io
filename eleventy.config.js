@@ -51,7 +51,11 @@ export default function (eleventyConfig) {
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key).push(n);
     }
-    return [...groups].map(([label, items]) => ({ label, items }));
+    // Newest first; undated last. Within a year, newest first too.
+    const newestFirst = (a, b) => (b.date || '').localeCompare(a.date || '') || a.title.localeCompare(b.title);
+    return [...groups]
+      .sort(([a], [b]) => (a === 'Undated') - (b === 'Undated') || b.localeCompare(a))
+      .map(([label, items]) => ({ label, items: items.sort(newestFirst) }));
   });
   // Newest first, grouped into 5-year spans aligned to multiples of 5 (2015–2019); undated last.
   eleventyConfig.addFilter('byFiveYears', (list) => {

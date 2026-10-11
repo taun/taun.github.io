@@ -1,5 +1,5 @@
 <div class="graph-wrap">
-  <div class="graph-controls" role="group" aria-label="Graph filters">
+  <div class="graph-controls" role="group" aria-label="Connection filters">
     {% for t in collections.graph | types %}
     <label class="chip type-{{ t }}"><input type="checkbox" data-type="{{ t }}" checked> {{ t }}</label>
     {% endfor %}
