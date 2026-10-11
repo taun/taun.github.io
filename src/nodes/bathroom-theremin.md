@@ -1,7 +1,8 @@
 ---
 title: "Bathroom Theremin!"
 type: project
-tags: []
+date: 1975-11-01
+tags: [fun]
 links: []
 header:
   image: /assets/images/timer_555_banner.png

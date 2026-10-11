@@ -1,8 +1,10 @@
 ---
 title: "MOEDAE LLC"
-type: organization
-tags: []
-links: []
+type: company
+date: 2002-01-01
+datePrecision: year
+tags: [founder]
+links: [creo-scitex]
 ---
 
 
