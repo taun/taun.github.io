@@ -37,6 +37,7 @@ export default function (eleventyConfig) {
     return graph.list; // array of plain node records
   });
   eleventyConfig.addFilter('nodeInfo', (slug) => graph?.list.find((n) => n.slug === slug));
+  eleventyConfig.addFilter('relations', (slug) => graph?.relationsOf(slug) ?? []);
   eleventyConfig.addFilter('neighbors', (slug) => graph?.neighborsOf(slug) ?? []);
   eleventyConfig.addFilter('sharedTags', (slug) => graph?.sharedTagNeighbors(slug) ?? []);
   eleventyConfig.addFilter('types', (list) => [...new Set(list.map((n) => n.type))].sort());

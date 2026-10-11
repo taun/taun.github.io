@@ -44,16 +44,16 @@ layout: base.njk
   {% endif %}
 </article>
 
-{% set nb = slug | neighbors %}
+{% set rels = slug | relations %}
 {% set st = slug | sharedTags %}
-{% if nb.length or st.length %}
+{% if rels.length or st.length %}
 <aside class="connections prose">
-  {% if nb.length %}
-  <h2>Connected to</h2>
+  {% for g in rels %}
+  <h2><span class="dir" aria-hidden="true">{{ "→" if g.dir == "out" else "←" }}</span> {{ g.label }}</h2>
   <ul class="cards">
-    {% for n in nb %}<li><a href="{{ n.url }}"><span class="chip type-{{ n.type }}">{{ n.type }}</span> {{ n.title }}</a>{% if n.dateLabel %} <span class="muted">{{ n.dateLabel }}</span>{% endif %}</li>{% endfor %}
+    {% for n in g.items %}<li><a href="{{ n.url }}"><span class="chip type-{{ n.type }}">{{ n.type }}</span> {{ n.title }}</a>{% if n.dateLabel %} <span class="muted">{{ n.dateLabel }}</span>{% endif %}</li>{% endfor %}
   </ul>
-  {% endif %}
+  {% endfor %}
   {% if st.length %}
   <h2>Same tags</h2>
   <ul class="cards">

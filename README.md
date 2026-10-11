@@ -14,14 +14,14 @@ date: 1983-01-01      # optional; omit for undated
 datePrecision: year   # optional; "year" shows just the year
 summary: One line shown in lists and on the timeline.
 tags: [engineering]
-links: [creo, ken-spencer]   # file names (without .md) of connected nodes
+links: [creo, { to: ken-spencer, rel: worked-at }]   # node file names (without .md), optionally with a relation
 draft: true           # optional; keeps the page out of the build
 ---
 
 Write the page in Markdown.
 ```
 
-- **Links are two-way.** If A lists B, B shows A as well. A typo in a link name prints a warning at build time.
+- **Links are directed.** A node's `links:` point from it to the listed nodes, and the target shows the reverse ("Came from" etc.). A plain name means `led-to`; `{ to: name, rel: relation }` sets the relation. Known relations: `led-to`, `worked-at`, `founded`, `part-of`; any other word is shown as written. The graph draws an arrowhead at the target (hover a node to see the relation text). A typo in a link name prints a warning at build time.
 - **Images** go in `src/assets/images/` and are referenced as `/assets/images/name.jpg`. Use `![alt](/assets/images/x.png){.align-left}` to float one (`align-left`, `align-right`, `align-center`).
 - A `gallery:` list in front matter (`url`, `image_path`, `alt`) renders a thumbnail gallery; `galleryCaption:` adds a caption.
 - Regular pages (About, Talks, Contact) are in `src/pages/`.

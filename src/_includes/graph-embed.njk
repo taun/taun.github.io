@@ -3,6 +3,7 @@
     {% for t in collections.graph | types %}
     <label class="chip type-{{ t }}"><input type="checkbox" data-type="{{ t }}" checked> {{ t }}</label>
     {% endfor %}
+    <label class="chip"><input type="checkbox" id="by-date" checked> by date</label>
     <label class="chip"><input type="checkbox" id="show-tags"> shared tags</label>
   </div>
   <svg id="graph" role="img" aria-label="Graph of connected pages. Each circle links to a page."></svg>
