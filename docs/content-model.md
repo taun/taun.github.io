@@ -1,6 +1,6 @@
 # Content model
 
-The authoritative description of a node file, for tools that read or write this site's content (for example the macOS/iOS editor in `../taun-editor`). If the build code and this document disagree, the code wins: fix the document, then run `node docs/fixtures/check.mjs --write` and review the diff.
+The authoritative description of a node file, for tools that read or write this site's content (for example the Breezy app in `../Breezy`). If the build code and this document disagree, the code wins: fix the document, then run `node docs/fixtures/check.mjs --write` and review the diff.
 
 Code that implements it: `lib/frontmatter.js` (dates), `lib/relations.js` (links), `lib/media.js` (video URLs), `lib/graph.js` (derived data), `lib/glyphs.js`.
 
