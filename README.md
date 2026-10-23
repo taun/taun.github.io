@@ -1,6 +1,6 @@
 # taun.org
 
-A static site where every page is a **node** and the views (graph, timeline, list) are generated from each node's front matter. Built with [Eleventy](https://www.11ty.dev/), hosted free on GitHub Pages.
+A static site where every page is a **node** and the views (blog list, CV, talks, connections graph) are generated from each node's front matter. Built with [Eleventy](https://www.11ty.dev/), hosted free on GitHub Pages.
 
 ## Add or edit a node
 
@@ -9,13 +9,14 @@ Create `src/nodes/some-name.md`:
 ```markdown
 ---
 title: "Dan Gelbart"
-type: person          # person | organization | project | work | post | thing
-date: 1983-01-01      # optional; omit for undated
-datePrecision: year   # optional; "year" shows just the year
+type: person          # any word: person, company, organization, project, work, post, talk, cv, event, thing...
+date: 1983-01-01      # optional; omit for undated. A bare year (date: 1983) means year precision
+datePrecision: year   # optional; "year" shows just the year (implied by a bare year)
 summary: One line shown in lists and on the timeline.
 tags: [engineering]
 links: [creo, { to: ken-spencer, rel: worked-at }]   # node file names (without .md), optionally with a relation
 draft: true           # optional; keeps the page out of the build
+video: https://youtu.be/...    # optional media: video, archive (own copy), slides, repo
 ---
 
 Write the page in Markdown.
@@ -24,17 +25,10 @@ Write the page in Markdown.
 - **Links are directed.** A node's `links:` point from it to the listed nodes, and the target shows the reverse ("Came from" etc.). A plain name means `led-to`; `{ to: name, rel: relation }` sets the relation. Known relations: `led-to`, `worked-at`, `founded`, `part-of`; any other word is shown as written. The graph draws an arrowhead at the target (hover a node to see the relation text). A typo in a link name prints a warning at build time.
 - **Images** go in `src/assets/images/` and are referenced as `/assets/images/name.jpg`. Use `![alt](/assets/images/x.png){.align-left}` to float one (`align-left`, `align-right`, `align-center`).
 - A `gallery:` list in front matter (`url`, `image_path`, `alt`) renders a thumbnail gallery; `galleryCaption:` adds a caption.
-- Regular pages (About, Talks, Contact) are in `src/pages/`.
-- The graph, timeline and list all update automatically from the nodes. Nothing else to maintain.
-
-## First-time setup: copy your images
-
-The images, slide PDFs and sounds (about 70 MB) are not in this download. They are unchanged from your current repo. From the folder containing both repos:
-
-```
-mkdir -p taun-site/src/assets
-cp -r taun.github.io/assets/images taun.github.io/assets/presentations taun.github.io/assets/sounds taun-site/src/assets/
-```
+- **Types need no setup.** Filter chips, colors and glyphs are derived from the `type:` values in use. Talks are nodes with `type: talk`; the Talks page groups them by the organization node they link to.
+- **Video:** a YouTube `video:` becomes a click-to-load embed on the node page; an `.mp4`/`.webm` URL becomes a player; other URLs are links. `archive:` is your own copy.
+- Regular pages (About, Contact, 404) are in `src/pages/`.
+- The blog list (home), CV, talks and connections views all update automatically from the nodes. Nothing else to maintain.
 
 ## Run locally
 
@@ -57,15 +51,13 @@ Tip: do the first push on a branch and check the Actions run before switching Pa
 | Path | What |
 |---|---|
 | `src/nodes/` | All node pages |
-| `src/pages/` | About, Talks, Contact, 404 |
+| `src/pages/` | About, Contact, 404 |
 | `src/_includes/` | Page layouts |
-| `src/css/site.css`, `src/js/` | Styling, graph and list scripts (no dependencies) |
+| `src/css/site.css`, `src/js/` | Styling, graph, list and video scripts (no dependencies) |
 | `src/_data/site.json` | Site title, tagline, footer links |
-| `lib/graph.js` | Builds nodes and connections from front matter |
+| `lib/` | `graph.js` builds nodes and connections from front matter; also relations, glyphs, media |
 
 ## Migration notes
 
-- Old URLs changed: posts and projects now live at `/n/<name>/`. Old links such as `/funw-with-autolayout` will not redirect.
-- Dates for undated projects (waveform synthesizer 1980, 2 plane balancer 1990, NMR 1991, MailPortals 2015) were taken from the page text and are set to year precision. Check them.
-- The Jekyll site's YouTube/Vimeo auto-embed script was not carried over. Bare video links stay as normal links.
+- Old URLs changed: posts and projects now live at `/n/<name>/`, and the views are `/` (blog), `/talks/`, `/cv/`, `/connections/`. Old links such as `/funw-with-autolayout` will not redirect.
 - `_posts_draft/a-theory` was migrated with `draft: true` so it is not published.
