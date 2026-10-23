@@ -16,7 +16,7 @@ There are no tests or linter. Verify changes by building and inspecting `_site/`
 
 ## Architecture
 
-A static site where every page is a **node** (`src/nodes/*.md`), and the views are generated from node front matter. README.md documents the node front matter for authors; this section covers how it fits together.
+A static site where every page is a **node** (`src/nodes/*.md`), and the views are generated from node front matter. README.md documents the node front matter for authors, and `docs/content-model.md` (with `docs/front-matter.schema.json` and `docs/fixtures/`) is the precise spec used by external tools such as the editor app in `../taun-editor`; keep it in sync when changing front matter handling and run `node docs/fixtures/check.mjs`. This section covers how it fits together.
 
 - **`lib/graph.js` `buildGraph()`** turns the node templates into plain records (title, type, ISO date, tags, media, directed `out` links, derived `in` links, undirected `links`). `eleventy.config.js` registers the result as the `graph` collection and exposes it to templates through filters (`nodeInfo`, `relations`, `neighbors`, `sharedTags`, `types`, `byYear`, `byFiveYears`, `talkGroups`, `typeHue`, `typeGlyph`). The collection glob is `src/nodes/*.md` (not recursive), so nodes must stay in one flat folder.
 - **Views** all read `collections.graph`: home/blog list (`src/index.md` + `src/_includes/home.njk`), `/cv/` (grouped by year, newest first), `/talks/` (talk nodes grouped by the organization node they link to), `/connections/` (SVG graph, `src/js/graph.js`), and node pages (`src/_includes/node.njk`). The graph page embeds the whole collection as JSON (`graph-embed.njk`).

@@ -1,8 +1,8 @@
-import yaml from 'js-yaml';
 import markdownIt from 'markdown-it';
 import markdownItAttrs from 'markdown-it-attrs';
 import { buildGraph } from './lib/graph.js';
 import { typeGlyph } from './lib/glyphs.js';
+import { parseFrontMatterYaml } from './lib/frontmatter.js';
 
 export default function (eleventyConfig) {
   // Static files copied as-is
@@ -15,20 +15,8 @@ export default function (eleventyConfig) {
   const md = markdownIt({ html: true, linkify: true }).use(markdownItAttrs);
   eleventyConfig.setLibrary('md', md);
 
-  // A bare year (`date: 2021`) is read by YAML as a number, which Eleventy rejects.
-  // Treat it as a year-precision date: 2021-01-01 with datePrecision: year (unless set explicitly).
-  eleventyConfig.setFrontMatterParsingOptions({
-    engines: {
-      yaml: (src) => {
-        const data = yaml.load(src) ?? {};
-        if (Number.isInteger(data.date) && data.date >= 1000 && data.date <= 9999) {
-          data.date = `${data.date}-01-01`;
-          data.datePrecision ??= 'year';
-        }
-        return data;
-      },
-    },
-  });
+  // Bare-year dates (`date: 2021`) become year-precision dates; see lib/frontmatter.js.
+  eleventyConfig.setFrontMatterParsingOptions({ engines: { yaml: parseFrontMatterYaml } });
 
   // The graph: every node plus its resolved connections, computed once from front matter.
   let graph = null;

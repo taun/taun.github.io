@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Node front matter",
+  "description": "Structural schema for src/nodes/*.md front matter. Semantics (normalization, warnings, bare-year dates) are in content-model.md.",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "type": { "type": "string", "minLength": 1 },
+    "date": {
+      "description": "ISO date string, or a bare year integer 1000-9999 (treated as year precision).",
+      "oneOf": [
+        { "type": "string", "pattern": "^\\d{4}(-\\d{2}-\\d{2})?$" },
+        { "type": "integer", "minimum": 1000, "maximum": 9999 }
+      ]
+    },
+    "datePrecision": { "enum": ["day", "year"] },
+    "summary": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "links": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string", "minLength": 1 },
+          {
+            "type": "object",
+            "properties": { "to": { "type": "string", "minLength": 1 }, "rel": { "type": "string" } },
+            "required": ["to"],
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "draft": { "type": "boolean" },
+    "video": { "type": "string" },
+    "archive": { "type": "string" },
+    "slides": { "type": "string" },
+    "repo": { "type": "string" },
+    "header": {
+      "type": "object",
+      "properties": { "image": { "type": "string" }, "teaser": { "type": "string" }, "image_description": { "type": "string" } }
+    },
+    "gallery": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": { "url": { "type": "string" }, "image_path": { "type": "string" }, "alt": { "type": "string" } },
+        "required": ["url"]
+      }
+    },
+    "galleryCaption": { "type": "string" }
+  },
+  "required": ["title"],
+  "additionalProperties": true
+}
