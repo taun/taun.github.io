@@ -10,8 +10,8 @@ gallery:
   - url: /assets/images/blog/ios-appdelegate-timeline.png
     image_path: /assets/images/blog/ios-appdelegate-timeline.png
     alt: "App Delegate Timeline"
-  - url: /assets/presentations/iOS AppDelegate Timeline.pdf
-    image_path: /assets/presentations/iOS AppDelegate Timeline.pdf
+  - url: /assets/presentations/iOS%20AppDelegate%20Timeline.pdf
+    image_path: /assets/presentations/iOS%20AppDelegate%20Timeline.pdf
     alt: "App Delegate Timeline"
 ---
 
@@ -40,4 +40,4 @@ I believe my [chart](/assets/images/blog/ios-appdelegate-timeline.png) makes thi
 
 Here is a PDF of the Application Delegate Callbacks Timing Chart.
 
-[iOS App Delegate Timeline](/assets/presentations/iOS AppDelegate Timeline.pdf)
+[iOS App Delegate Timeline](/assets/presentations/iOS%20AppDelegate%20Timeline.pdf)

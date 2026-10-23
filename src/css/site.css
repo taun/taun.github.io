@@ -2,11 +2,11 @@
   --bg: #fbfbf9; --fg: #1d1f21; --muted: #666a70; --line: #d9dad6; --link: #1456a8;
   --max: 46rem;
   /* type colors alternate even/odd by sorted position so hue-neighbors differ in intensity */
-  --l-even: .42; --c-even: .17; --l-odd: .62; --c-odd: .13;
+  --l-even: .42; --c-even: .17; --l-odd: .62; --c-odd: .13; --l-mid: .52; --c-mid: .15;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --l-even: .68; --c-even: .15; --l-odd: .86; --c-odd: .09;
+    --l-even: .68; --c-even: .15; --l-odd: .86; --c-odd: .09; --l-mid: .77; --c-mid: .12;
     --bg: #15171a; --fg: #e6e7e8; --muted: #9a9fa6; --line: #2d3136; --link: #7db3f0;
   }
 }
@@ -97,3 +97,4 @@ input[type="search"] { width: 100%; padding: .5rem .7rem; font: inherit; color: 
 #graph .date-axis.shown { display: inline; }
 #graph .date-axis line { stroke: var(--line); stroke-width: 1; }
 #graph .date-axis text { fill: var(--muted); font-size: 11px; text-anchor: middle; }
+.gallery .file a { display: block; padding: .8rem 1rem; border: 1px solid var(--line); border-radius: 6px; text-decoration: none; }

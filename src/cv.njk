@@ -11,7 +11,7 @@ permalink: /cv/
       <h2>{{ g.label }}</h2>
       <ul class="cards">
         {% for n in g.items %}
-        <li><a href="{{ n.url }}"><span class="chip type-{{ n.type }}">{{ n.type }}</span> {{ n.title }}</a>
+        <li><a href="{{ n.url }}"><span class="chip type-{{ n.typeKey }}">{{ n.type }}</span> {{ n.title }}</a>
           {% if n.dateLabel and n.dateLabel != g.label %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
           {% if n.summary %}<br><span class="muted">{{ n.summary }}</span>{% endif %}</li>
         {% endfor %}

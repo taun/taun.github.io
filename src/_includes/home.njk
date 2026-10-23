@@ -16,7 +16,7 @@ scripts: ["/js/list.js"]
   <p><input id="q" type="search" placeholder="Filter by title or tag" aria-label="Filter"></p>
   <p class="filters">
     {% for t in collections.graph | types %}
-    <button type="button" class="chip type-{{ t }}" data-type="{{ t }}" aria-pressed="false">{{ t }}</button>
+    <button type="button" class="chip type-{{ t | typeKey }}" data-type="{{ t }}" aria-pressed="false">{{ t }}</button>
     {% endfor %}
   </p>
   <div id="items">
@@ -25,8 +25,8 @@ scripts: ["/js/list.js"]
       <h2>{{ g.label }}</h2>
       <ul class="cards">
         {% for n in g.items %}
-        <li data-type="{{ n.type }}" data-text="{{ n.title | lower }} {{ n.tags | join(' ') }}">
-          <a href="{{ n.url }}"><span class="chip type-{{ n.type }}">{{ n.type }}</span> {{ n.title }}</a>
+        <li data-type="{{ n.type }}" data-text="{{ (n.title ~ ' ' ~ (n.tags | join(' '))) | lower }}">
+          <a href="{{ n.url }}"><span class="chip type-{{ n.typeKey }}">{{ n.type }}</span> {{ n.title }}</a>
           {% if n.dateLabel %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
         </li>
         {% endfor %}

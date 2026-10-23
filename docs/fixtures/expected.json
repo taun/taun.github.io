@@ -87,6 +87,14 @@
     ],
     "warnings": []
   },
+  "valid/quoted-year": {
+    "type": "thing",
+    "date": "2019-01-01",
+    "datePrecision": "year",
+    "draft": false,
+    "links": [],
+    "warnings": []
+  },
   "valid/smalltalk-talk": {
     "type": "talk",
     "date": "2015-09-22",

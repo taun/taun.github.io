@@ -1,7 +1,7 @@
 <div class="graph-wrap">
   <div class="graph-controls" role="group" aria-label="Connection filters">
     {% for t in collections.graph | types %}
-    <label class="chip type-{{ t }}"><input type="checkbox" data-type="{{ t }}" checked> {{ t }}</label>
+    <label class="chip type-{{ t | typeKey }}"><input type="checkbox" data-type="{{ t }}" checked> {{ t }}</label>
     {% endfor %}
     <label class="chip"><input type="checkbox" id="by-date" checked> by date</label>
     <label class="chip"><input type="checkbox" id="show-tags"> shared tags</label>

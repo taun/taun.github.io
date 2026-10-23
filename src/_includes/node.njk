@@ -6,7 +6,7 @@ layout: base.njk
 <article class="prose node">
   {% if header and header.image %}<img class="banner" src="{{ header.image }}" alt="">{% endif %}
   <p class="meta">
-    <span class="chip type-{{ type }}">{{ type }}</span>
+    {% if rec %}<span class="chip type-{{ rec.typeKey }}">{{ rec.type }}</span>{% endif %}
     {% if rec and rec.dateLabel %}<time datetime="{{ rec.date }}">{{ rec.dateLabel }}</time>{% else %}<span class="muted">undated</span>{% endif %}
     {% for t in tags %}<span class="tag">#{{ t }}</span>{% endfor %}
   </p>
@@ -37,7 +37,11 @@ layout: base.njk
   {% if gallery %}
   <section class="gallery" aria-label="Gallery">
     {% for g in gallery %}
+      {% if (g.image_path or g.url) | isImage %}
       <figure><a href="{{ g.url }}"><img src="{{ g.image_path or g.url }}" alt="{{ g.alt }}" loading="lazy"></a></figure>
+      {% else %}
+      <figure class="file"><a href="{{ g.url }}">▤ {{ g.alt or g.url }}</a></figure>
+      {% endif %}
     {% endfor %}
     {% if galleryCaption %}<p class="caption">{{ galleryCaption }}</p>{% endif %}
   </section>
@@ -51,7 +55,7 @@ layout: base.njk
   {% for g in rels %}
   <h2><span class="dir" aria-hidden="true">{{ "→" if g.dir == "out" else "←" }}</span> {{ g.label }}</h2>
   <ul class="cards">
-    {% for n in g.items %}<li><a href="{{ n.url }}"><span class="chip type-{{ n.type }}">{{ n.type }}</span> {{ n.title }}</a>{% if n.dateLabel %} <span class="muted">{{ n.dateLabel }}</span>{% endif %}</li>{% endfor %}
+    {% for n in g.items %}<li><a href="{{ n.url }}"><span class="chip type-{{ n.typeKey }}">{{ n.type }}</span> {{ n.title }}</a>{% if n.dateLabel %} <span class="muted">{{ n.dateLabel }}</span>{% endif %}</li>{% endfor %}
   </ul>
   {% endfor %}
   {% if st.length %}

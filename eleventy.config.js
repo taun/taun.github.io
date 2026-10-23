@@ -1,7 +1,7 @@
 import markdownIt from 'markdown-it';
 import markdownItAttrs from 'markdown-it-attrs';
-import { buildGraph } from './lib/graph.js';
-import { typeGlyph } from './lib/glyphs.js';
+import { buildGraph, newestFirst } from './lib/graph.js';
+import { typeGlyph, typeKey } from './lib/glyphs.js';
 import { parseFrontMatterYaml } from './lib/frontmatter.js';
 
 export default function (eleventyConfig) {
@@ -31,6 +31,11 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('types', (list) => [...new Set(list.map((n) => n.type))].sort());
   // Equal hue spacing over the sorted types; neighbors on the wheel alternate light/dark (even/odd).
   eleventyConfig.addFilter('typeHue', (i, n) => Math.round((25 + (360 * i) / n) % 360));
+  // Lightness/chroma set for position i of n. With an odd count the last type would sit between two
+  // "even" neighbors (the wheel wraps), so it gets a third, middle tone.
+  eleventyConfig.addFilter('typeTone', (i, n) => (n % 2 === 1 && n > 1 && i === n - 1 ? 'mid' : i % 2 === 0 ? 'even' : 'odd'));
+  eleventyConfig.addFilter('typeKey', typeKey);
+  eleventyConfig.addFilter('isImage', (url) => /\.(png|jpe?g|gif|webp|avif|svg)(\?.*)?$/i.test(String(url || '')));
   eleventyConfig.addFilter('typeGlyph', typeGlyph);
   eleventyConfig.addFilter('json', (v) => JSON.stringify(v).replace(/</g, '\\u003c'));
   eleventyConfig.addFilter('byYear', (list) => {
@@ -41,7 +46,6 @@ export default function (eleventyConfig) {
       groups.get(key).push(n);
     }
     // Newest first; undated last. Within a year, newest first too.
-    const newestFirst = (a, b) => (b.date || '').localeCompare(a.date || '') || a.title.localeCompare(b.title);
     return [...groups]
       .sort(([a], [b]) => (a === 'Undated') - (b === 'Undated') || b.localeCompare(a))
       .map(([label, items]) => ({ label, items: items.sort(newestFirst) }));
@@ -54,7 +58,6 @@ export default function (eleventyConfig) {
       if (!groups.has(start)) groups.set(start, []);
       groups.get(start).push(n);
     }
-    const newestFirst = (a, b) => (b.date || '').localeCompare(a.date || '') || a.title.localeCompare(b.title);
     return [...groups]
       .sort(([a], [b]) => (a === null) - (b === null) || b - a)
       .map(([start, items]) => ({ label: start === null ? 'Undated' : `${start}–${start + 4}`, items: items.sort(newestFirst) }));
@@ -68,7 +71,6 @@ export default function (eleventyConfig) {
       if (!groups.has(label)) groups.set(label, { label, url: org?.url, items: [] });
       groups.get(label).items.push(n);
     }
-    const newestFirst = (a, b) => (b.date || '').localeCompare(a.date || '') || a.title.localeCompare(b.title);
     return [...groups.values()]
       .sort((a, b) => (a.label === 'Other') - (b.label === 'Other') || a.label.localeCompare(b.label))
       .map((g) => ({ ...g, items: g.items.sort(newestFirst) }));

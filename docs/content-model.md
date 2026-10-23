@@ -17,7 +17,7 @@ Code that implements it: `lib/frontmatter.js` (dates), `lib/relations.js` (links
 | Key | Type | Required | Notes |
 |---|---|---|---|
 | `title` | string | yes in practice | Falls back to the slug if missing. |
-| `type` | string | no (default `thing`) | Open vocabulary. Types in use: company, cv, organization, person, post, project, talk, thing, work (`event` is anticipated). New values need no setup: chips, colors and glyphs derive from the data. |
+| `type` | string | no (default `thing`) | Open vocabulary; any string, including spaces or symbols (CSS classes use a sanitized key from `typeKey` in `lib/glyphs.js`). Types in use: company, cv, organization, person, post, project, talk, thing, work (`event` is anticipated). New values need no setup: chips, colors and glyphs derive from the data. |
 | `date` | date string or year | no | `YYYY-MM-DD`, or a bare year (`2021`). Undated nodes are allowed. |
 | `datePrecision` | `day` \| `year` | no | `year` shows only the year. Implied `year` for a bare-year date. |
 | `summary` | string | no | One line for lists and the CV. |
@@ -35,8 +35,7 @@ Unknown keys are ignored by the build. **Writers must preserve keys they do not 
 
 ### Dates
 
-- `date: 2021` (an unquoted integer 1000–9999) is converted to `2021-01-01` with `datePrecision: year` unless a precision is given.
-- A quoted `"2021"` is a string, not converted. Prefer the unquoted form or a full date.
+- A year alone, `date: 2021` (an integer 1000–9999) or `date: "2021"`, is converted to `2021-01-01` with `datePrecision: year` unless a precision is given.
 - Dates order lists and the graph. The graph ranks distinct dates and spaces them evenly (not proportionally). Nodes without a date float.
 - A numeric date outside 1000–9999 makes the build fail ("Data cascade value for `date` is invalid"). Writers must not emit one.
 

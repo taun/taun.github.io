@@ -69,7 +69,7 @@
   });
 
   for (const n of nodes) {
-    const a = el('a', { href: n.url, class: `node type-${n.type}`, tabindex: 0 });
+    const a = el('a', { href: n.url, class: `node type-${n.typeKey}`, tabindex: 0 });
     const r = 7 + Math.min(8, (degree.get(n.slug) || 0) * 2);
     n.r = r;
     const c = el('circle', { r });
