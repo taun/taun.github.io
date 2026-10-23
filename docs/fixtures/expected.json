@@ -1,0 +1,151 @@
+{
+  "valid/a-theory": {
+    "type": "post",
+    "date": "2018-09-06",
+    "datePrecision": "day",
+    "draft": true,
+    "links": [],
+    "warnings": []
+  },
+  "valid/bare-year": {
+    "type": "thing",
+    "date": "2021-01-01",
+    "datePrecision": "year",
+    "draft": false,
+    "links": [],
+    "warnings": []
+  },
+  "valid/block-links": {
+    "type": "company",
+    "date": "2002-05-01",
+    "datePrecision": "day",
+    "draft": false,
+    "links": [
+      {
+        "to": "creo",
+        "rel": "led-to"
+      },
+      {
+        "to": "general-fusion",
+        "rel": "worked-at"
+      }
+    ],
+    "warnings": []
+  },
+  "valid/dan-gelbart": {
+    "type": "person",
+    "date": null,
+    "datePrecision": null,
+    "draft": false,
+    "links": [
+      {
+        "to": "mda-space",
+        "rel": "led-to"
+      },
+      {
+        "to": "ken-spencer",
+        "rel": "led-to"
+      },
+      {
+        "to": "creo",
+        "rel": "led-to"
+      }
+    ],
+    "warnings": []
+  },
+  "valid/mailboxes": {
+    "type": "work",
+    "date": "2015-01-01",
+    "datePrecision": "year",
+    "draft": false,
+    "links": [],
+    "warnings": []
+  },
+  "valid/michel": {
+    "type": "person",
+    "date": null,
+    "datePrecision": null,
+    "draft": false,
+    "links": [
+      {
+        "to": "general-fusion",
+        "rel": "founded"
+      }
+    ],
+    "warnings": []
+  },
+  "valid/nmr-pulse-programmer": {
+    "type": "work",
+    "date": "1991-01-01",
+    "datePrecision": "year",
+    "draft": false,
+    "links": [
+      {
+        "to": "creo",
+        "rel": "led-to"
+      }
+    ],
+    "warnings": []
+  },
+  "valid/quoted-year": {
+    "type": "thing",
+    "date": "2019-01-01",
+    "datePrecision": "year",
+    "draft": false,
+    "links": [],
+    "warnings": []
+  },
+  "valid/smalltalk-talk": {
+    "type": "talk",
+    "date": "2015-09-22",
+    "datePrecision": "day",
+    "draft": false,
+    "links": [
+      {
+        "to": "cocoaheads",
+        "rel": "led-to"
+      },
+      {
+        "to": "apple-smalltalk-influence",
+        "rel": "led-to"
+      }
+    ],
+    "warnings": []
+  },
+  "edge/edge-cases-self": {
+    "type": "thing",
+    "date": null,
+    "datePrecision": null,
+    "draft": false,
+    "links": [
+      {
+        "to": "no-such-node",
+        "rel": "led-to"
+      }
+    ],
+    "warnings": [
+      "[graph] \"edge-cases-self\" has a link that is neither a slug nor { to, rel }: {\"rel\":\"founded\"}",
+      "[graph] \"edge-cases-self\" has a link that is neither a slug nor { to, rel }: 42"
+    ]
+  },
+  "edge/self-link-and-unknown": {
+    "type": "thing",
+    "date": null,
+    "datePrecision": null,
+    "draft": false,
+    "links": [
+      {
+        "to": "edge-cases-self",
+        "rel": "led-to"
+      },
+      {
+        "to": "no-such-node",
+        "rel": "led-to"
+      }
+    ],
+    "warnings": [
+      "[graph] \"self-link-and-unknown\" has a link that is neither a slug nor { to, rel }: {\"rel\":\"founded\"}",
+      "[graph] \"self-link-and-unknown\" has a link that is neither a slug nor { to, rel }: 42"
+    ]
+  }
+}

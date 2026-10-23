@@ -1,0 +1,22 @@
+---
+layout: base.njk
+title: CV
+permalink: /cv/
+---
+<article class="prose">
+  <h1>CV</h1>
+  <ol class="timeline">
+  {% for g in collections.graph | byYear %}
+    <li>
+      <h2>{{ g.label }}</h2>
+      <ul class="cards">
+        {% for n in g.items %}
+        <li><a href="{{ n.url }}"><span class="chip type-{{ n.typeKey }}">{{ n.type }}</span> {{ n.title }}</a>
+          {% if n.dateLabel and n.dateLabel != g.label %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
+          {% if n.summary %}<br><span class="muted">{{ n.summary }}</span>{% endif %}</li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+  </ol>
+</article>

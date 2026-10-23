@@ -1,0 +1,8 @@
+---
+permalink: /css/types.css
+eleventyExcludeFromCollections: true
+---
+{#- Hue: equal spacing over the sorted types. Even/odd positions use different lightness/chroma (a middle tone breaks the tie at the wrap). Glyph: inferred from the name. -#}
+{% set all = collections.graph | types %}{% for t in all %}{% set tone = loop.index0 | typeTone(all.length) %}.type-{{ t | typeKey }} { --h: {{ loop.index0 | typeHue(all.length) }}; --tl: var(--l-{{ tone }}); --tc: var(--c-{{ tone }}); }
+.chip.type-{{ t | typeKey }}::before { content: "{{ t | typeGlyph }}\FE0E\00A0"; }
+{% endfor %}
