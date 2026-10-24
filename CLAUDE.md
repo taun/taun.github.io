@@ -26,7 +26,7 @@ A static site where every page is a **node** (`src/nodes/*.md`), and the views a
 - **Dates**: a year alone (`date: 2021` or `"2021"`) is converted by the custom front matter parser in `eleventy.config.js` to `2021-01-01` with `datePrecision: year`. Without this Eleventy rejects numeric dates. Undated nodes sort last; in the graph they float toward the dated nodes they connect to. The graph orders nodes left to right by date rank (not proportional time) with a "by date" toggle.
 - **Media**: optional `video:`, `archive:`, `slides:`, `repo:` front matter. `lib/media.js` classifies video URLs (YouTube becomes a click-to-load `youtube-nocookie` embed via `src/js/video.js`, `.mp4`/`.webm` becomes a `<video>`, anything else is a link). External links get an arrow icon and open in a new tab.
 - **Client scripts** in `src/js/` are dependency-free and copied as-is. `graph.js` is a small force simulation drawn as SVG. `list.js` filters the list by text and type chips.
-- Regular pages (About, Contact, 404) are in `src/pages/`; the footer links come from `src/_data/site.json`.
+- Regular pages (currently just 404) are in `src/pages/`; the footer links come from `src/_data/site.json`.
 - `markdownTemplateEngine` is `false`, so `{{ }}` and `{% %}` in Markdown stay literal; Nunjucks is only used in `.njk` files.
 
 ## Conventions
