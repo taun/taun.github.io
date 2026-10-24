@@ -27,7 +27,7 @@ Write the page in Markdown.
 - A `gallery:` list in front matter (`url`, `image_path`, `alt`) renders a thumbnail gallery; `galleryCaption:` adds a caption.
 - **Types need no setup.** Filter chips, colors and glyphs are derived from the `type:` values in use. Talks are nodes with `type: talk`; the Talks page groups them by the organization node they link to.
 - **Video:** a YouTube `video:` becomes a click-to-load embed on the node page; an `.mp4`/`.webm` URL becomes a player; other URLs are links. `archive:` is your own copy.
-- Regular pages (About, Contact, 404) are in `src/pages/`.
+- Regular pages (currently just 404) are in `src/pages/`.
 - The blog list (home), CV, talks and connections views all update automatically from the nodes. Nothing else to maintain.
 
 ## Run locally
@@ -51,7 +51,7 @@ Tip: do the first push on a branch and check the Actions run before switching Pa
 | Path | What |
 |---|---|
 | `src/nodes/` | All node pages |
-| `src/pages/` | About, Contact, 404 |
+| `src/pages/` | 404 |
 | `src/_includes/` | Page layouts |
 | `src/css/site.css`, `src/js/` | Styling, graph, list and video scripts (no dependencies) |
 | `src/_data/site.json` | Site title, tagline, footer links |
