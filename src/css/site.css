@@ -88,6 +88,10 @@ input[type="search"] { width: 100%; padding: .5rem .7rem; font: inherit; color: 
 .hero-banner::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / .65), rgb(0 0 0 / .05) 70%); }
 .hero-banner .hero-inner { position: relative; width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 1rem 1rem; color: #fff; }
 .hero-banner h1, .hero-banner p { color: #fff; text-shadow: 0 1px 6px rgb(0 0 0 / .6); }
+/* The banner has a fixed height, so a wrapped name would push up out of the image: keep it on one line and elide the middle, keeping the last word whole. */
+.hero-banner h1 { display: flex; min-width: 0; }
+.hero-banner .trunc-head { white-space: pre; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.hero-banner .trunc-tail { white-space: nowrap; flex-shrink: 0; }
 #graph marker path { fill: var(--muted); }
 #graph .edge-label { display: none; fill: var(--fg); font-size: 11px; text-anchor: middle; paint-order: stroke; stroke: var(--bg); stroke-width: 3px; pointer-events: none; }
 #graph .edge-label.on { display: inline; }
