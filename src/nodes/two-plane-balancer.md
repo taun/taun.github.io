@@ -4,7 +4,7 @@ type: project
 date: 1990-01-01
 datePrecision: year
 tags: [creo, automation, hardware, software]
-links: [creo]
+links: []
 header:
   image: /assets/images/hp_signal_analyzer@2x.png
   teaser: /assets/images/hp_signal_analyzer.png
