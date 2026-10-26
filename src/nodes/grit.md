@@ -1,7 +1,7 @@
 ---
 title: "Grit"
 type: post
-tags: []
+tags: [book-review]
 links: []
 summary: "A book review"
 draft: true
