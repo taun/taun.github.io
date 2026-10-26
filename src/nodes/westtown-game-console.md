@@ -1,6 +1,6 @@
 ---
 title: "Westtown Game Console"
-type: thing
+type: project
 date: 1980-12-25
 tags: [fun]
 links: [waveform-synthesizer]

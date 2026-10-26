@@ -4,7 +4,7 @@ type: post
 date: 2013-04-13
 summary: "A visual diagram of app delegate callback sequence for iOS applications."
 tags: [ios, cocoa]
-links: []
+links: [{ to: moedae-com, rel: part-of }]
 galleryCaption: "iOS App Delegate Timeline png & pdf"
 gallery:
   - url: /assets/images/blog/ios-appdelegate-timeline.png

@@ -4,7 +4,7 @@ type: post
 date: 2018-02-11
 summary: "Many of the sites hosting this history of flash are gone. I have copied it here so it will not disappear."
 tags: [autolayout, apple, tech-gems]
-links: []
+links: [{ to: cocoaheads, rel: part-of }]
 galleryCaption: "My personal copy of Intellidraw 2.0"
 gallery:
   - url: /assets/images/blog/IntelliDraw-Box-Front.jpg

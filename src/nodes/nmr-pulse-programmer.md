@@ -1,6 +1,6 @@
 ---
 title: "NMR Pulse Programmer Interface"
-type: work
+type: cv
 date: 1991-01-01
 datePrecision: year
 tags: [moedae, automation, hardware, software]
