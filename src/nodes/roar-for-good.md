@@ -1,9 +1,9 @@
 ---
 title: "ROAR for Good"
-type: work
+type: cv
 date: 2017-05-20
 tags: []
-links: [roar2]
+links: [{ to: roar2, rel: founded }]
 ---
 
 

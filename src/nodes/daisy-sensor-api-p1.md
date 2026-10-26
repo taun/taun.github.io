@@ -4,7 +4,7 @@ type: post
 date: 2017-08-27
 summary: "An Overview of the Daisy Sensor Bluetooth Low Energy API and specification."
 tags: [ble, bluetooth, api, daisy]
-links: [daisy-sensor]
+links: []
 header:
   image: /assets/images/blog/DaisySensorImage.jpg
   image_description: "A description of the image"

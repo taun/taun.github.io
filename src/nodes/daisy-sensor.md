@@ -1,9 +1,10 @@
 ---
 title: "Digital Spring, Daisy Sensor"
-type: work
+type: cv
 date: 2014
 tags: [ble, ios]
-links: [daisy-sensor-api-p1]
+links: [{ to: daisy-sensor-api-p1, rel: part-of }, roar-for-good]
+draft: true
 ---
 
 

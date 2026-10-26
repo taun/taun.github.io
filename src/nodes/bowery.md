@@ -1,9 +1,10 @@
 ---
 title: "Bowery Farming"
 type: cv
-date: 2017-05-20
+date: 2022-01-01
 tags: [nerves, elixir, hardware, software]
-links: [roar2]
+links: [fellowes-array]
+datePrecision: year
 ---
 
 
