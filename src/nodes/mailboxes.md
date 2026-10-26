@@ -5,7 +5,7 @@ date: 2015-01-01
 datePrecision: year
 summary: "An IMAP mail client that keeps your important mail front and center"
 tags: []
-links: []
+links: [{ to: moedae-com, rel: part-of }]
 video: https://vimeo.com/129689919
 repo: https://github.com/taun/MailBoxesApp
 galleryCaption: "Prototype UI showing four mail portals, landscape & portrait"

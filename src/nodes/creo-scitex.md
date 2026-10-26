@@ -3,7 +3,7 @@ title: "CreoScitex"
 type: company
 date: 2000
 tags: []
-links: [moedae-com, michel]
+links: [moedae-com, general-fusion]
 ---
 
 [Merger](https://www.nagasa.org/industrynews/424.html)

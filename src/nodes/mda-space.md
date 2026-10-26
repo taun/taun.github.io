@@ -4,7 +4,7 @@ type: company
 date: 1969
 datePrecision: year
 tags: [connections]
-links: [ken-spencer, dan-gelbart]
+links: [{ to: ken-spencer, rel: worked-at }, { to: dan-gelbart, rel: worked-at }]
 ---
 
 [MDA Space](https://en.wikipedia.org/wiki/MDA_Space)

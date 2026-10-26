@@ -4,7 +4,7 @@ type: post
 date: 2015-09-22
 summary: "A focus on the technical aspects of Smalltalk with a live demo of a modern Smalltalk system showing how Smalltalk removes many of the pain points programmers experience everyday"
 tags: [presentation, smalltalk, apple, objective-c, next, cocoaheads]
-links: []
+links: [{ to: moedae-com, rel: part-of }]
 ---
 
 ## [Philly CocoaHeads talk](http://phillycocoa.org/2015/09/)

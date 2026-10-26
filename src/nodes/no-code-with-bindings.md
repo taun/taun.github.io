@@ -3,7 +3,7 @@ title: "Bindings, the Best Code is the Code Not Written"
 type: post
 summary: "Using Cocoa bindings reduces the glue code you once had to write to connect a view to its underlying model."
 tags: [presentation, musing, macos, bindings, nocode]
-links: []
+links: [{ to: bindings-talk, rel: part-of }]
 date: 2016-07-22
 ---
 
