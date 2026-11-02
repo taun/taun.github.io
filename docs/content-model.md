@@ -57,6 +57,22 @@ Unknown keys are ignored by the build. **Writers must preserve keys they do not 
 
 The build computes incoming links, undirected neighbors, the display date label (`2021` for year precision), media kind, the type glyph and color, and the URL. Editors may compute them for display but must never write them into a file.
 
+## Editor state files (Breezy only)
+
+`.breezy/nodes/<slug>.json`, one per node, written only by Breezy: the editing state of that node (tab, mode, cursor) and its unpublished body draft, so they follow the node from one device to another. They are outside `src`, so the build never reads, copies or publishes them, and a push that changes only them does not deploy the site (`paths-ignore` in `.github/workflows/deploy.yml`). The repository is public, so they can be read on GitHub.
+
+```json
+{
+  "version": 1,
+  "editor": { "tab": "body", "mode": "draft", "selection": [1204, 1204] },
+  "draft": { "text": "…", "base": "<git blob sha of the body the draft started from>" }
+}
+```
+
+- **Keys:** `editor.tab` is `title`, `date`, `links`, `media` or `body`; `editor.mode` is `edit`, `draft` or `preview`; `editor.selection` is `[start, end]` in UTF-16 offsets into the body; `draft` is absent when there is no draft. Every key is optional except `version`.
+- **Compatibility:** writers keep keys they do not understand and never lower `version`. A file that does not parse is treated as absent.
+- **Lifecycle:** deleted together with its node. A node without one simply has no saved state. Other tools can ignore these files.
+
 ## Assets
 
 Files live in `src/assets/` (`images/`, `presentations/`, `sounds/`) and are referenced by absolute path from the site root: `/assets/images/name.jpg`. They are copied unchanged.

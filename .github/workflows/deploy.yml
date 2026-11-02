@@ -3,6 +3,8 @@ name: Deploy site
 on:
   push:
     branches: [main]
+    # Breezy's editor state (docs/content-model.md): never part of the site.
+    paths-ignore: ['.breezy/**']
   workflow_dispatch:
 
 permissions:
