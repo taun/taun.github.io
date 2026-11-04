@@ -1,6 +1,6 @@
 ---
 title: "Digital waveform synthesizer for music"
-type: project
+type: cv
 date: 1980-01-01
 datePrecision: year
 tags: [hardware, software, music]

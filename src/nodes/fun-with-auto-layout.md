@@ -3,7 +3,7 @@ title: "Fun with auto layout"
 type: post
 summary: "Fun in the sense of `great difficulties and mysteries.`"
 tags: [autolayout, cocoa, fix]
-links: []
+links: [{ to: moedae-com, rel: part-of }]
 date: 2012-12-08
 ---
 

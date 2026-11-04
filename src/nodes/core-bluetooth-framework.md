@@ -3,7 +3,7 @@ title: "CoreBluetooth Class Summary"
 type: post
 summary: "A visual layout of all the iOS CoreBluetooth classes and their relationships."
 tags: [presentation, corebluetooth, ios]
-links: []
+links: [{ to: daisy-sensor, rel: part-of }]
 galleryCaption: "Apple CoreBluetooth API"
 date: 2015-11-22
 gallery:
