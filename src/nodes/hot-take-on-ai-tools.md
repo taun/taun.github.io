@@ -4,7 +4,6 @@ type: post
 tags: []
 links: []
 summary: "It’s about the output not the ingredients"
-draft: true
 date: 2026-11-04
 ---
 
