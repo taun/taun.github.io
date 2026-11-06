@@ -7,7 +7,8 @@
     { "label": "Home", "icon": "home", "query": "" },
     { "label": "Talks", "query": "view=list&type=talk&hero=0" },
     { "label": "CV", "query": "view=timeline&hero=0" },
-    { "label": "Connections", "query": "view=connections&hero=0" }
+    { "label": "Connections", "query": "view=connections&hero=0" },
+    { "label": "Reviews", "query": "view=shelf&type=review&hero=0" }
   ],
   "links": [
     { "label": "GitHub", "url": "https://github.com/taun" },
