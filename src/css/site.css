@@ -92,6 +92,14 @@ input[type="search"] { width: 100%; padding: .5rem .7rem; font: inherit; color: 
 .hero-banner h1 { display: flex; min-width: 0; }
 .hero-banner .trunc-head { white-space: pre; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .hero-banner .trunc-tail { white-space: nowrap; flex-shrink: 0; }
+/* site.hero "top": a text-free image above the header, with the header and footer at the content width. */
+.hero-image { display: block; width: 100%; height: clamp(10rem, 24vw, 16rem); object-fit: cover; object-position: center 60%; }
+.hero-top .site-header, .hero-top .site-footer { max-width: var(--max); margin-left: auto; margin-right: auto; }
+.hero-top .site-footer { justify-content: center; }
+.hero-top .brand { margin: 0; font-size: 1.5rem; line-height: 1.2; }
+.brand a { color: inherit; text-decoration: none; }
+/* Its own row above the links. */
+.site-footer .tagline { flex-basis: 100%; margin: 0; color: var(--muted); font-size: .9rem; text-align: center; }
 #graph marker path { fill: var(--muted); }
 #graph .edge-label { display: none; fill: var(--fg); font-size: 11px; text-anchor: middle; paint-order: stroke; stroke: var(--bg); stroke-width: 3px; pointer-events: none; }
 #graph .edge-label.on { display: inline; }

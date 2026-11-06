@@ -2,7 +2,9 @@
 layout: base.njk
 bodyClass: home
 scripts: ["/js/list.js"]
+hero: true
 ---
+{% if site.hero != "top" %}
 <section class="hero{% if header and header.image %} hero-banner{% endif %}"{% if header and header.image %} style="background-image: url('{{ header.image }}')"{% endif %}>
   <div class="hero-inner">
     {% set cut = site.title.lastIndexOf(" ") + 1 %}
@@ -10,6 +12,7 @@ scripts: ["/js/list.js"]
     <p>{{ site.tagline }}</p>
   </div>
 </section>
+{% endif %}
 <section class="prose welcome">
   {{ content | safe }}
 </section>

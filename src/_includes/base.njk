@@ -8,9 +8,12 @@
   <link rel="stylesheet" href="/css/site.css">
   <link rel="stylesheet" href="/css/types.css">
 </head>
-<body class="{{ bodyClass }}">
+{# site.hero "top": the home image (no text) goes above the header, the site title is the home page's h1, and the tagline moves to the footer. #}
+{% set heroTop = site.hero == "top" %}
+<body class="{{ bodyClass }}{% if heroTop %} hero-top{% endif %}">
+  {% if heroTop and hero and header and header.image %}<img class="hero-image" src="{{ header.image }}" alt="">{% endif %}
   <header class="site-header">
-    <a class="brand" href="/">{{ site.title }}</a>
+    {% if heroTop and hero %}<h1 class="brand"><a href="/">{{ site.title }}</a></h1>{% else %}<a class="brand" href="/">{{ site.title }}</a>{% endif %}
     <nav aria-label="Main">
       <a href="/">Blog</a>
       <a href="/talks/">Talks</a>
@@ -22,6 +25,7 @@
     {{ content | safe }}
   </main>
   <footer class="site-footer">
+    {% if heroTop %}<p class="tagline">{{ site.tagline }}</p>{% endif %}
     {% for l in site.links %}<a href="{{ l.url }}" rel="me">{{ l.label }}</a>{% endfor %}
   </footer>
   {% if scripts %}{% for s in scripts %}<script src="{{ s }}" defer></script>{% endfor %}{% endif %}

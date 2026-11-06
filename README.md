@@ -54,8 +54,13 @@ Tip: do the first push on a branch and check the Actions run before switching Pa
 | `src/pages/` | 404 |
 | `src/_includes/` | Page layouts |
 | `src/css/site.css`, `src/js/` | Styling, graph, list and video scripts (no dependencies) |
-| `src/_data/site.json` | Site title, tagline, footer links |
+| `src/_data/site.json` | Site title, tagline, footer links, and `hero` (home banner style, below) |
 | `lib/` | `graph.js` builds nodes and connections from front matter; also relations, glyphs, media |
+
+The home banner image is `header.image` in `src/index.md`. `hero` in `site.json` sets how it is shown:
+
+- `"overlay"` (the default when absent): the header bar is at the top, and the site title and tagline are drawn over the image below it.
+- `"top"`: the image, with no text, is at the very top of the home page, above the header. The site title in the header is the home page's heading, the header and footer use the content width, and the footer on every page shows the tagline centered above the centered footer links.
 
 ## Migration notes
 
