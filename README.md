@@ -42,7 +42,7 @@ The home page is the only list page. Its query picks what it shows:
 | `q` | text to find in titles and tags (the header search) | none |
 | `hero` | `0` hides the hero image and welcome text | shown |
 
-A node matches when it has any of the chosen types and any of the chosen tags (and the text, if given). Lists hide the rest; the graph dims them. The controls on the page change the query, so any view can be bookmarked or shared, and a node page's type and tags link to the matching filter.
+A node matches when it has any of the chosen types and any of the chosen tags (and the text, if given). Lists and the graph hide the rest, and the graph lays out just the matches; its "neighbors" checkbox adds the nodes they link to, drawn smaller, so their connections show. The controls on the page change the query, so any view can be bookmarked or shared, and a node page's type and tags link to the matching filter.
 
 Search is the magnifier at the end of the menu. On the home page it filters the current view as you type, within any type and tag filters already set, and the view and filter controls are hidden while it is open to leave room for the results; Escape clears and closes it. On other pages, Enter goes to the home list with `q=` and the hero hidden.
 

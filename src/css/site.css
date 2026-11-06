@@ -72,7 +72,10 @@ input[type="search"] { width: 100%; padding: .5rem .7rem; font: inherit; color: 
 #graph .node:focus circle { stroke: var(--fg); }
 #graph.hl .node:not(.on) { opacity: .25; }
 #graph.hl .edges line:not(.on) { opacity: .15; }
-#graph .dim { opacity: .15; }
+#graph .hidden { display: none; }
+/* Neighbors shown as context for the filtered nodes: smaller, label muted. */
+#graph .node.context circle, #graph .node.context .glyph { transform: scale(.65); }
+#graph .node.context text:not(.glyph) { fill: var(--muted); }
 @media (max-width: 600px) { body { font-size: 16px; } #graph .node text { font-size: 11px; } }
 .media-links { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; font-weight: 600; }
 .media-links a { text-decoration: none; }

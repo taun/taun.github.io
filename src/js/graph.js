@@ -99,17 +99,25 @@
     }
   }
 
-  // Date layout: x is the rank of the node's date among all distinct dates, so spacing is even, not proportional.
-  // Undated nodes (organizations, groups...) have no column: they float horizontally, drawn toward the dated
-  // nodes they connect to (e.g. CocoaHeads sits among its talks).
-  const dates = [...new Set(nodes.map((n) => n.date).filter(Boolean))].sort();
-  const rankOf = new Map(dates.map((d, i) => [d, i]));
-  for (const n of nodes) n.datedNbrs = n.date ? [] : n.links.map((s) => bySlug.get(s)).filter((m) => m && m.date);
+  // Only the nodes the home page filters leave in are laid out and drawn (see setShown below).
+  let shown = nodes, shownLinks = links, shownTagLinks = tagLinks;
+
+  // Date layout: x is the rank of the node's date among the shown nodes' distinct dates, so spacing is even, not
+  // proportional. Undated nodes (organizations, groups...) have no column: they float horizontally, drawn toward the
+  // dated nodes they connect to (e.g. CocoaHeads sits among its talks).
+  let dates = [], rankOf = new Map();
+  function setDates() {
+    dates = [...new Set(shown.map((n) => n.date).filter(Boolean))].sort();
+    rankOf = new Map(dates.map((d, i) => [d, i]));
+    const on = new Set(shown);
+    for (const n of shown) n.datedNbrs = n.date ? [] : n.links.map((s) => bySlug.get(s)).filter((m) => on.has(m) && m.date);
+  }
+  setDates();
   function layoutTargets() {
     const left = 36;
     const datedMax = Math.max(left + 120, W - 170);
     const step = dates.length > 1 ? (datedMax - left) / (dates.length - 1) : 0;
-    for (const n of nodes) n.tx = n.date ? left + rankOf.get(n.date) * step : null;
+    for (const n of shown) n.tx = n.date ? left + rankOf.get(n.date) * step : null;
     // Year ticks at the first column of each year; skip ticks that would crowd the previous label.
     gAxis.replaceChildren();
     let lastX = -Infinity, lastYear = null;
@@ -127,7 +135,7 @@
   let alpha = 1;
   function tick() {
     const cx = W / 2, cy = H / 2;
-    for (const n of nodes) {
+    for (const n of shown) {
       if (byDate) {
         if (n.date) n.vx += (n.tx - n.x) * 0.1;
         else if (n.datedNbrs.length) n.vx += (n.datedNbrs.reduce((sum, m) => sum + m.x, 0) / n.datedNbrs.length - n.x) * 0.05;
@@ -135,9 +143,9 @@
       } else n.vx += (cx - n.x) * 0.0035 * alpha;
       n.vy += (cy - n.y) * 0.0045 * alpha;
     }
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const a = nodes[i], b = nodes[j];
+    for (let i = 0; i < shown.length; i++) {
+      for (let j = i + 1; j < shown.length; j++) {
+        const a = shown[i], b = shown[j];
         let dx = b.x - a.x, dy = b.y - a.y;
         let d2 = dx * dx + dy * dy || 0.01;
         const d = Math.sqrt(d2);
@@ -147,7 +155,7 @@
         b.vx += dx * f; b.vy += dy * f;
       }
     }
-    for (const { a, b } of links) {
+    for (const { a, b } of shownLinks) {
       const dx = b.x - a.x, dy = b.y - a.y;
       const d = Math.sqrt(dx * dx + dy * dy) || 0.01;
       // By date, x belongs to the date: links only pull their ends level vertically.
@@ -155,7 +163,7 @@
       const fx = byDate ? 0 : (dx / d) * f, fy = byDate ? f : (dy / d) * f;
       a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
     }
-    for (const n of nodes) {
+    for (const n of shown) {
       if (n.fixed) { n.vx = n.vy = 0; continue; }
       n.vx *= 0.8; n.vy *= 0.8;
       n.x = Math.max(n.r + 4, Math.min(W - 150, n.x + n.vx)); // leave room for the label
@@ -165,8 +173,8 @@
   }
 
   function draw() {
-    for (const n of nodes) n.el.setAttribute('transform', `translate(${n.x.toFixed(1)},${n.y.toFixed(1)})`);
-    for (const l of [...links, ...tagLinks]) {
+    for (const n of shown) n.el.setAttribute('transform', `translate(${n.x.toFixed(1)},${n.y.toFixed(1)})`);
+    for (const l of [...shownLinks, ...shownTagLinks]) {
       // Stop arrow-ended lines at the circle's edge so the arrowhead is not hidden under the node.
       const dx = l.b.x - l.a.x, dy = l.b.y - l.a.y;
       const d = Math.sqrt(dx * dx + dy * dy) || 1;
@@ -221,16 +229,30 @@
   }
 
   // Controls
-  // The home page filters (view.js) send the slugs that match; the rest are dimmed, keeping the layout.
-  document.addEventListener('nodefilter', (e) => {
-    const on = e.detail;
-    for (const n of nodes) n.el.classList.toggle('dim', !on.has(n.slug));
-    for (const l of [...links, ...tagLinks]) {
-      const dim = !on.has(l.a.slug) || !on.has(l.b.slug);
-      l.el.classList.toggle('dim', dim);
-      l.lab?.classList.toggle('dim', dim);
+  // The home page filters (view.js) send the slugs that match. Only those are shown and laid out again, plus, with
+  // "neighbors" checked, the nodes they link to (drawn smaller, as context).
+  let match = new Set(nodes.map((n) => n.slug));
+  const nbrToggle = document.getElementById('show-neighbors');
+  function setShown() {
+    const on = new Set(nodes.filter((n) => match.has(n.slug)));
+    if (nbrToggle?.checked) for (const n of [...on]) for (const s of n.links) on.add(bySlug.get(s));
+    shown = nodes.filter((n) => on.has(n));
+    shownLinks = links.filter((l) => on.has(l.a) && on.has(l.b));
+    shownTagLinks = tagLinks.filter((l) => on.has(l.a) && on.has(l.b));
+    for (const n of nodes) {
+      n.el.classList.toggle('hidden', !on.has(n));
+      n.el.classList.toggle('context', on.has(n) && !match.has(n.slug));
     }
-  });
+    for (const l of [...links, ...tagLinks]) {
+      const hide = !on.has(l.a) || !on.has(l.b);
+      l.el.classList.toggle('hidden', hide);
+      l.lab?.classList.toggle('hidden', hide);
+    }
+    setDates();
+    if (started) { layoutTargets(); reheat(0.8); }
+  }
+  document.addEventListener('nodefilter', (e) => { match = e.detail; setShown(); });
+  nbrToggle?.addEventListener('change', setShown);
   const dateToggle = document.getElementById('by-date');
   const setLayout = () => {
     byDate = !dateToggle || dateToggle.checked;
