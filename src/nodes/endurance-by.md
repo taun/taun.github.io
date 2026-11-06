@@ -1,6 +1,6 @@
 ---
 title: "Endurance by …"
-type: post
+type: review
 tags: [book-review]
 links: []
 summary: "Book review"
