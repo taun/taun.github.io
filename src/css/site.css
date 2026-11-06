@@ -19,6 +19,7 @@ img { max-width: 100%; height: auto; }
 .site-header nav { display: flex; flex-wrap: wrap; gap: 1rem; }
 .site-header nav a { color: var(--muted); text-decoration: none; }
 .site-header nav a:hover { color: var(--fg); }
+.site-header nav a[aria-current] { color: var(--fg); box-shadow: 0 2px 0 currentColor; }
 .site-header nav .icon-link { display: inline-flex; padding: .15rem; }
 .site-footer { padding: 1.5rem 1rem; border-top: 1px solid var(--line); display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 3rem; }
 .prose { max-width: var(--max); margin: 1.5rem auto; padding: 0 1rem; }

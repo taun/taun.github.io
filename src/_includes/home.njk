@@ -40,20 +40,15 @@ hero: true
 </div>
 
 <article class="prose view view-list">
-  {% for g in collections.graph | byFiveYears %}
-  <section class="group">
-    <h2>{{ g.label }}</h2>
-    <ul class="cards">
-      {% for n in g.items %}
-      <li data-slug="{{ n.slug }}">
-        <a href="{{ n.url }}"><span class="chip type-{{ n.typeKey }}">{{ n.type }}</span> {{ n.title }}</a>
-        {% if n.dateLabel %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
-        {% include "item-media.njk" %}
-      </li>
-      {% endfor %}
-    </ul>
-  </section>
-  {% endfor %}
+  <ul class="cards">
+    {% for n in collections.graph | newestFirst %}
+    <li data-slug="{{ n.slug }}">
+      <a href="{{ n.url }}"><span class="chip type-{{ n.typeKey }}">{{ n.type }}</span> {{ n.title }}</a>
+      {% if n.dateLabel %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
+      {% include "item-media.njk" %}
+    </li>
+    {% endfor %}
+  </ul>
 </article>
 
 <article class="prose view view-timeline">

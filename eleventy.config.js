@@ -54,25 +54,6 @@ export default function (eleventyConfig) {
       .sort(([a], [b]) => (a === 'Undated') - (b === 'Undated') || b.localeCompare(a))
       .map(([label, items]) => ({ label, items: items.sort(newestFirst) }));
   });
-  // Newest first, grouped into 5-year spans aligned to multiples of 5 (2015–2019); undated last.
-  // A span never ends in the future: the current one ends this year (2025–2026), or at its newest node if later.
-  eleventyConfig.addFilter('byFiveYears', (list) => {
-    const thisYear = new Date().getFullYear();
-    const groups = new Map();
-    for (const n of list) {
-      const start = n.date ? Math.floor(Number(n.date.slice(0, 4)) / 5) * 5 : null;
-      if (!groups.has(start)) groups.set(start, []);
-      groups.get(start).push(n);
-    }
-    return [...groups]
-      .sort(([a], [b]) => (a === null) - (b === null) || b - a)
-      .map(([start, items]) => {
-        if (start === null) return { label: 'Undated', items: items.sort(newestFirst) };
-        const newest = Math.max(...items.map((n) => Number(n.date.slice(0, 4))));
-        const end = Math.min(start + 4, Math.max(thisYear, newest));
-        return { label: end === start ? `${start}` : `${start}–${end}`, items: items.sort(newestFirst) };
-      });
-  });
   eleventyConfig.addFilter('year', (iso) => (iso ? String(iso).slice(0, 4) : ''));
 
   return {

@@ -36,7 +36,7 @@ The home page is the only list page. Its query picks what it shows:
 
 | Parameter | Values | Default |
 |---|---|---|
-| `view` | `list` (grouped by five years), `timeline` (by year, with summaries), `connections` (graph), `shelf` (bookshelf: each node's `header.teaser` image, or a spine in its type color, newest first) | `list` |
+| `view` | `list` (newest first, each with its date), `timeline` (by year, with summaries), `connections` (graph), `shelf` (bookshelf: each node's `header.teaser` image, or a spine in its type color, newest first) | `list` |
 | `type` | a node type; repeat for more (`type=talk&type=post`) | all types |
 | `tag` | a tag; repeat for more | all tags |
 | `q` | text to find in titles and tags (the header search) | none |
