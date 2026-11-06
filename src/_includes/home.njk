@@ -23,7 +23,6 @@ hero: true
     <button type="button" class="chip" data-view="timeline" aria-pressed="false">Timeline</button>
     <button type="button" class="chip" data-view="connections" aria-pressed="false">Connections</button>
   </p>
-  <p><input id="q" type="search" placeholder="Filter by title or tag" aria-label="Filter"></p>
   <p class="filters" role="group" aria-label="Types">
     {% for t in collections.graph | types %}
     <button type="button" class="chip type-{{ t | typeKey }}" data-type="{{ t }}" aria-pressed="false">{{ t }}</button>

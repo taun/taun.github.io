@@ -61,9 +61,11 @@
     for (const b of tagChips) b.setAttribute('aria-pressed', state.tags.has(b.dataset.tag));
     if (state.tags.size) tagBox.open = true;
     if (q.value !== state.text) q.value = state.text;
+    if (state.text) root.classList.add('searching');
+    else if (document.activeElement !== q) root.classList.remove('searching');
 
-    // The menu entry whose query is this state is the current page.
-    const here = write(state);
+    // The menu entry whose query is this state is the current page (a search stays within it).
+    const here = write({ ...state, text: '' });
     let label = '';
     for (const a of menu) {
       const current = a.pathname === location.pathname && write(read(a.search)) === here;
@@ -81,6 +83,7 @@
   const toggle = (set, v) => { const s = new Set(set); s.has(v) ? s.delete(v) : s.add(v); return s; };
 
   q.addEventListener('input', () => update({ text: q.value }));
+  q.form.addEventListener('submit', (e) => e.preventDefault()); // the header search filters in place here
   typeChips.forEach((b) => b.addEventListener('click', () => update({ types: toggle(state.types, b.dataset.type) })));
   tagChips.forEach((b) => b.addEventListener('click', () => update({ tags: toggle(state.tags, b.dataset.tag) })));
   viewButtons.forEach((b) => b.addEventListener('click', () => update({ view: b.dataset.view }, true)));

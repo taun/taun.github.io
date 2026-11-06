@@ -106,6 +106,16 @@ input[type="search"] { width: 100%; padding: .5rem .7rem; font: inherit; color: 
 html[data-view]:not([data-view="list"]) .view-list { display: none; }
 html[data-view="timeline"] .view-timeline, html[data-view="connections"] .view-connections { display: block; }
 .no-hero .hero-image, .no-hero .hero, .no-hero .welcome { display: none; }
+/* Header search (search.js): while "searching" the field opens over the menu links, left of the icon, so the header
+   keeps its layout; the home page's controls step aside for the results. */
+.site-header nav { align-items: center; }
+.search { position: relative; display: flex; align-items: center; margin: 0; }
+.search input[type="search"] { display: none; position: absolute; right: calc(100% + .4rem); top: 50%; transform: translateY(-50%); width: 15rem; padding: .25rem .6rem; }
+.searching .search input[type="search"] { display: block; }
+.searching .site-header nav > a { visibility: hidden; }
+.search-toggle { display: inline-flex; padding: .15rem; border: 0; background: none; color: var(--muted); cursor: pointer; }
+.search-toggle:hover, .searching .search-toggle { color: var(--fg); }
+.searching .controls { display: none; }
 .controls .views, .controls .filters { display: flex; flex-wrap: wrap; gap: .4rem; }
 .controls .views .chip { font-size: .9rem; }
 .tag-filters summary { cursor: pointer; color: var(--muted); }

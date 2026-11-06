@@ -13,6 +13,7 @@
       const p = new URLSearchParams(location.search), r = document.documentElement;
       r.dataset.view = p.get('view') || 'list';
       if (/^(0|false)$/.test(p.get('hero') || '')) r.classList.add('no-hero');
+      if (p.get('q')) r.classList.add('searching');
     })();
   </script>{% endif %}
 </head>
@@ -25,6 +26,12 @@
     <nav aria-label="Main">
       {% for m in site.menu %}<a href="/{% if m.query %}?{{ m.query }}{% endif %}">{{ m.label }}</a>
       {% endfor %}
+      {# Search: opened by the icon (search.js). On the home page it filters live (view.js); elsewhere it submits to the home list. #}
+      <form class="search" action="/" method="get" role="search">
+        <input id="q" name="q" type="search" autocomplete="off" placeholder="Search titles and tags" aria-label="Search titles and tags">
+        <input type="hidden" name="hero" value="0">
+        <button type="button" class="search-toggle" aria-label="Search" aria-expanded="false" aria-controls="q"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
+      </form>
     </nav>
   </header>
   <main>
@@ -34,6 +41,7 @@
     {% if heroTop %}<p class="tagline">{{ site.tagline }}</p>{% endif %}
     {% for l in site.links %}<a href="{{ l.url }}" rel="me">{{ l.label }}</a>{% endfor %}
   </footer>
+  <script src="/js/search.js?v={{ buildStamp }}" defer></script>
   {% if scripts %}{% for s in scripts %}<script src="{{ s }}?v={{ buildStamp }}" defer></script>{% endfor %}{% endif %}
 </body>
 </html>
