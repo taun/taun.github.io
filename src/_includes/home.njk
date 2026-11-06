@@ -22,6 +22,7 @@ hero: true
     <button type="button" class="chip" data-view="list" aria-pressed="true">List</button>
     <button type="button" class="chip" data-view="timeline" aria-pressed="false">Timeline</button>
     <button type="button" class="chip" data-view="connections" aria-pressed="false">Connections</button>
+    <button type="button" class="chip" data-view="shelf" aria-pressed="false">Bookshelf</button>
   </p>
   <p class="filters" role="group" aria-label="Types">
     {% for t in collections.graph | types %}
@@ -76,3 +77,19 @@ hero: true
 <div class="view view-connections">
   {% include "graph-embed.njk" %}
 </div>
+
+{# Bookshelf: a node's header.teaser stands on the shelf at its own width; a node without one is a spine in its type color. #}
+<div class="prose view view-shelf">
+  <ul class="shelf">
+    {% for n in collections.graph | newestFirst %}
+    <li data-slug="{{ n.slug }}" class="{% if n.thumb %}cover{% else %}spine type-{{ n.typeKey }}{% endif %}">
+      <a href="{{ n.url }}" title="{{ n.title }}{% if n.dateLabel %} ({{ n.dateLabel }}){% endif %}">
+        {% if n.thumb %}<img src="{{ n.thumb }}" alt="" loading="lazy">{% else %}<span class="glyph" aria-hidden="true">{{ n.glyph }}&#xFE0E;</span>{% endif %}
+        <span class="shelf-title">{{ n.title }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<p class="prose muted empty" hidden>Nothing here matches the filters yet.</p>

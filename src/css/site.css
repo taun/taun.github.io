@@ -29,7 +29,8 @@ img { max-width: 100%; height: auto; }
 .align-left { float: left; margin: 0 1rem .5rem 0; }
 .align-right { float: right; margin: 0 0 .5rem 1rem; }
 .align-center { display: block; margin: 1rem auto; }
-.banner { width: 100%; max-height: 14rem; object-fit: cover; border-radius: 6px; }
+/* The whole image fits in the box (no cropping): wide banners fill it, tall ones (book covers) sit centered on a tint. */
+.banner { display: block; width: 100%; height: auto; max-height: 14rem; object-fit: contain; border-radius: 6px; background: color-mix(in srgb, var(--fg) 6%, transparent); }
 .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; color: var(--muted); font-size: .9rem; margin-bottom: 0; }
 .muted { color: var(--muted); font-size: .9rem; }
 .tag { color: var(--muted); }
@@ -106,9 +107,9 @@ input[type="search"] { width: 100%; padding: .5rem .7rem; font: inherit; color: 
 .brand a { color: inherit; text-decoration: none; }
 /* Its own row above the links. */
 /* Home views: <html data-view> is set from the query (base.njk, view.js). Without JavaScript only the list shows and the controls are hidden. */
-.view-timeline, .view-connections, html:not([data-view]) .controls { display: none; }
+.view-timeline, .view-connections, .view-shelf, html:not([data-view]) .controls { display: none; }
 html[data-view]:not([data-view="list"]) .view-list { display: none; }
-html[data-view="timeline"] .view-timeline, html[data-view="connections"] .view-connections { display: block; }
+html[data-view="timeline"] .view-timeline, html[data-view="connections"] .view-connections, html[data-view="shelf"] .view-shelf { display: block; }
 .no-hero .hero-image, .no-hero .hero, .no-hero .welcome { display: none; }
 /* Header search (search.js): while "searching" the field opens over the menu links, left of the icon, so the header
    keeps its layout; the home page's controls step aside for the results. */
@@ -124,6 +125,28 @@ html[data-view="timeline"] .view-timeline, html[data-view="connections"] .view-c
 .controls .views .chip { font-size: .9rem; }
 .tag-filters summary { cursor: pointer; color: var(--muted); }
 .view .group[hidden] { display: none; }
+/* Bookshelf: every slot is --shelf-h tall, so rows are evenly spaced and a repeating gradient draws one plank under
+   each. (Not --h: types.css uses that for the type hue, and spines carry type classes.) */
+.shelf {
+  --shelf-h: 9rem; --shelf-gap: 1.75rem; --shelf-plank: color-mix(in srgb, var(--fg) 28%, transparent);
+  list-style: none; margin: 1.5rem 0; padding: 0 0 6px; display: flex; flex-wrap: wrap; gap: var(--shelf-gap) .45rem;
+  background: repeating-linear-gradient(to bottom, transparent 0 var(--shelf-h), var(--shelf-plank) var(--shelf-h) calc(var(--shelf-h) + 6px), transparent calc(var(--shelf-h) + 6px) calc(var(--shelf-h) + var(--shelf-gap)));
+}
+.shelf li { height: var(--shelf-h); display: flex; align-items: flex-end; }
+.shelf li[hidden] { display: none; }
+.shelf a { position: relative; display: flex; text-decoration: none; height: 100%; }
+.shelf .cover img { height: 100%; width: auto; max-width: 16rem; object-fit: cover; border-radius: 2px; box-shadow: 0 1px 4px rgb(0 0 0 / .25); }
+/* Covers show their title over the bottom edge on hover/focus; spines always show it, set vertically. */
+.shelf .cover .shelf-title { position: absolute; inset: auto 0 0; padding: 1.2rem .4rem .3rem; font-size: .75rem; line-height: 1.2; color: #fff; background: linear-gradient(to top, rgb(0 0 0 / .75), transparent); opacity: 0; transition: opacity .15s; }
+.shelf .cover a:hover .shelf-title, .shelf .cover a:focus-visible .shelf-title { opacity: 1; }
+.shelf .spine a { color: inherit; flex-direction: column; align-items: center; gap: .35rem; width: 2.3rem; padding: .5rem 0; background: currentColor; border-radius: 2px 2px 0 0; box-shadow: inset -3px 0 0 rgb(0 0 0 / .12); }
+.shelf .spine:nth-child(3n) a { width: 2.7rem; height: 92%; }
+.shelf .spine:nth-child(5n) a { width: 2rem; height: 86%; }
+.shelf .spine .glyph, .shelf .spine .shelf-title { color: var(--bg); }
+.shelf .spine .glyph { font-size: .8rem; }
+.shelf .spine .shelf-title { writing-mode: vertical-rl; min-height: 0; flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .78rem; font-weight: 600; }
+.shelf .spine a:hover, .shelf .spine a:focus-visible { transform: translateY(-4px); }
+@media (max-width: 600px) { .shelf { --shelf-h: 7.5rem; } .shelf .cover img { max-width: 11rem; } }
 .site-footer .tagline { flex-basis: 100%; margin: 0; color: var(--muted); font-size: .9rem; text-align: center; }
 #graph marker path { fill: var(--muted); }
 #graph .edge-label { display: none; fill: var(--fg); font-size: 11px; text-anchor: middle; paint-order: stroke; stroke: var(--bg); stroke-width: 3px; pointer-events: none; }

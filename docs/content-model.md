@@ -28,7 +28,7 @@ Code that implements it: `lib/frontmatter.js` (dates), `lib/relations.js` (links
 | `archive` | URL | no | Own copy of the video; played inline if `video` is not playable. |
 | `slides` | path or URL | no | Usually `/assets/presentations/<file>.pdf`. |
 | `repo` | URL | no | Source link. |
-| `header` | `{image, teaser, image_description}` | no | `image` renders as a banner on the node page. |
+| `header` | `{image, teaser, image_description}` | no | `image` renders as a banner on the node page. `teaser` is the node's thumbnail on the home page's bookshelf view (shown at its own aspect ratio; nodes without one appear as a spine). `image_description` is not used yet. |
 | `gallery` | `{url, image_path, alt}[]` | no | Thumbnail gallery; `galleryCaption` (string) adds a caption. |
 
 Unknown keys are ignored by the build. **Writers must preserve keys they do not understand**, as well as their order, comments and formatting where possible, so that edits produce minimal diffs.

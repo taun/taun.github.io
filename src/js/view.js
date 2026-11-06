@@ -1,8 +1,8 @@
 // Home page views. The query picks the view and filters, e.g. /?view=timeline&type=talk&tag=ios&hero=0:
-// view (list, timeline, connections), type and tag (repeatable; any type and any tag must match), q (text), hero (0 hides).
+// view (list, timeline, connections, shelf), type and tag (repeatable; any type and any tag must match), q (text), hero (0 hides).
 // Every view is built at build time; this shows one, hides list items that do not match, and tells the graph which to dim.
 (() => {
-  const VIEWS = ['list', 'timeline', 'connections'];
+  const VIEWS = ['list', 'timeline', 'connections', 'shelf'];
   const root = document.documentElement;
   const data = JSON.parse(document.getElementById('graph-data').textContent);
   const q = document.getElementById('q');
@@ -12,6 +12,7 @@
   const tagBox = document.querySelector('.tag-filters');
   const items = [...document.querySelectorAll('.view [data-slug]')];
   const groups = [...document.querySelectorAll('.view .group')];
+  const empty = document.querySelector('.empty');
   const menu = [...document.querySelectorAll('.site-header nav a')];
   const siteTitle = document.querySelector('.brand').textContent.trim();
   const baseTitle = document.title;
@@ -54,6 +55,7 @@
     );
     for (const li of items) li.hidden = !shown.has(li.dataset.slug);
     for (const g of groups) g.hidden = !g.querySelector('[data-slug]:not([hidden])');
+    empty.hidden = shown.size > 0;
     document.dispatchEvent(new CustomEvent('nodefilter', { detail: shown }));
 
     for (const b of viewButtons) b.setAttribute('aria-pressed', b.dataset.view === state.view);

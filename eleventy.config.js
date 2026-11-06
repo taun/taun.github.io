@@ -41,6 +41,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('isImage', (url) => /\.(png|jpe?g|gif|webp|avif|svg)(\?.*)?$/i.test(String(url || '')));
   eleventyConfig.addFilter('typeGlyph', typeGlyph);
   eleventyConfig.addFilter('json', (v) => JSON.stringify(v).replace(/</g, '\\u003c'));
+  eleventyConfig.addFilter('newestFirst', (list) => [...list].sort(newestFirst));
   eleventyConfig.addFilter('byYear', (list) => {
     const groups = new Map();
     for (const n of list) {
