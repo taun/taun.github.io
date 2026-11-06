@@ -5,8 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if title %}{{ title }} · {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ summary or site.tagline }}">
-  <link rel="stylesheet" href="/css/site.css">
-  <link rel="stylesheet" href="/css/types.css">
+  <link rel="stylesheet" href="/css/site.css?v={{ buildStamp }}">
+  <link rel="stylesheet" href="/css/types.css?v={{ buildStamp }}">
+  {% if hero %}<script>
+    // Apply the query's view and hero before first paint so the page does not flash the default view (view.js does the rest).
+    (() => {
+      const p = new URLSearchParams(location.search), r = document.documentElement;
+      r.dataset.view = p.get('view') || 'list';
+      if (/^(0|false)$/.test(p.get('hero') || '')) r.classList.add('no-hero');
+    })();
+  </script>{% endif %}
 </head>
 {# site.hero "top": the home image (no text) goes above the header, the site title is the home page's h1, and the tagline moves to the footer. #}
 {% set heroTop = site.hero == "top" %}
@@ -15,10 +23,8 @@
   <header class="site-header">
     {% if heroTop and hero %}<h1 class="brand"><a href="/">{{ site.title }}</a></h1>{% else %}<a class="brand" href="/">{{ site.title }}</a>{% endif %}
     <nav aria-label="Main">
-      <a href="/">Blog</a>
-      <a href="/talks/">Talks</a>
-      <a href="/cv/">CV</a>
-      <a href="/connections/">Connections</a>
+      {% for m in site.menu %}<a href="/{% if m.query %}?{{ m.query }}{% endif %}">{{ m.label }}</a>
+      {% endfor %}
     </nav>
   </header>
   <main>
@@ -28,6 +34,6 @@
     {% if heroTop %}<p class="tagline">{{ site.tagline }}</p>{% endif %}
     {% for l in site.links %}<a href="{{ l.url }}" rel="me">{{ l.label }}</a>{% endfor %}
   </footer>
-  {% if scripts %}{% for s in scripts %}<script src="{{ s }}" defer></script>{% endfor %}{% endif %}
+  {% if scripts %}{% for s in scripts %}<script src="{{ s }}?v={{ buildStamp }}" defer></script>{% endfor %}{% endif %}
 </body>
 </html>

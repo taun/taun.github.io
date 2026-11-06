@@ -6,9 +6,9 @@ layout: base.njk
 <article class="prose node">
   {% if header and header.image %}<img class="banner" src="{{ header.image }}" alt="">{% endif %}
   <p class="meta">
-    {% if rec %}<span class="chip type-{{ rec.typeKey }}">{{ rec.type }}</span>{% endif %}
+    {% if rec %}<a class="chip type-{{ rec.typeKey }}" href="/?type={{ rec.type | urlencode }}&hero=0">{{ rec.type }}</a>{% endif %}
     {% if rec and rec.dateLabel %}<time datetime="{{ rec.date }}">{{ rec.dateLabel }}</time>{% else %}<span class="muted">undated</span>{% endif %}
-    {% for t in tags %}<span class="tag">#{{ t }}</span>{% endfor %}
+    {% for t in tags %}<a class="tag" href="/?tag={{ t | urlencode }}&hero=0">#{{ t }}</a>{% endfor %}
   </p>
   <h1>{{ title }}</h1>
   {% if rec %}{% set m = rec.media %}

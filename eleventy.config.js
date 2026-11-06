@@ -10,6 +10,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/css');
   eleventyConfig.addPassthroughCopy('src/js');
   eleventyConfig.addPassthroughCopy('src/CNAME');
+  // Appended to CSS/JS URLs (?v=) so each deploy is fetched fresh instead of mixing new pages with cached files.
+  eleventyConfig.addGlobalData('buildStamp', Date.now().toString(36));
 
   // Markdown: allow raw HTML and {.class} attributes on images/blocks
   const md = markdownIt({ html: true, linkify: true }).use(markdownItAttrs);
@@ -29,6 +31,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('neighbors', (slug) => graph?.neighborsOf(slug) ?? []);
   eleventyConfig.addFilter('sharedTags', (slug) => graph?.sharedTagNeighbors(slug) ?? []);
   eleventyConfig.addFilter('types', (list) => [...new Set(list.map((n) => n.type))].sort());
+  eleventyConfig.addFilter('tagList', (list) => [...new Set(list.flatMap((n) => n.tags))].sort((a, b) => a.localeCompare(b)));
   // Equal hue spacing over the sorted types; neighbors on the wheel alternate light/dark (even/odd).
   eleventyConfig.addFilter('typeHue', (i, n) => Math.round((25 + (360 * i) / n) % 360));
   // Lightness/chroma set for position i of n. With an odd count the last type would sit between two
@@ -61,19 +64,6 @@ export default function (eleventyConfig) {
     return [...groups]
       .sort(([a], [b]) => (a === null) - (b === null) || b - a)
       .map(([start, items]) => ({ label: start === null ? 'Undated' : `${start}–${start + 4}`, items: items.sort(newestFirst) }));
-  });
-  // Talks grouped by the organization node they link to (e.g. CocoaHeads); newest first, unaffiliated under "Other".
-  eleventyConfig.addFilter('talkGroups', (list) => {
-    const groups = new Map();
-    for (const n of list.filter((x) => x.type === 'talk')) {
-      const org = (graph?.neighborsOf(n.slug) ?? []).find((m) => m.type === 'organization');
-      const label = org ? org.title : 'Other';
-      if (!groups.has(label)) groups.set(label, { label, url: org?.url, items: [] });
-      groups.get(label).items.push(n);
-    }
-    return [...groups.values()]
-      .sort((a, b) => (a.label === 'Other') - (b.label === 'Other') || a.label.localeCompare(b.label))
-      .map((g) => ({ ...g, items: g.items.sort(newestFirst) }));
   });
   eleventyConfig.addFilter('year', (iso) => (iso ? String(iso).slice(0, 4) : ''));
 

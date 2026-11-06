@@ -1,9 +1,10 @@
 ---
 layout: base.njk
 bodyClass: home
-scripts: ["/js/list.js"]
+scripts: ["/js/graph.js", "/js/view.js"]
 hero: true
 ---
+{# One page, several views. view.js picks the view and filters from the query (see README); every view is built here so the page also works without JavaScript (the list shows). #}
 {% if site.hero != "top" %}
 <section class="hero{% if header and header.image %} hero-banner{% endif %}"{% if header and header.image %} style="background-image: url('{{ header.image }}')"{% endif %}>
   <div class="hero-inner">
@@ -16,26 +17,63 @@ hero: true
 <section class="prose welcome">
   {{ content | safe }}
 </section>
-<article class="prose">
+<div class="prose controls">
+  <p class="views" role="group" aria-label="View">
+    <button type="button" class="chip" data-view="list" aria-pressed="true">List</button>
+    <button type="button" class="chip" data-view="timeline" aria-pressed="false">Timeline</button>
+    <button type="button" class="chip" data-view="connections" aria-pressed="false">Connections</button>
+  </p>
   <p><input id="q" type="search" placeholder="Filter by title or tag" aria-label="Filter"></p>
-  <p class="filters">
+  <p class="filters" role="group" aria-label="Types">
     {% for t in collections.graph | types %}
     <button type="button" class="chip type-{{ t | typeKey }}" data-type="{{ t }}" aria-pressed="false">{{ t }}</button>
     {% endfor %}
   </p>
-  <div id="items">
-    {% for g in collections.graph | byFiveYears %}
-    <section class="group">
+  <details class="tag-filters">
+    <summary>Tags</summary>
+    <p class="filters" role="group" aria-label="Tags">
+      {% for t in collections.graph | tagList %}
+      <button type="button" class="chip tag" data-tag="{{ t }}" aria-pressed="false">#{{ t }}</button>
+      {% endfor %}
+    </p>
+  </details>
+</div>
+
+<article class="prose view view-list">
+  {% for g in collections.graph | byFiveYears %}
+  <section class="group">
+    <h2>{{ g.label }}</h2>
+    <ul class="cards">
+      {% for n in g.items %}
+      <li data-slug="{{ n.slug }}">
+        <a href="{{ n.url }}"><span class="chip type-{{ n.typeKey }}">{{ n.type }}</span> {{ n.title }}</a>
+        {% if n.dateLabel %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
+        {% include "item-media.njk" %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</article>
+
+<article class="prose view view-timeline">
+  <ol class="timeline">
+  {% for g in collections.graph | byYear %}
+    <li class="group">
       <h2>{{ g.label }}</h2>
       <ul class="cards">
         {% for n in g.items %}
-        <li data-type="{{ n.type }}" data-text="{{ (n.title ~ ' ' ~ (n.tags | join(' '))) | lower }}">
-          <a href="{{ n.url }}"><span class="chip type-{{ n.typeKey }}">{{ n.type }}</span> {{ n.title }}</a>
-          {% if n.dateLabel %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
-        </li>
+        <li data-slug="{{ n.slug }}"><a href="{{ n.url }}"><span class="chip type-{{ n.typeKey }}">{{ n.type }}</span> {{ n.title }}</a>
+          {% if n.dateLabel and n.dateLabel != g.label %}<span class="muted">{{ n.dateLabel }}</span>{% endif %}
+          {% if n.summary %}<br><span class="muted">{{ n.summary }}</span>{% endif %}
+          {% include "item-media.njk" %}</li>
         {% endfor %}
       </ul>
-    </section>
-    {% endfor %}
-  </div>
+    </li>
+  {% endfor %}
+  </ol>
 </article>
+
+<div class="view view-connections">
+  {% include "graph-embed.njk" %}
+</div>

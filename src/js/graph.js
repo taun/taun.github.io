@@ -221,18 +221,16 @@
   }
 
   // Controls
-  const visibleTypes = new Set(nodes.map((n) => n.type));
-  document.querySelectorAll('.graph-controls input[data-type]').forEach((cb) =>
-    cb.addEventListener('change', () => {
-      cb.checked ? visibleTypes.add(cb.dataset.type) : visibleTypes.delete(cb.dataset.type);
-      for (const n of nodes) n.el.classList.toggle('hidden', !visibleTypes.has(n.type));
-      for (const l of [...links, ...tagLinks]) {
-        const hide = !visibleTypes.has(l.a.type) || !visibleTypes.has(l.b.type);
-        l.el.classList.toggle('hidden', hide);
-        l.lab?.classList.toggle('hidden', hide);
-      }
-    })
-  );
+  // The home page filters (view.js) send the slugs that match; the rest are dimmed, keeping the layout.
+  document.addEventListener('nodefilter', (e) => {
+    const on = e.detail;
+    for (const n of nodes) n.el.classList.toggle('dim', !on.has(n.slug));
+    for (const l of [...links, ...tagLinks]) {
+      const dim = !on.has(l.a.slug) || !on.has(l.b.slug);
+      l.el.classList.toggle('dim', dim);
+      l.lab?.classList.toggle('dim', dim);
+    }
+  });
   const dateToggle = document.getElementById('by-date');
   const setLayout = () => {
     byDate = !dateToggle || dateToggle.checked;
@@ -245,17 +243,24 @@
   showTags.addEventListener('change', setTags); setTags();
 
   // Start on a circle so the layout is deterministic, then settle.
-  size();
-  byDate = !dateToggle || dateToggle.checked;
-  gAxis.classList.toggle('shown', byDate);
-  nodes.forEach((n, i) => {
-    const ang = (i / nodes.length) * Math.PI * 2;
-    n.x = byDate && n.tx != null ? n.tx : W / 2 + Math.cos(ang) * Math.min(W, H) * 0.3;
-    n.y = byDate ? H / 2 + (((i * 37) % 100) / 100 - 0.5) * H * 0.7 : H / 2 + Math.sin(ang) * Math.min(W, H) * 0.3;
-  });
-  // Settle quietly before first paint, unless the user prefers reduced motion.
-  for (let i = 0; i < 250; i++) tick();
-  draw();
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) { alpha = 0.15; run(); }
-  new ResizeObserver(() => { size(); reheat(0.3); }).observe(svg);
+  function start() {
+    size();
+    byDate = !dateToggle || dateToggle.checked;
+    gAxis.classList.toggle('shown', byDate);
+    nodes.forEach((n, i) => {
+      const ang = (i / nodes.length) * Math.PI * 2;
+      n.x = byDate && n.tx != null ? n.tx : W / 2 + Math.cos(ang) * Math.min(W, H) * 0.3;
+      n.y = byDate ? H / 2 + (((i * 37) % 100) / 100 - 0.5) * H * 0.7 : H / 2 + Math.sin(ang) * Math.min(W, H) * 0.3;
+    });
+    // Settle quietly before first paint, unless the user prefers reduced motion.
+    for (let i = 0; i < 250; i++) tick();
+    draw();
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) { alpha = 0.15; run(); }
+  }
+  // The graph may start hidden (another view is showing): lay it out the first time it has a size, then follow resizes.
+  let started = false;
+  new ResizeObserver(([e]) => {
+    if (!e.contentRect.width) return;
+    if (!started) { started = true; start(); } else { size(); reheat(0.3); }
+  }).observe(svg);
 })();

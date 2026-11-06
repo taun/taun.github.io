@@ -1,0 +1,8 @@
+{# Media links for a list item `n` (talk archives, slides, source). #}
+{% if n.media.archive or n.media.slides or n.media.repo %}
+<span class="media-links">
+  {% if n.media.archive %}<a href="{{ n.media.archive.url }}">⤓ Archive</a>{% endif %}
+  {% if n.media.slides %}<a href="{{ n.media.slides }}">▤ Slides</a>{% endif %}
+  {% if n.media.repo %}<a href="{{ n.media.repo }}" target="_blank" rel="noopener noreferrer">⌥ Source <span class="ext" aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></a>{% endif %}
+</span>
+{% endif %}

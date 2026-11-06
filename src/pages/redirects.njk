@@ -1,0 +1,26 @@
+---
+# The old view pages now forward to the home page's query views, so existing links keep working.
+pagination:
+  data: redirects
+  size: 1
+  alias: r
+redirects:
+  - { from: /cv/, query: "view=timeline&hero=0" }
+  - { from: /talks/, query: "view=list&type=talk&hero=0" }
+  - { from: /connections/, query: "view=connections&hero=0" }
+permalink: "{{ r.from }}"
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ site.title }}</title>
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url=/?{{ r.query }}">
+  <link rel="canonical" href="{{ site.url }}/?{{ r.query }}">
+</head>
+<body>
+  <p>This page moved to <a href="/?{{ r.query }}">{{ site.url }}/?{{ r.query }}</a>.</p>
+</body>
+</html>
