@@ -69,7 +69,7 @@
     let label = '';
     for (const a of menu) {
       const current = a.pathname === location.pathname && write(read(a.search)) === here;
-      if (current) { a.setAttribute('aria-current', 'page'); label = a.textContent.trim(); } else a.removeAttribute('aria-current');
+      if (current) { a.setAttribute('aria-current', 'page'); label = a.getAttribute('aria-label') || a.textContent.trim(); } else a.removeAttribute('aria-current');
     }
     document.title = label ? `${label} · ${siteTitle}` : baseTitle;
   }

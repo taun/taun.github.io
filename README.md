@@ -46,7 +46,7 @@ A node matches when it has any of the chosen types and any of the chosen tags (a
 
 Search is the magnifier at the end of the menu. On the home page it filters the current view as you type, within any type and tag filters already set, and the view and filter controls are hidden while it is open to leave room for the results; Escape clears and closes it. On other pages, Enter goes to the home list with `q=` and the hero hidden.
 
-The header menu is `menu` in `site.json`: each entry is a `label` and a `query` (without `?`), e.g. `{ "label": "Talks", "query": "view=list&type=talk&hero=0" }`; an empty query is the plain home page. The old `/cv/`, `/talks/` and `/connections/` URLs forward to the matching query (`src/pages/redirects.njk`).
+The header menu is `menu` in `site.json`: each entry is a `label` and a `query` (without `?`), e.g. `{ "label": "Talks", "query": "view=list&type=talk&hero=0" }`; an empty query is the plain home page. An optional `icon` (the name of an SVG in `src/_includes/icons/`, e.g. `"home"`) shows that icon instead of the label, which becomes its accessible name and tooltip. The old `/cv/`, `/talks/` and `/connections/` URLs forward to the matching query (`src/pages/redirects.njk`).
 
 A new view is a section with class `view view-<name>` in `src/_includes/home.njk`, its name in `VIEWS` in `src/js/view.js`, and one CSS line showing it for `html[data-view="<name>"]`. Its items need `data-slug` (and their groups `class="group"`) for filtering.
 
