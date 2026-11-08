@@ -7,11 +7,12 @@ summary: "It’s about the output not the ingredients"
 date: 2026-11-04
 ---
 
-I’ve been reading the book [Grit](https://www.angeladuckworth.com/grit) by Angela Duckworth. 
+I just finished reading the book [Grit](https://www.angeladuckworth.com/grit) by Angela Duckworth. 
 
-“_Angela has found that grit — a combination of passion and perseverance for a singularly important goal—is the hallmark of high achievers in every domain._”
+> … grit is about having what some researchers call an "ultimate concern"—a goal you care about so much that it organizes and gives meaning to almost everything you do. And grit is holding steadfast to that goal. Even when you fall down. Even when you screw up. Even when progress toward that goal is halting or slow.
+> - **Angela Duckworth** Grit FAQ
 
-I’m not a high achiever, but I have persevered in following a singular goal my whole life. An external observer might think that goal has been, **to make stuff**. But, it hasn’t really been about the making. It was always about the stuff. If I could have afforded to buy the “stuff” I wanted, I probably would have.
+I have persevered in following a singular goal my whole life. An external observer might think that goal has been, **to make stuff**. But, it hasn’t really been about the making. It was always about the stuff. If I could have afforded to buy the “stuff” I wanted, I probably would have.
 
 For example, I’ve made quite a bit of custom furniture. Not because I love carpentry (I do) but because I couldn’t find the furniture I wanted at a price I could afford.
 
@@ -30,6 +31,7 @@ It is and always has been about the outcome rather than the journey.
 Lewis & Clark [canoed across North America](https://en.wikipedia.org/wiki/Lewis_and_Clark_Expedition) not because they loved canoeing, braving blood thirsty mosquitoes, indignant indigenous peoples, canoe busting rapids, and more, but because that was the **easiest** way to cross the country at the time.
 
 > _Our trio of pests still invade and obstruct us on all occasions, these are the Musquetoes eye knats and prickley pears, equal to any three curses that ever poor Egypt laiboured under, except the Mahometant yoke._
+> - **Meriwether Lewis** July 24th, 1805
 
 My hot take is that it’s the same for software. I have been writing software to solve problems since punching [punch cards](https://en.wikipedia.org/wiki/Punched_card) for a [PDP11](https://en.wikipedia.org/wiki/PDP-11) and flipping switches on an [Altair 8800](https://en.wikipedia.org/wiki/Altair_8800) was the height of the craft.
 

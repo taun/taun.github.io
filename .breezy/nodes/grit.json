@@ -1,10 +1,11 @@
 {
   "editor" : {
+    "mode" : "edit",
     "selection" : [
-      1,
-      1
+      2429,
+      2429
     ],
-    "tab" : "title"
+    "tab" : "body"
   },
   "version" : 1
 }
