@@ -7,7 +7,7 @@ summary: "It’s about the output not the ingredients"
 date: 2026-11-04
 ---
 
-I just finished reading the book [Grit](https://www.angeladuckworth.com/grit) by Angela Duckworth. 
+I just finished reading the book [Grit](grit) by Angela Duckworth. 
 
 > … grit is about having what some researchers call an "ultimate concern"—a goal you care about so much that it organizes and gives meaning to almost everything you do. And grit is holding steadfast to that goal. Even when you fall down. Even when you screw up. Even when progress toward that goal is halting or slow.
 > - **Angela Duckworth** Grit FAQ
