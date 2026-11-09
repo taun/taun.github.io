@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if title %}{{ title }} · {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ summary or site.tagline }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
   <link rel="stylesheet" href="/css/site.css?v={{ buildStamp }}">
   <link rel="stylesheet" href="/css/types.css?v={{ buildStamp }}">
   {% if hero %}<script>
@@ -40,7 +41,7 @@
   </main>
   <footer class="site-footer">
     {% if heroTop %}<p class="tagline">{{ site.tagline }}</p>{% endif %}
-    {% for l in site.links %}<a href="{{ l.url }}" rel="me">{{ l.label }}</a>{% endfor %}
+    {% for l in site.links %}<a href="{{ l.url }}"{% if l.rel %} rel="{{ l.rel }}"{% endif %}{% if l.type %} type="{{ l.type }}"{% endif %}>{{ l.label }}</a>{% endfor %}
   </footer>
   <script src="/js/search.js?v={{ buildStamp }}" defer></script>
   {% if scripts %}{% for s in scripts %}<script src="{{ s }}?v={{ buildStamp }}" defer></script>{% endfor %}{% endif %}

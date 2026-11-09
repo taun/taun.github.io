@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
-import { parseFrontMatterYaml } from '../../lib/frontmatter.js';
+import { parseFrontMatterYaml, parsePublished } from '../../lib/frontmatter.js';
 import { parseLinks } from '../../lib/relations.js';
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
@@ -21,6 +21,7 @@ for (const group of ['valid', 'edge']) {
       date: iso,
       datePrecision: data.datePrecision ?? (iso ? 'day' : null),
       draft: !!data.draft,
+      published: parsePublished(data.published, slug, (m) => warnings.push(m)),
       links: parseLinks(data.links, slug, (m) => warnings.push(m)),
       warnings,
     };

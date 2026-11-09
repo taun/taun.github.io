@@ -16,12 +16,14 @@ summary: One line shown in lists and on the timeline.
 tags: [engineering]
 links: [creo, { to: ken-spencer, rel: worked-at }]   # node file names (without .md), optionally with a relation
 draft: true           # optional; keeps the page out of the build
+published: 2026-11-09 # optional; the day it entered the RSS feed. Without it the node is not in the feed
 video: https://youtu.be/...    # optional media: video, archive (own copy), slides, repo
 ---
 
 Write the page in Markdown.
 ```
 
+- **RSS:** `/feed.xml` lists the newest nodes with `published` (20, `FEED_SIZE` in `eleventy.config.js`), in full. It is off by default: a node is in the feed only once you add `published`. It is separate from `date`, which is when the thing happened.
 - **Links are directed.** A node's `links:` point from it to the listed nodes, and the target shows the reverse ("Came from" etc.). A plain name means `led-to`; `{ to: name, rel: relation }` sets the relation. Known relations: `led-to`, `worked-at`, `founded`, `part-of`; any other word is shown as written. The graph draws an arrowhead at the target (hover a node to see the relation text). A typo in a link name prints a warning at build time.
 - **Images** go in `src/assets/images/` and are referenced as `/assets/images/name.jpg`. Use `![alt](/assets/images/x.png){.align-left}` to float one (`align-left`, `align-right`, `align-center`).
 - A `gallery:` list in front matter (`url`, `image_path`, `alt`) renders a thumbnail gallery; `galleryCaption:` adds a caption.
@@ -74,7 +76,7 @@ Tip: do the first push on a branch and check the Actions run before switching Pa
 | `src/pages/` | 404, forwarding pages for old URLs |
 | `src/_includes/` | Page layouts (`home.njk` holds the views) |
 | `src/css/site.css`, `src/js/` | Styling; view, graph and video scripts (no dependencies) |
-| `src/_data/site.json` | Site title, tagline, footer links, `menu` (above), and `hero` (home banner style, below) |
+| `src/_data/site.json` | Site title, tagline, footer `links` (`label`, `url`, optional `rel` and `type`), `menu` (above), and `hero` (home banner style, below) |
 | `lib/` | `graph.js` builds nodes and connections from front matter; also relations, glyphs, media |
 
 The home banner image is `header.image` in `src/index.md`. `hero` in `site.json` sets how it is shown:

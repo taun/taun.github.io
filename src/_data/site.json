@@ -11,7 +11,8 @@
     { "label": "Reviews", "query": "view=shelf&type=review&hero=0" }
   ],
   "links": [
-    { "label": "GitHub", "url": "https://github.com/taun" },
-    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/taun"}
+    { "label": "GitHub", "url": "https://github.com/taun", "rel": "me" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/taun", "rel": "me" },
+    { "label": "RSS", "url": "/feed.xml", "type": "application/rss+xml" }
   ]
 }

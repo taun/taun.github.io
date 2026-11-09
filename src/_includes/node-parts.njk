@@ -1,0 +1,28 @@
+{# Node front matter shown both on its page (node.njk) and in the feed (feed.njk). `plain` drops what needs the site's CSS or a browser tab. #}
+{% macro mediaLinksHtml(m, plain=false) %}
+{% set newTab = "" if plain else ' target="_blank" rel="noopener noreferrer"' %}
+{% set arrow = "" if plain else ' <span class="ext" aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span>' %}
+{% if m.video or m.archive or m.slides or m.repo %}
+<p class="media-links">
+  {% if m.video %}<a href="{{ m.video.url }}"{% if m.video.kind != 'file' %}{{ newTab | safe }}{% endif %}>▶ Watch{% if m.video.kind == 'youtube' %} on YouTube{% endif %}{% if m.video.kind != 'file' %}{{ arrow | safe }}{% endif %}</a>{% endif %}
+  {% if m.archive %}<a href="{{ m.archive.url }}">⤓ Archived copy</a>{% endif %}
+  {% if m.slides %}<a href="{{ m.slides }}">▤ Slides</a>{% endif %}
+  {% if m.repo %}<a href="{{ m.repo }}"{{ newTab | safe }}>⌥ Source{{ arrow | safe }}</a>{% endif %}
+</p>
+{% endif %}
+{% endmacro %}
+
+{% macro galleryHtml(items, caption) %}
+{% if items %}
+<section class="gallery" aria-label="Gallery">
+  {% for g in items %}
+    {% if (g.image_path or g.url) | isImage %}
+    <figure><a href="{{ g.url }}"><img src="{{ g.image_path or g.url }}" alt="{{ g.alt }}" loading="lazy"></a></figure>
+    {% else %}
+    <figure class="file"><a href="{{ g.url }}">▤ {{ g.alt or g.url }}</a></figure>
+    {% endif %}
+  {% endfor %}
+  {% if caption %}<p class="caption">{{ caption }}</p>{% endif %}
+</section>
+{% endif %}
+{% endmacro %}

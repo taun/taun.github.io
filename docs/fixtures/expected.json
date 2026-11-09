@@ -4,6 +4,7 @@
     "date": "2018-09-06",
     "datePrecision": "day",
     "draft": true,
+    "published": null,
     "links": [],
     "warnings": []
   },
@@ -12,6 +13,7 @@
     "date": "2021-01-01",
     "datePrecision": "year",
     "draft": false,
+    "published": null,
     "links": [],
     "warnings": []
   },
@@ -20,6 +22,7 @@
     "date": "2002-05-01",
     "datePrecision": "day",
     "draft": false,
+    "published": null,
     "links": [
       {
         "to": "creo",
@@ -37,6 +40,7 @@
     "date": null,
     "datePrecision": null,
     "draft": false,
+    "published": null,
     "links": [
       {
         "to": "mda-space",
@@ -58,6 +62,7 @@
     "date": "2015-01-01",
     "datePrecision": "year",
     "draft": false,
+    "published": null,
     "links": [],
     "warnings": []
   },
@@ -66,6 +71,7 @@
     "date": null,
     "datePrecision": null,
     "draft": false,
+    "published": null,
     "links": [
       {
         "to": "general-fusion",
@@ -79,6 +85,7 @@
     "date": "1991-01-01",
     "datePrecision": "year",
     "draft": false,
+    "published": null,
     "links": [
       {
         "to": "creo",
@@ -87,11 +94,30 @@
     ],
     "warnings": []
   },
+  "valid/published-quoted": {
+    "type": "post",
+    "date": null,
+    "datePrecision": null,
+    "draft": false,
+    "published": "2026-11-09",
+    "links": [],
+    "warnings": []
+  },
+  "valid/published": {
+    "type": "post",
+    "date": "1975-11-01",
+    "datePrecision": "day",
+    "draft": false,
+    "published": "2026-11-09",
+    "links": [],
+    "warnings": []
+  },
   "valid/quoted-year": {
     "type": "thing",
     "date": "2019-01-01",
     "datePrecision": "year",
     "draft": false,
+    "published": null,
     "links": [],
     "warnings": []
   },
@@ -100,6 +126,7 @@
     "date": "2015-09-22",
     "datePrecision": "day",
     "draft": false,
+    "published": null,
     "links": [
       {
         "to": "cocoaheads",
@@ -117,6 +144,7 @@
     "date": null,
     "datePrecision": null,
     "draft": false,
+    "published": null,
     "links": [
       {
         "to": "no-such-node",
@@ -128,11 +156,45 @@
       "[graph] \"edge-cases-self\" has a link that is neither a slug nor { to, rel }: 42"
     ]
   },
+  "edge/published-bare-year": {
+    "type": "post",
+    "date": null,
+    "datePrecision": null,
+    "draft": false,
+    "published": null,
+    "links": [],
+    "warnings": [
+      "[feed] \"published-bare-year\" has an invalid published date: 2026"
+    ]
+  },
+  "edge/published-impossible-day": {
+    "type": "post",
+    "date": null,
+    "datePrecision": null,
+    "draft": false,
+    "published": null,
+    "links": [],
+    "warnings": [
+      "[feed] \"published-impossible-day\" has an invalid published date: 2026-02-30"
+    ]
+  },
+  "edge/published-timestamp": {
+    "type": "post",
+    "date": null,
+    "datePrecision": null,
+    "draft": false,
+    "published": null,
+    "links": [],
+    "warnings": [
+      "[feed] \"published-timestamp\" has an invalid published date: 2026-11-08T23:30:00-08:00"
+    ]
+  },
   "edge/self-link-and-unknown": {
     "type": "thing",
     "date": null,
     "datePrecision": null,
     "draft": false,
+    "published": null,
     "links": [
       {
         "to": "edge-cases-self",

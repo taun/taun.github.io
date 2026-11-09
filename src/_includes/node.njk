@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 ---
+{% from "node-parts.njk" import mediaLinksHtml, galleryHtml %}
 {% set slug = page.fileSlug %}
 {% set rec = slug | nodeInfo %}
 <article class="prose node">
@@ -12,14 +13,7 @@ layout: base.njk
   </p>
   <h1>{{ title }}</h1>
   {% if rec %}{% set m = rec.media %}
-  {% if m.video or m.archive or m.slides or m.repo %}
-  <p class="media-links">
-    {% if m.video %}<a href="{{ m.video.url }}"{% if m.video.kind != 'file' %} target="_blank" rel="noopener noreferrer"{% endif %}>▶ Watch{% if m.video.kind == 'youtube' %} on YouTube{% endif %}{% if m.video.kind != 'file' %} <span class="ext" aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span>{% endif %}</a>{% endif %}
-    {% if m.archive %}<a href="{{ m.archive.url }}">⤓ Archived copy</a>{% endif %}
-    {% if m.slides %}<a href="{{ m.slides }}">▤ Slides</a>{% endif %}
-    {% if m.repo %}<a href="{{ m.repo }}" target="_blank" rel="noopener noreferrer">⌥ Source <span class="ext" aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></a>{% endif %}
-  </p>
-  {% endif %}
+  {{ mediaLinksHtml(m) }}
   {% if m.video.kind == 'youtube' %}
   <div class="video" data-yt="{{ m.video.id }}">
     <button type="button" class="video-play" aria-label="Play video: {{ title }}">
@@ -34,18 +28,7 @@ layout: base.njk
   {% endif %}
   {{ content | safe }}
 
-  {% if gallery %}
-  <section class="gallery" aria-label="Gallery">
-    {% for g in gallery %}
-      {% if (g.image_path or g.url) | isImage %}
-      <figure><a href="{{ g.url }}"><img src="{{ g.image_path or g.url }}" alt="{{ g.alt }}" loading="lazy"></a></figure>
-      {% else %}
-      <figure class="file"><a href="{{ g.url }}">▤ {{ g.alt or g.url }}</a></figure>
-      {% endif %}
-    {% endfor %}
-    {% if galleryCaption %}<p class="caption">{{ galleryCaption }}</p>{% endif %}
-  </section>
-  {% endif %}
+  {{ galleryHtml(gallery, galleryCaption) }}
 </article>
 
 {% set rels = slug | relations %}

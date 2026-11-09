@@ -20,6 +20,7 @@ Code that implements it: `lib/frontmatter.js` (dates), `lib/relations.js` (links
 | `type` | string | no (default `thing`) | Open vocabulary; any string, including spaces or symbols (CSS classes use a sanitized key from `typeKey` in `lib/glyphs.js`). Types in use: company, cv, organization, person, post, project, talk, thing, work (`event` is anticipated). New values need no setup: chips, colors and glyphs derive from the data. |
 | `date` | date string or year | no | `YYYY-MM-DD`, or a bare year (`2021`). Undated nodes are allowed. |
 | `datePrecision` | `day` \| `year` | no | `year` shows only the year. Implied `year` for a bare-year date. |
+| `published` | `YYYY-MM-DD` | no | The day the node entered the RSS feed. Absent means it is not in the feed. See below. |
 | `summary` | string | no | One line for lists and the CV. |
 | `tags` | string[] | no | Shared tags produce the "Same tags" list and the optional dashed graph edges. |
 | `links` | (slug \| `{to, rel}`)[] | no | See below. |
@@ -31,6 +32,8 @@ Code that implements it: `lib/frontmatter.js` (dates), `lib/relations.js` (links
 | `header` | `{image, teaser, image_description}` | no | `image` renders as a banner on the node page. `teaser` is the node's thumbnail on the home page's bookshelf view (shown at its own aspect ratio; nodes without one appear as a spine). `image_description` is not used yet. |
 | `gallery` | `{url, image_path, alt}[]` | no | Thumbnail gallery; `galleryCaption` (string) adds a caption. |
 
+Text values and the body must not contain control characters other than tab, line feed and carriage return in the body (XML forbids them in the feed, and YAML cannot hold them unescaped). One-line values (title, type, summary, tags, relations, media) have no line breaks or tabs. The build removes forbidden characters from the feed with a warning; writers should refuse them as they are typed.
+
 Unknown keys are ignored by the build. **Writers must preserve keys they do not understand**, as well as their order, comments and formatting where possible, so that edits produce minimal diffs.
 
 ### Dates
@@ -38,6 +41,12 @@ Unknown keys are ignored by the build. **Writers must preserve keys they do not 
 - A year alone, `date: 2021` (an integer 1000–9999) or `date: "2021"`, is converted to `2021-01-01` with `datePrecision: year` unless a precision is given.
 - Dates order lists and the graph. The graph ranks distinct dates and spaces them evenly (not proportionally). Nodes without a date float.
 - A numeric date outside 1000–9999 makes the build fail ("Data cascade value for `date` is invalid"). Writers must not emit one.
+
+### Published
+
+`date` is when the thing happened (a 1975 project can be written today), so the feed cannot use it. `/feed.xml` lists the newest nodes that have `published` (20, `FEED_SIZE` in `eleventy.config.js`), newest first, ignoring drafts. A value that is not a real calendar day written as `YYYY-MM-DD` (a bare year, a timestamp, `2026-02-30`) is invalid: the node stays out of the feed, and the build warns once the node is live (drafts are not built, so editors should flag it earlier; the fixtures record the warning either way). A day after tomorrow (UTC) is taken as a typo: the build warns and leaves the node out until then. Items are dated midday UTC on that day. Characters XML does not allow, such as a pasted form feed, are removed from the feed with a warning naming the node.
+
+Feed readers identify an entry by its URL, so editing a node, or changing `published`, should not make it new to subscribers; renaming its slug does. The feed is opt-in and off by default: writers must not add `published` on their own, including when a node goes live, and must not set it from `date`. It is added only when the author asks, with the current day. Writers should remove it when a node goes back to draft, and otherwise leave it alone. All new content starts as a draft (writers should create nodes with `draft: true`).
 
 ### Links
 
@@ -79,4 +88,4 @@ Files live in `src/assets/` (`images/`, `presentations/`, `sounds/`) and are ref
 
 ## Fixtures
 
-`docs/fixtures/valid` and `docs/fixtures/edge` hold sample node files, and `expected.json` holds what the real parsing code derives from each (type, date, precision, draft, normalized links, warnings). `node docs/fixtures/check.mjs` verifies them. Other implementations should produce the same normalized values for the same files.
+`docs/fixtures/valid` and `docs/fixtures/edge` hold sample node files, and `expected.json` holds what the real parsing code derives from each (type, date, precision, draft, published, normalized links, warnings). `node docs/fixtures/check.mjs` verifies them. Other implementations should produce the same normalized values for the same files.
