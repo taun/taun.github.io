@@ -32,7 +32,7 @@ Code that implements it: `lib/frontmatter.js` (dates), `lib/relations.js` (links
 | `header` | `{image, teaser, image_description}` | no | `image` renders as a banner on the node page. `teaser` is the node's thumbnail on the home page's bookshelf view (shown at its own aspect ratio; nodes without one appear as a spine). `image_description` is not used yet. |
 | `gallery` | `{url, image_path, alt}[]` | no | Thumbnail gallery; `galleryCaption` (string) adds a caption. |
 
-Text values and the body must not contain control characters other than tab, line feed and carriage return in the body (XML forbids them in the feed, and YAML cannot hold them unescaped). One-line values (title, type, summary, tags, relations, media) have no line breaks or tabs. The build removes forbidden characters from the feed with a warning; writers should refuse them as they are typed.
+Text values and the body must not contain control characters other than tab, line feed and carriage return in the body (XML forbids them in the feed, and YAML cannot hold them unescaped). One-line values (title, type, tags, relations, media) have no line breaks or tabs. A summary may have line breaks; the site shows them as spaces. The build removes forbidden characters from the feed with a warning; writers should refuse them as they are typed.
 
 Unknown keys are ignored by the build. **Writers must preserve keys they do not understand**, as well as their order, comments and formatting where possible, so that edits produce minimal diffs.
 
