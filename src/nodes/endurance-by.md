@@ -5,6 +5,7 @@ tags: [book]
 links: []
 summary: "Mind, Body, and the Curiously Elastic Limits of Human Performance"
 date: 2025-09-11
+published: 2026-11-08
 header:
   image: /assets/images/endurance-by-header.jpg
   teaser: /assets/images/endurance-by-teaser.jpg

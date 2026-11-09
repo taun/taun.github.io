@@ -4,6 +4,7 @@ type: review
 tags: [book]
 links: []
 date: 2026-09-23
+published: 2026-11-06
 draft: false
 header:
   image: /assets/images/grit-book-medium.png

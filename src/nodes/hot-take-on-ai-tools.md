@@ -5,6 +5,7 @@ tags: []
 links: []
 summary: "It’s about the output not the ingredients"
 date: 2026-11-04
+published: 2026-11-04
 ---
 
 I just finished reading the book [Grit](https://www.taun.org/n/grit) by Angela Duckworth. 
