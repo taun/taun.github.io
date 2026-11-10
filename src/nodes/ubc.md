@@ -8,6 +8,7 @@ links: [creo, moedae-com]
 # header:
 #   image: /assets/images/ubc_banner.png
 #   teaser: /assets/images/ubc_mini.png
+draft: true
 ---
 
 <!-- What UBC was for you (studies, research, employment) and the years involved. -->

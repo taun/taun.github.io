@@ -4,6 +4,7 @@ type: project
 date: 1980-12-25
 tags: [fun]
 links: [waveform-synthesizer]
+draft: true
 ---
 
 [MOS Technology](https://en.wikipedia.org/wiki/MOS_Technology)

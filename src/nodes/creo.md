@@ -5,6 +5,7 @@ date: 1983
 tags: [connections]
 video: https://youtu.be/Xsh9-FdT-SQ
 links: [{ to: two-plane-balancer, rel: part-of }, creo-scitex]
+draft: true
 ---
 
 [History](https://www.company-histories.com/Creo-Inc-Company-History.html)

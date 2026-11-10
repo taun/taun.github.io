@@ -5,6 +5,7 @@ date: 1969
 datePrecision: year
 tags: [connections]
 links: [{ to: ken-spencer, rel: worked-at }, { to: dan-gelbart, rel: worked-at }]
+draft: true
 ---
 
 [MDA Space](https://en.wikipedia.org/wiki/MDA_Space)

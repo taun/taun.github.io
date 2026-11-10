@@ -16,6 +16,7 @@ gallery:
   - url: /assets/images/mailboxes_portrait.jpeg
     image_path: /assets/images/mailboxes_portrait.jpeg
     alt: "before filter"
+draft: true
 ---
 
 [MailPortals](https://github.com/taun/MailBoxesApp) is an open source unfinished prototype macOS E-mail client which allows the user to view and manipulate multiple mail box folder listings simultaneously.

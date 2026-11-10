@@ -4,6 +4,7 @@ type: cv
 date: 2014
 tags: [ble, ios]
 links: [roar-for-good]
+draft: true
 ---
 
 

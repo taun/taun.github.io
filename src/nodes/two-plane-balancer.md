@@ -15,6 +15,7 @@ header:
 #   - url: /assets/images/wirewrap_sample.png
 #     image_path: /assets/images/wirewrap_sample.png
 #     alt: "Wirewrap Breadboard image"
+draft: true
 ---
 
 ## The first dollar

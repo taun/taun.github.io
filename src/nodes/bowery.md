@@ -5,6 +5,7 @@ date: 2022-01-01
 tags: [nerves, elixir, hardware, software]
 links: [fellowes-array]
 datePrecision: year
+draft: true
 ---
 
 

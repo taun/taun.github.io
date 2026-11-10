@@ -4,6 +4,7 @@ type: company
 date: 2000
 tags: []
 links: [moedae-com, general-fusion]
+draft: true
 ---
 
 [Merger](https://www.nagasa.org/industrynews/424.html)
