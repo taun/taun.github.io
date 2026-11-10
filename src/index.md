@@ -4,8 +4,10 @@ title: Home
 header:
   image: /assets/images/beautiful-hawaiian-coastal-trees.jpeg
 ---
-Welcome,
+Welcome, there is no rhyme or reason to this web site other than that it is about stuff that interested me enough to write about it. 
 
-This is my work related website. Hopefully you find something of interest here. Beware, :-) I included posts on some really old projects just because they were fun. Like,
+[x] Book reviews 
+[x] Blog posts of no particular topic
+[x] Ancient history
 
-... ["The Theremin"](n/theremin) ...
+Browse, enjoy, or not, your choice.
