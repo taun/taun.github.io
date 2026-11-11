@@ -1,9 +1,9 @@
 ---
 title: "Digital waveform synthesizer for music"
-type: cv
+type: project
 date: 1980-01-01
 datePrecision: year
-tags: [hardware, software, music]
+tags: [hardware, software, music, electronics]
 links: [ubc]
 galleryCaption: "Really old school!"
 header:
@@ -19,6 +19,7 @@ gallery:
   - url: /assets/images/wirewrap_sample.png
     image_path: /assets/images/wirewrap_sample.png
     alt: "Wirewrap Breadboard image"
+summary: "Invented a digital waveform synthesizer for emulating the sounds of musical instruments. But before that was a thing."
 ---
 
 ## The backstory
