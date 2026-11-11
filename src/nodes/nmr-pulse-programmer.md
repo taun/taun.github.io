@@ -1,9 +1,9 @@
 ---
 title: "NMR Pulse Programmer Interface"
-type: cv
+type: project
 date: 1991-01-01
 datePrecision: year
-tags: [moedae, automation, hardware, software]
+tags: [moedae, automation, hardware, software, electronics]
 links: [creo]
 galleryCaption: "Nuclear Magnetic Resonance"
 header:
@@ -13,6 +13,7 @@ gallery:
   - url: /assets/images/nmr_fullsize.png
     image_path: /assets/images/nmr_fullsize.png
     alt: "NMR Schematic"
+summary: "Custom high speed digital pulse programmer graphical interface"
 ---
 
 ## Still a High-water
@@ -28,7 +29,7 @@ It involved developing custom software to integrate:
 - An NMR machine
 - A high speed, high accuracy, low jitter, 12bit, 2 channel analog to digital signal converter
  
-Taun designed all of the software including 
+I designed all of the software including 
 
 - Real time OS principles for meeting data control and acquisition requirements.
 - a custom C++ GUI framework to be used in implementing the application UI.

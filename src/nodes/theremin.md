@@ -1,12 +1,13 @@
 ---
-title: "It's a Theremin!"
+title: "Theremin Movement in B major"
 type: project
 date: 1975-11-01
-tags: [fun]
+tags: [electronics]
 links: [hp-67]
 header:
   image: /assets/images/timer_555_banner.png
   teaser: /assets/images/door_handle_small.jpg
+summary: "A haunting bathroom experience"
 ---
 
 Probably my first ever, fun, successful electronics project as a kid.
