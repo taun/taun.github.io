@@ -1,8 +1,8 @@
 ---
-title: "The tech below the surface"
+title: "FractalScapes technical details"
 type: post
 date: 2016-10-08
-summary: "An iOS implementation of a touch interactive Lindenmayer system fractal generator. The only iOS L-System generator which lets the user drag and drop graphic rule tiles to create new interesting fractals. Combines highly optimized C code, image filters and motion sensing and custom view transitions."
+summary: "FractalScapes is an iOS implementation of a touch interactive Lindenmayer system fractal generator. The only iOS L-System generator which lets the user drag and drop graphic rule tiles to create new interesting fractals. Combines highly optimized C code, image filters and motion sensing and custom view transitions."
 tags: [ios, design]
 links: []
 galleryCaption: "Before and after filter application"
@@ -13,12 +13,15 @@ gallery:
   - url: /assets/images/blog/fractal_sample_after_filter.png
     image_path: /assets/images/blog/fractal_sample_after_filter.png
     alt: "after filter"
+header:
+  image: /assets/images/the-tech-below-the-surface-header.jpg
+  teaser: /assets/images/the-tech-below-the-surface-teaser.jpg
 ---
 
 ![FractalScapes logo](/assets/images/fractalscapes-mini-logo.png){.align-left}
-FractalScapes is an iOS implementation of an touch interactive Lindenmayer system fractal generator. The only iOS L-System generator which lets the user drag and drop graphic rule tiles to create new interesting fractals. It's implementation combines highly optimized C code, core image filters, core motion sensing and custom segue transitions. This blog posting is a way too long list of most of the core technologies used to create FractalScapes.
+FractalScapes is an iOS implementation of an touch interactive Lindenmayer system fractal generator. The only iOS L-System generator which lets the user drag and drop graphic rule tiles to create new interesting fractals. Its implementation combines highly optimized functional style C code, Apple Core Image filters, Core Motion sensing and custom segue transitions. This post is a long list of some of the key Apple frameworks used to keep FractalScapes responsive even when generating million node fractals.
 
-# The Tech That Lies Below The Surface
+# Or, “Yes you can mix ObjC and highly functional C”
  
 
 >FractalScapes makes use of just about every tool in the Apple iOS box. 
