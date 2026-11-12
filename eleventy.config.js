@@ -1,5 +1,6 @@
 import markdownIt from 'markdown-it';
 import markdownItAttrs from 'markdown-it-attrs';
+import markdownItFootnote from 'markdown-it-footnote';
 import { HtmlBasePlugin } from '@11ty/eleventy';
 import { buildGraph, newestFirst } from './lib/graph.js';
 import { typeGlyph, typeKey } from './lib/glyphs.js';
@@ -20,8 +21,14 @@ export default function (eleventyConfig) {
   // Appended to CSS/JS URLs (?v=) so each deploy is fetched fresh instead of mixing new pages with cached files.
   eleventyConfig.addGlobalData('buildStamp', Date.now().toString(36));
 
-  // Markdown: allow raw HTML and {.class} attributes on images/blocks
-  const md = markdownIt({ html: true, linkify: true }).use(markdownItAttrs);
+  // Markdown: allow raw HTML, {.class} attributes on images/blocks, and [^1] footnotes
+  const md = markdownIt({ html: true, linkify: true }).use(markdownItAttrs).use(markdownItFootnote);
+  // Footnote ids carry the page slug (#fn-my-node-1), so they stay unique where several bodies share one document, like the feed.
+  md.renderer.rules.footnote_anchor_name = (tokens, idx, options, env) => {
+    const n = Number(tokens[idx].meta.id + 1).toString();
+    const slug = env?.page?.fileSlug;
+    return slug ? `-${slug}-${n}` : n;
+  };
   eleventyConfig.setLibrary('md', md);
 
   // Bare-year dates (`date: 2021`) become year-precision dates; see lib/frontmatter.js.

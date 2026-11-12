@@ -27,6 +27,13 @@ img { max-width: 100%; height: auto; }
 .prose pre { overflow-x: auto; background: color-mix(in srgb, var(--fg) 7%, transparent); padding: .8rem; border-radius: 6px; }
 .prose code { font-size: .92em; }
 .prose blockquote { margin-left: 0; padding-left: 1rem; border-left: 3px solid var(--line); color: var(--muted); }
+.footnote-ref a { text-decoration: none; padding: 0 .1em; }
+.footnotes-sep { border: 0; border-top: 1px solid var(--line); width: 8rem; margin: 2.5rem 0 1rem; }
+.footnotes { font-size: .9rem; color: var(--muted); }
+.footnotes li { margin-bottom: .3rem; }
+.footnotes li p { margin: 0; }
+.footnote-backref { text-decoration: none; }
+:target:is(.footnote-item, .footnote-ref) { background: color-mix(in srgb, var(--link) 15%, transparent); border-radius: 3px; }
 .align-left { float: left; margin: 0 1rem .5rem 0; }
 .align-right { float: right; margin: 0 0 .5rem 1rem; }
 .align-center { display: block; margin: 1rem auto; }

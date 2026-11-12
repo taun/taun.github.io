@@ -10,7 +10,7 @@ Code that implements it: `lib/frontmatter.js` (dates), `lib/relations.js` (links
 
 - **Identity:** the slug is the filename without `.md`. It is the node's ID, the target in `links:`, and the URL `/n/<slug>/`. Two nodes cannot share a slug.
 - **Slug characters:** lowercase letters, digits and hyphens by convention (nothing enforces it).
-- **Body:** Markdown with raw HTML allowed, `{.class}` attributes on images/blocks, and no template processing (`{{ }}` stays literal).
+- **Body:** Markdown with raw HTML allowed, `{.class}` attributes on images/blocks, footnotes (`[^1]` with a `[^1]: text` definition, or inline `^[text]`), and no template processing (`{{ }}` stays literal).
 
 ## Front matter
 
