@@ -39,3 +39,13 @@ My hot take is that it’s the same for software. I have been writing software t
 The goal of writing software has always been to make a process easier. Whether that meant making it faster and easier to calculate artillery trajectories, or rocket ship trajectories, the people who wrote software were writing with the goal of getting to the desired outcome faster and easier. Or in the case of the moon, getting there and back alive. Of course, they also spent their time and effort on making their craft easier by constantly inventing higher level languages and organizational abstractions. The holy grail of software development has always been to move the human aspect of it to a higher level of abstraction. It was never about writing in a particular language because of the aesthetics of that language. The purpose of new languages were to make reaching the desired outcome, faster, easier, more robust, and more secure, than what was available at the time.
 
 AI is a new higher level of abstraction. It is the equivalent of being able to fly across the country in 6 hours rather than canoe across the country in 6 months. I don’t miss fighting with punch cards nor will I miss the “good ol days” of hand writing and debugging code in ‘#{xyz_language_of_your_choice}’.
+
+**And now for the disclaimer**. When I say “outcome”, I mean the full outcome. Not just “it works”, we’re done. The full outcome being all the goals we have always had for good products.
+
+- **Is it secure?** Can we put our trust in it?
+- **Is it reliable?** Will it work tomorrow the same as today? 
+- **Is it worth using?** Or is the solution more trouble than it’s worth? Like Apple’s iPhone keyboard since they lost [Ken Kocienda](https://bookshop.org/p/books/creative-selection-inside-apple-s-design-process-during-the-golden-age-of-steve-jobs-ken-kocienda/d762c346f7f7cb7c)
+- **Is its internal and external state Observable?** Can we observe when it is doing the wrong thing? Or when there are impending performance issues?
+- **Is it maintainable?** If something goes wrong, is it easy fix (for humans or AI)?
+- **Is it flexible enough for easy enhancements?** Is the architecture the right fit to enable the future desired changes?
+- **Will it last?** Are the materials (libraries and framework) high enough quality to still be viable in 5 years?
