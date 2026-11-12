@@ -27,7 +27,7 @@ Both conferences had a strong focus on AI. How to use it, its implications, the 
 
 ## The code doesn’t matter. 
 
-It is and always has been about the outcome[^1] rather than the journey.
+It is and always has been about the [outcome](#outcome) rather than the journey.
 
 Lewis & Clark [canoed across North America](https://en.wikipedia.org/wiki/Lewis_and_Clark_Expedition) not because they loved canoeing, braving blood thirsty mosquitoes, indignant indigenous peoples, canoe busting rapids, and more, but because that was the **easiest** way to cross the country at the time.
 
@@ -42,7 +42,9 @@ AI is a new higher level of abstraction. It is the equivalent of being able to f
 
 —-
 
-[^1]: **And now for the disclaimer**. When I say “outcome”, I mean the full outcome. Not just “it works”, we’re done. The full outcome being all the goals we have always had for good products.
+[Outcome](#outcome)
+
+When I say “outcome”, I mean the full outcome. Not just “it works”, we’re done. The full outcome being all the goals we have always had for good products.
 
 - **Is it secure?** Can we put our trust in it?
 - **Is it reliable?** Will it work tomorrow the same as today? 
@@ -51,3 +53,5 @@ AI is a new higher level of abstraction. It is the equivalent of being able to f
 - **Is it maintainable?** If something goes wrong, is it easy fix (for humans or AI)?
 - **Is it flexible enough for easy enhancements?** Is the architecture the right fit to enable the future desired changes?
 - **Will it last?** Are the materials (libraries and framework) high enough quality to still be viable in 5 years?
+
+[^1]: **And now for the disclaimer**. When I say “outcome”, I mean the full outcome. Not just “it works”, we’re done. The full outcome being all the goals we have always had for good products.
