@@ -27,7 +27,7 @@ Both conferences had a strong focus on AI. How to use it, its implications, the 
 
 ## The code doesn’t matter. 
 
-It is and always has been about the outcome rather than the journey.
+It is and always has been about the outcome[^1] rather than the journey.
 
 Lewis & Clark [canoed across North America](https://en.wikipedia.org/wiki/Lewis_and_Clark_Expedition) not because they loved canoeing, braving blood thirsty mosquitoes, indignant indigenous peoples, canoe busting rapids, and more, but because that was the **easiest** way to cross the country at the time.
 
@@ -40,7 +40,9 @@ The goal of writing software has always been to make a process easier. Whether t
 
 AI is a new higher level of abstraction. It is the equivalent of being able to fly across the country in 6 hours rather than canoe across the country in 6 months. I don’t miss fighting with punch cards nor will I miss the “good ol days” of hand writing and debugging code in ‘#{xyz_language_of_your_choice}’.
 
-**And now for the disclaimer**. When I say “outcome”, I mean the full outcome. Not just “it works”, we’re done. The full outcome being all the goals we have always had for good products.
+—-
+
+[^1]: **And now for the disclaimer**. When I say “outcome”, I mean the full outcome. Not just “it works”, we’re done. The full outcome being all the goals we have always had for good products.
 
 - **Is it secure?** Can we put our trust in it?
 - **Is it reliable?** Will it work tomorrow the same as today? 
