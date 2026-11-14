@@ -1,6 +1,6 @@
 ---
 title: "Smalltalk - What it is and how it influenced Apple software development for the last 35 yrs?"
-type: post
+type: talk
 date: 2015-09-22
 summary: "A focus on the technical aspects of Smalltalk with a live demo of a modern Smalltalk system showing how Smalltalk removes many of the pain points programmers experience everyday"
 tags: [presentation, smalltalk, apple, objective-c, next, cocoaheads]
