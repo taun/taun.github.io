@@ -35,3 +35,4 @@ A static site where every page is a **node** (`src/nodes/*.md`), and the views a
 
 - Static assets live in `src/assets/` (images, slide PDFs, sounds) and are referenced as `/assets/...`. Page URLs are `/` (home, every view via its query) and `/n/<slug>/`; `/talks/`, `/cv/`, `/connections/` only forward.
 - Content edits (nodes, `site.json`) are commonly committed separately from code changes, with code first.
+- Prose Claude writes for nodes follows the `taun-voice` skill (`.claude/skills/taun-voice/SKILL.md`) and is marked with its `[^claude]` "Co-written by Claude" attribution footnote; Taun's own words (resume bullets, quotes from him) are left verbatim and unmarked.
