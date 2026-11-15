@@ -5,7 +5,6 @@ date: 2017-05-20
 summary: "Fixed the Athena button's BLE firmware two weeks before a 2500 unit production run"
 tags: [ble, firmware, ios, android]
 links: [roar-for-good, { to: roarforgood, rel: worked-at }]
-draft: true
 ---
 
 **May – June 2017** · Hourly consultant, on a trial basis

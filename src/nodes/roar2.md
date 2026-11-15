@@ -5,7 +5,6 @@ date: 2020-03-01
 summary: "Product roadmap, technical direction, and hands-on code for ROAR's B2B worker safety service"
 tags: [founder, nerves, elixir, full-stack, backend, frontend, phoenix, postgresql, aws]
 links: [bowery, { to: roar, rel: worked-at }]
-draft: true
 ---
 
 **March 2020 – October 2022** · Philadelphia, PA

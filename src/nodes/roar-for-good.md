@@ -5,7 +5,6 @@ date: 2017-06-01
 summary: "Built an in-house mobile team for the Athena safety button, then proposed the B2B service that became ROAR"
 tags: [ble, ios, android]
 links: [roar-cofounder, { to: roarforgood, rel: worked-at }, { to: roar, rel: founded }]
-draft: true
 ---
 
 **June 2017 – November 2018** · Full time, Philadelphia, PA

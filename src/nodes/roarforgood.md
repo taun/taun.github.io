@@ -3,9 +3,8 @@ title: "ROAR for Good"
 type: company
 date: 2017-05-20
 summary: "Philadelphia startup behind Athena, a wearable personal safety button for consumers"
-tags: [ble, iot]
+tags: [ble, iot, ios, android]
 links: []
-draft: true
 ---
 
 ROAR for Good started with a safety problem, not a gadget. [Yasmine Mustafa](https://en.wikipedia.org/wiki/Yasmine_Mustafa) spent six months traveling through Spanish speaking countries and kept hearing from women who had been assaulted or harassed. When she got home to Philadelphia, she learned a neighbor had been beaten and raped. She and her team set out to build something that could help someone during an attack without being used against them. ROAR for Good launched in 2015, with co-founders Rich Nelson and Mahmoud Odeh.[^claude]

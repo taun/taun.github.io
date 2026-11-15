@@ -5,7 +5,6 @@ date: 2023-02-01
 summary: "Led the Nerves development to finish Gateway2.0, cutting per site hardware costs 40% and SaaS expenses 80%"
 tags: [nerves, elixir, iot, hardware]
 links: [{ to: roar, rel: worked-at }]
-draft: true
 ---
 
 **February 2023 – January 2024** · Philadelphia, PA

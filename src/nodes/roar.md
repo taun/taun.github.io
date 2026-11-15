@@ -3,9 +3,8 @@ title: "ROAR"
 type: company
 date: 2018-11-01
 summary: "Worker safety as a service. Press a button and help knows exactly where you are, indoors"
-tags: [ble, iot, founder]
+tags: [ble, iot, founder, nerves, frontend, backend, ios]
 links: []
-draft: true
 ---
 
 **ROAR** is the B2B company that grew out of [ROAR for Good](/n/roarforgood/) in November 2018. Instead of selling a safety button to consumers, ROAR sells worker safety as a service, with indoor alert location tracking. Press a button and help knows exactly where you are. Even deep inside a building where GPS and cell signals give up.

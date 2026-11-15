@@ -5,7 +5,6 @@ date: 2018-11-01
 summary: "From idea to a piloted AlwaysOn worker safety service in under 6 months"
 tags: [founder, elixir, phoenix, aws, ble, iot]
 links: [roar2, { to: roar, rel: worked-at }]
-draft: true
 ---
 
 **November 2018 – March 2020** · Philadelphia, PA
