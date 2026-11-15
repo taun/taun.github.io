@@ -4,7 +4,7 @@ type: project
 date: 1991-01-01
 datePrecision: year
 tags: [moedae, automation, hardware, software, electronics]
-links: [creo]
+links: [creo, { to: vancouver-consultant, rel: part-of }]
 galleryCaption: "Nuclear Magnetic Resonance"
 header:
   image: /assets/images/nmr_fullsize_banner.png

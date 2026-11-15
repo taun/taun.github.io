@@ -1,7 +1,7 @@
 ---
 title: "University of British Columbia"
 type: organization
-date: 1987
+date: 1992
 tags: []
 links: [creo, moedae-com]
 # summary: ""

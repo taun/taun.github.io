@@ -4,7 +4,7 @@ type: project
 date: 1990-01-01
 datePrecision: year
 tags: [creo, automation, hardware, software]
-links: [{ to: creo, rel: part-of }]
+links: [{ to: creo, rel: part-of }, { to: vancouver-consultant, rel: part-of }]
 header:
   image: /assets/images/hp_signal_analyzer@2x.png
   teaser: /assets/images/hp_signal_analyzer.png
