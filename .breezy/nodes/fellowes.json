@@ -1,6 +1,11 @@
 {
   "editor" : {
-    "tab" : "body"
+    "mode" : "preview",
+    "selection" : [
+      2297,
+      2297
+    ],
+    "tab" : "title"
   },
   "version" : 1
 }

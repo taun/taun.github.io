@@ -5,7 +5,6 @@ date: 2022-11-01
 summary: "Reliability for indoor vertical farms and their developers. Elixir, Phoenix, LiveView, Nerves"
 tags: [nerves, elixir, hardware, software]
 links: [fellowes-array, { to: bowery-farming, rel: worked-at }]
-draft: true
 ---
 
 **November 2022 – October 2023** · New York, NY

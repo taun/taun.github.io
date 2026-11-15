@@ -1,11 +1,10 @@
 ---
 title: "Staff Software Engineer, Fellowes"
 type: cv
-tags: []
+tags: [nerves, elixir, frontend, backend, IoT]
 links: [{ to: fellowes, rel: worked-at }]
 date: 2024-01-08
 summary: "First software engineer hired at Fellowes. Guiding a 14-member consultant team on the Fellowes Array IoT SaaS"
-draft: true
 ---
 
 **January 2024 – Present** · Itasca, IL

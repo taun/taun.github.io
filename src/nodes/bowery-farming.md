@@ -5,7 +5,6 @@ date: 2022-11-01
 summary: "Indoor vertical farming, New York, 2015 to 2024"
 tags: [agtech, iot]
 links: []
-draft: true
 ---
 
 What if you could grow lettuce in a warehouse next to the city that eats it? No pesticides. No weather. No cross-country trucking.

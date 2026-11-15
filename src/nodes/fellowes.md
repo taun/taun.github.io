@@ -5,7 +5,6 @@ date: 2024-01-08
 summary: "Family-owned since 1917. Bankers Box, shredders, and the Fellowes Array air quality system"
 tags: [fellowes]
 links: []
-draft: true
 ---
 
 If you have ever packed up an office, you have probably held a Fellowes product. The **Bankers Box**.
