@@ -10,7 +10,7 @@ published: 2026-11-24
 
 There’s an old French saying, [“_Plus ça change, plus c’est la même_”](https://en.wikipedia.org/wiki/Jean-Baptiste_Alphonse_Karr). This means the more things change, the more they stay the same. AI is a huge change, yet I keep finding that big-picture software development is still the “same old same old.” Breadth of experience still counts if you want a quality output.
 
-AI has a vast store of knowledge but doesn’t know everything. For example, I’m developing a personal Apple platform app. It asks the user for their height. In a text field! But I only noticed this because the AI was creating a parser for the height text and having issues. Now, without Apple HIG experience, you might just let it keep going down that path. “It’ll figure it out.” 
+AI has a vast store of knowledge but doesn’t know everything. For example, I’m developing a personal Apple platform app. The AI prototype had a UI asking the user for their height…in a text field! I only noticed this because the AI was creating a parser for the height text and having issues. Now, without Apple HIG experience, you might let it keep going down that path. It’ll figure it out. Right?
 
 But if you have Apple development experience, and care about the user experience,you would know Apple has published a [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) (HIG) document. And, if you read that document, or used some decent apps, you might realize the height should be a picker, not a text field. Actually, 2 pickers for imperial units. One for feet and one for inches. Then no parsing would be required. Note, I have seen plenty of apps make this same mistake without the help of AI. It’s not an AI problem.
 
