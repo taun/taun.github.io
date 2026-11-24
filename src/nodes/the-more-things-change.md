@@ -3,9 +3,9 @@ title: "The more things change"
 type: post
 tags: [AI, software, development]
 links: []
-draft: true
 summary: "The more the stay the same"
 date: 2026-11-24
+published: 2026-11-24
 ---
 
 There’s an old French saying, [“_Plus ça change, plus c’est la même_”](https://en.wikipedia.org/wiki/Jean-Baptiste_Alphonse_Karr). This means the more things change, the more they stay the same. AI is a huge change, yet I keep finding that big-picture software development is still the same. Breadth of experience still counts if you want a quality output.

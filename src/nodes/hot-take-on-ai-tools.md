@@ -1,8 +1,8 @@
 ---
 title: "Hot take on AI tools"
 type: post
-tags: []
-links: []
+tags: [AI, software, development]
+links: [the-more-things-change]
 summary: "It’s about the output not the ingredients"
 date: 2026-11-04
 published: 2026-11-04
