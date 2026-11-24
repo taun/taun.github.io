@@ -1,11 +1,11 @@
 {
   "editor" : {
-    "mode" : "preview",
+    "mode" : "edit",
     "selection" : [
-      1786,
-      1786
+      230,
+      230
     ],
-    "tab" : "title"
+    "tab" : "media"
   },
   "version" : 1
 }

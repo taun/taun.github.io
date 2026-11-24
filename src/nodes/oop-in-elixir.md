@@ -6,12 +6,13 @@ links: []
 summary: "Or, what we still have to  learn from Smalltalk"
 date: 2025-05-15
 slides: /assets/presentations/oop-in-elixir.pdf
+video: https://youtu.be/Iv2ttW2-lRI?is=w82Sius2H0hwvSrG
 ---
 > I thought of objects being like biological cells and/or individual computers on a network, only able to communicate with messages.
 
 > Alan Kay
 
-This is a talk I gave a [GigCity Elixir](#gigcity) in May 2025. Unfortunately, a video was never published. But here are the slides.
+This is a talk I gave a [GigCity Elixir](#gigcity) in May 2025. Here are the slides.
 
 Most OOP talks and papers focus on OOP as a software implementation architecture. They discuss single vs multiple inheritance and other esoteric “OOP” programming paradigms.
 
